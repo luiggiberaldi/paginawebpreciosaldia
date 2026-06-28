@@ -1680,7 +1680,7 @@
         <div class="hero-content reveal">
           <span class="hero-eyebrow">
             <span class="dot" aria-hidden="true"></span>
-            Disponible como PWA + Android
+            Instalable en cualquier celular, tablet o computadora
           </span>
           <h1 class="hero-title" id="hero-title">
             Vende más rápido.<br />
@@ -1697,8 +1697,8 @@
             </a>
           </div>
           <ul class="hero-features">
-            <li><i data-lucide="wifi-off" aria-hidden="true"></i> Offline-first</li>
-            <li><i data-lucide="refresh-cw" aria-hidden="true"></i> Sync en la nube</li>
+            <li><i data-lucide="wifi-off" aria-hidden="true"></i> Funciona sin internet</li>
+            <li><i data-lucide="refresh-cw" aria-hidden="true"></i> Copia en la nube</li>
             <li><i data-lucide="receipt" aria-hidden="true"></i> Tickets térmicos</li>
             <li><i data-lucide="shield-check" aria-hidden="true"></i> Respaldos automáticos</li>
           </ul>
@@ -2041,7 +2041,7 @@
             </button>
             <div class="faq-a" id="faq-a-3" role="region">
               <div class="faq-a-inner">
-                La app es una PWA instalable. Abre <a href="https://preciosaldia.vercel.app/" target="_blank" rel="noopener noreferrer">preciosaldia.vercel.app</a> en Chrome de Android, toca el menú (⋮) y selecciona <em>«Instalar app»</em> o <em>«Añadir a pantalla de inicio»</em>. También está disponible como APK nativo vía Capacitor para una experiencia más integrada.
+                La aplicación se instala directamente desde el navegador de internet. Abre <a href="https://preciosaldia.vercel.app/" target="_blank" rel="noopener noreferrer">preciosaldia.vercel.app</a> en Google Chrome de Android, toca el menú de los tres puntos (⋮) y selecciona <em>«Instalar aplicación»</em> o <em>«Añadir a pantalla de inicio»</em>. También dispones de una aplicación instalable para Android.
               </div>
             </div>
           </div>
@@ -2053,7 +2053,7 @@
             </button>
             <div class="faq-a" id="faq-a-4" role="region">
               <div class="faq-a-inner">
-                Tu información está respaldada en la nube si habías sincronizado antes. Al iniciar sesión en otro dispositivo, los datos se descargan automáticamente. Además puedes exportar e importar backups manuales en formato JSON desde la sección de <em>Configuración → Sistema</em> para tener una copia extra cuando quieras.
+                Tu información está respaldada de forma segura en internet. Si cambias de teléfono o computadora, solo debes iniciar sesión y tus datos se descargarán automáticamente. También puedes crear y descargar copias de seguridad en un archivo desde la sección de <em>Configuración → Sistema</em> para guardarlo donde desees.
               </div>
             </div>
           </div>
@@ -2077,7 +2077,11 @@
             </button>
             <div class="faq-a" id="faq-a-6" role="region">
               <div class="faq-a-inner">
-                Es una herramienta híbrida. Todas las auditorías de dinero, caja y vueltos son 100% exactas y matemáticas (deterministas, desarrolladas en código puro sin IA para evitar errores de cálculo o alucinaciones). Por otro lado, la inteligencia artificial (Groq SDK) se utiliza en dos áreas clave: de forma interna para redactar informes diagnósticos comprensibles en el Panel de Desarrollo basados en las auditorías, y para dar vida al <strong>asistente chatbot interactivo</strong> que ves en esta página y dentro de la aplicación, el cual responde al instante cualquier duda operativa sobre inventarios, vueltos mixtos, cierres de caja y configuración.
+                El sistema combina dos cosas:
+                <ul style="margin-top: var(--space-2); margin-left: var(--space-4); list-style-type: disc; display: flex; flex-direction: column; gap: var(--space-1.5); color: var(--text-muted);">
+                  <li><strong>Cuentas y cálculos 100% exactos:</strong> Las sumas de dinero, vueltos e inventario se calculan con fórmulas tradicionales. No usamos inteligencia artificial para las matemáticas para asegurar que no haya ni un centavo de error en tu caja.</li>
+                  <li><strong>Asistente Inteligente:</strong> Usamos inteligencia artificial para dar vida al asistente (el chatbot) que ves en esta página y dentro de la aplicación. Él está disponible las 24 horas para responder tus dudas sobre cómo usar el sistema en palabras sencillas.</li>
+                </ul>
               </div>
             </div>
           </div>
@@ -2136,14 +2140,14 @@
                 <i data-lucide="check-circle-2" aria-hidden="true"></i>
                 <div class="pricing-benefit-text">
                   <h4>Licencia Vitalicia Completa</h4>
-                  <p>Un solo pago. Instalas la PWA en tus teléfonos, tablets o computadoras sin limitaciones.</p>
+                  <p>Un solo pago. Instalas la aplicación en tus teléfonos, tablets o computadoras sin limitaciones.</p>
                 </div>
               </div>
               <div class="pricing-benefit-item">
                 <i data-lucide="check-circle-2" aria-hidden="true"></i>
                 <div class="pricing-benefit-text">
                   <h4>Sincronización en la Nube de por Vida</h4>
-                  <p>Respaldos automáticos en tiempo real y base de datos en Supabase incluida para mantener tu data a salvo.</p>
+                  <p>Respaldos automáticos en tiempo real y base de datos en la nube incluida para mantener tu data a salvo.</p>
                 </div>
               </div>
               <div class="pricing-benefit-item">
@@ -2199,7 +2203,7 @@
             </div>
             <div class="pricing-guarantee">
               <i data-lucide="shield-check" aria-hidden="true"></i>
-              <span>Garantía de funcionamiento Offline-first</span>
+              <span>Garantía de funcionamiento 100% sin internet</span>
             </div>
           </div>
         </div>
@@ -2554,16 +2558,16 @@
         "- Exportar reporte en PDF.",
         "",
         "### Sincronización y respaldos",
-        "- Offline-first: todo se guarda en IndexedDB local.",
-        "- Los hashes de los PINs de acceso de seguridad se guardan encriptados estrictamente de forma local en IndexedDB y jamás se sincronizan a la nube por seguridad (SEC-002).",
-        "- Al recuperar internet, sincroniza automáticamente los datos del negocio (ventas, stock, clientes) con Supabase.",
-        "- Sincronización bidireccional: múltiples dispositivos se mantienen actualizados.",
-        "- Backup manual: Configuración → Sistema → Exportar JSON.",
-        "- Restaurar backup: Configuración → Sistema → Importar JSON.",
+        "- Funciona sin internet: todo se guarda en la memoria de tu dispositivo.",
+        "- Los códigos de seguridad de acceso (PIN) se guardan encriptados estrictamente de forma local en tu dispositivo y jamás se suben a internet por seguridad (SEC-002).",
+        "- Al recuperar internet, sincroniza automáticamente los datos del negocio (ventas, stock, clientes) con la nube.",
+        "- Sincronización automática: múltiples dispositivos conectados se mantienen actualizados.",
+        "- Copia de seguridad manual: Configuración → Sistema → Exportar copia.",
+        "- Restaurar copia de seguridad: Configuración → Sistema → Importar copia.",
         "",
         "### Planes, Precios y Oferta de Lanzamiento",
         "- Licencia Vitalicia (Un solo pago para siempre): Precio único promocional de $25 USD (precio regular $99 USD).",
-        "- ¿Qué incluye la licencia?: Instalaciones ilimitadas en múltiples dispositivos (teléfonos, computadoras, tablets), sincronización en la nube de por vida con Supabase, módulo Cashea y vuelto mixto integrados, y actualizaciones gratuitas para siempre.",
+        "- ¿Qué incluye la licencia?: Instalaciones ilimitadas en múltiples dispositivos (teléfonos, computadoras, tablets), respaldo automático de por vida en la nube, módulo Cashea y vuelto mixto integrados, y actualizaciones gratuitas para siempre.",
         "- Formas de Pago: Puedes pagar en dólares o en Bolívares al cambio oficial según la tasa del Banco Central de Venezuela (Tasa BCV del día).",
         "- Demo de 3 días: Puedes probar el sistema completamente gratis por 3 días sin ingresar tarjetas de crédito ni crear cuentas complejas. Si decides activar la licencia vitalicia después, no perderás ningún dato.",
         "",
@@ -2574,13 +2578,13 @@
         "- Nota: Al activar la licencia vitalicia después de los 3 días de demo, no perderás ningún dato que hayas registrado en la prueba.",
         "",
         "### Instalación",
-        "- PWA: abrir preciosaldia.vercel.app en Chrome Android → menú ⋮ → \"Instalar app\".",
-        "- APK nativo disponible vía Capacitor.",
-        "- También funciona en navegador de escritorio (Chrome, Edge, Firefox).",
+        "- En Android: abrir preciosaldia.vercel.app en Chrome → menú ⋮ → \"Instalar aplicación\".",
+        "- Aplicación instalable para Android disponible.",
+        "- También funciona en navegador de escritorio de cualquier computadora (Chrome, Edge, Firefox).",
         "",
-        "### IA integrada (Híbrida)",
-        "- Las auditorías y validaciones financieras de caja son 100% matemáticas, exactas y deterministas (desarrolladas a nivel de código puro, sin alucinaciones).",
-        "- La IA (impulsada por Groq SDK) se utiliza de forma interna para interpretar los resultados de las auditorías en el Panel Dev (Tester), ofreciendo un informe diagnóstico en lenguaje natural y recomendaciones específicas.",
+        "### IA integrada",
+        "- Las auditorías y cálculos de dinero en caja son 100% exactos y matemáticos (hechos por el sistema base, sin posibilidad de error).",
+        "- La inteligencia artificial se utiliza para interpretar los resultados de esas auditorías y redactar un informe diagnóstico comprensible con consejos sencillos para tu negocio.",
         "",
         "## REGLAS DE CONDUCTA",
         "- Siempre respondes en español, claro y amable, como un experto hablando con un dueño de bodega de Venezuela (puedes usar terminología local como 'vuelto', 'pago móvil', 'fiado', 'abasto').",

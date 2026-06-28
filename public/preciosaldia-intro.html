@@ -2176,6 +2176,12 @@
               <span class="price-period">/ Pago Único</span>
             </div>
             <span class="price-note">Acceso ilimitado para siempre</span>
+            <div class="price-bs" id="priceBsContainer" style="font-size: 1.15rem; font-weight: 700; color: var(--primary); margin: var(--space-2) 0; text-align: center; display: none;">
+              o <span id="priceBsAmount">...</span> Bs.
+              <div style="font-size: 10px; font-weight: 500; color: var(--text-muted); margin-top: 2px;">
+                Tasa BCV de hoy: <span id="bcvRateValue">...</span> Bs/$
+              </div>
+            </div>
             <div class="price-bcv">
               <i data-lucide="info" style="display:inline-block; width:14px; height:14px; vertical-align:middle; margin-right:4px;" aria-hidden="true"></i>
               Pagadero en Bolívares al cambio oficial (Tasa BCV)
@@ -2555,6 +2561,12 @@
         "- Backup manual: Configuración → Sistema → Exportar JSON.",
         "- Restaurar backup: Configuración → Sistema → Importar JSON.",
         "",
+        "### Planes, Precios y Oferta de Lanzamiento",
+        "- Licencia Vitalicia (Un solo pago para siempre): Precio único promocional de $25 USD (precio regular $99 USD).",
+        "- ¿Qué incluye la licencia?: Instalaciones ilimitadas en múltiples dispositivos (teléfonos, computadoras, tablets), sincronización en la nube de por vida con Supabase, módulo Cashea y vuelto mixto integrados, y actualizaciones gratuitas para siempre.",
+        "- Formas de Pago: Puedes pagar en dólares o en Bolívares al cambio oficial según la tasa del Banco Central de Venezuela (Tasa BCV del día).",
+        "- Demo de 3 días: Puedes probar el sistema completamente gratis por 3 días sin ingresar tarjetas de crédito ni crear cuentas complejas. Si decides activar la licencia vitalicia después, no perderás ningún dato.",
+        "",
         "### Demo gratuita de 3 días y Activación",
         "- El sistema ofrece una prueba gratuita (Demo) de 3 días para que pruebes todas las funciones.",
         "- ¿Cómo usar el Demo?: Al abrir la app por primera vez verás la pantalla de activación. Toca el botón celeste «Probar gratis 3 días» y el sistema se desbloqueará de inmediato sin pedir tarjetas ni códigos.",
@@ -2799,7 +2811,7 @@
         msgs.innerHTML = "";
         var w = document.createElement("div");
         w.className = "cmsg assistant";
-        w.innerHTML = '<div class="cmsg-avatar"><img src="/bot-avatar.png" alt="Bot Avatar" /></div><div class="cmsg-bubble"><strong>¡Hola!</strong> Soy el asistente de <strong>Precios al Día</strong>.<br />Pregúntame sobre POS, inventario, usuarios, cierres y m&aacute;s.</div>';
+        w.innerHTML = '<div class="cmsg-avatar"><img src="bot-avatar.png" alt="Bot Avatar" /></div><div class="cmsg-bubble"><strong>¡Hola!</strong> Soy el asistente de <strong>Precios al Día</strong>.<br />Pregúntame sobre POS, inventario, usuarios, cierres y m&aacute;s.</div>';
         msgs.appendChild(w);
         renderIcons();
         suggestions.style.display = "flex";
@@ -2813,6 +2825,31 @@
           else chatOpen();
         }
       });
+
+      /* ---------- BCV Rate Fetch & Price calculation ---------- */
+      async function fetchBcvRate() {
+        var container = document.getElementById("priceBsContainer");
+        var amountSpan = document.getElementById("priceBsAmount");
+        var rateSpan = document.getElementById("bcvRateValue");
+        if (!container || !amountSpan || !rateSpan) return;
+
+        try {
+          var res = await fetch("https://ve.dolarapi.com/v1/dolares/oficial");
+          if (!res.ok) throw new Error("API response error");
+          var data = await res.json();
+          var rate = parseFloat(data.promedio);
+          if (rate > 0) {
+            var totalBs = (25 * rate).toLocaleString("es-VE", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            var rateFormatted = rate.toLocaleString("es-VE", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            amountSpan.textContent = totalBs;
+            rateSpan.textContent = rateFormatted;
+            container.style.display = "block";
+          }
+        } catch (err) {
+          console.warn("Error fetching BCV rate:", err);
+        }
+      }
+      fetchBcvRate();
     })();
   </script>
 </body>

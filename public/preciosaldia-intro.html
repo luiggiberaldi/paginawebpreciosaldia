@@ -2,10 +2,122 @@
 <html lang="es" data-theme="light">
 <head>
   <meta charset="UTF-8" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tasas al Día · Sistema POS, Gestión y Nube — Introducción y Tutorial</title>
-  <meta name="description" content="Tasas al Día Abasto (Preciosaldia): sistema POS y gestión administrativa offline-first para bodegas y abastos venezolanos. Vende más rápido, administra sin internet y sincroniza en la nube." />
+  <title>Precios al Día · Sistema POS, Gestión y Nube — Introducción y Tutorial</title>
+  <meta name="description" content="Precios al Día: Sistema POS y gestión offline-first para bodegas venezolanas. Administra tu inventario y vende sin internet. ¡Prueba la app gratis!" />
   <meta name="theme-color" content="#01696f" />
+
+  <!-- SEO Técnico y Canonicalization -->
+  <link rel="canonical" href="https://preciosaldia.vercel.app/preciosaldia-intro.html" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Metadatos Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Precios al Día · Sistema POS y Gestión para Bodegas" />
+  <meta property="og:description" content="Punto de venta y control de inventario offline-first para bodegas en Venezuela. Vende sin conexión y sincroniza en la nube." />
+  <meta property="og:image" content="https://preciosaldia.vercel.app/logo-pagina.png" />
+  <meta property="og:url" content="https://preciosaldia.vercel.app/preciosaldia-intro.html" />
+  <meta property="og:locale" content="es_VE" />
+
+  <!-- Metadatos Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Precios al Día · Sistema POS y Gestión para Bodegas" />
+  <meta name="twitter:description" content="Punto de venta y control de inventario offline-first para bodegas en Venezuela." />
+  <meta name="twitter:image" content="https://preciosaldia.vercel.app/logo-pagina.png" />
+
+  <!-- Datos Estructurados JSON-LD (Schema) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://preciosaldia.vercel.app/#software",
+        "name": "Precios al Día",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web, Android, Windows, iOS",
+        "offers": {
+          "@type": "Offer",
+          "price": "0.00",
+          "priceCurrency": "USD"
+        },
+        "description": "Sistema de punto de venta (POS) y gestión de inventario offline-first hecho para el comercio venezolano."
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://preciosaldia.vercel.app/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "¿Puedo usar el sistema sin internet?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Sí. Precios al Día funciona sin conexión. Todas las ventas y cambios se guardan en el dispositivo y se sincronizan automáticamente con la nube cuando recuperas internet. Puedes vender tranquilamente durante un corte de luz o de señal."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Cuántos dispositivos puedo usar a la vez?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Puedes usar varios dispositivos a la vez. La sincronización bidireccional con Supabase mantiene todos actualizados cuando hay conexión. Cada dispositivo también opera de forma independiente sin internet, así que nunca dependes de uno solo."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Cómo instalo la app en Android?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "La app es una PWA instalable. Abre preciosaldia.vercel.app en Chrome de Android, toca el menú (⋮) y selecciona «Instalar app» o «Añadir a pantalla de inicio». También está disponible como APK nativo vía Capacitor."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Qué pasa si pierdo los datos del teléfono?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Tu información está respaldada en la nube si habías sincronizado antes. Al iniciar sesión en otro dispositivo, los datos se descargan automáticamente. Además puedes exportar e importar backups manuales en formato JSON."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Cómo agrego un nuevo empleado?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Como Administrador, ve a Configuración → Usuarios, pulsa «Agregar Usuario», asigna su nombre, el rol (Admin o Cajero) y un PIN numérico. El nuevo usuario podrá entrar de inmediato."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Qué es la IA integrada y para qué sirve?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Es una herramienta de diagnóstico. Las auditorías y cálculos de dinero en caja son 100% exactos y deterministas (desarrollados a nivel de código sin IA). El sistema utiliza IA (Groq SDK) únicamente para interpretar estos resultados en el Panel Dev y redactar un informe diagnóstico comprensible con recomendaciones específicas."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Cómo funciona el cobro con Cashea en el POS?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Precios al Día incluye soporte nativo para registrar pagos con Cashea. Al facturar una venta, puedes seleccionar Cashea como método de pago y el sistema registrará de forma automática la parte financiada como una cuenta por cobrar (Fiado / Por Cobrar) en tus métricas, integrándola al flujo de caja y al cierre del día sin descuadres."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <script>
+    (function () {
+      var prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+      document.documentElement.setAttribute("data-theme", prefersDark ? "dark" : "light");
+      var meta = document.querySelector('meta[name="theme-color"]');
+      if (meta) meta.setAttribute("content", prefersDark ? "#0a0f0f" : "#01696f");
+    })();
+  </script>
 
   <!-- Fuentes -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -142,6 +254,8 @@
     ul, ol { padding: 0; list-style: none; }
 
     h1, h2, h3, h4 { line-height: 1.1; font-weight: 600; letter-spacing: -0.02em; }
+    h1, h2 { text-wrap: balance; }
+    h3, h4 { text-wrap: pretty; }
     h1 { font-family: var(--font-display); font-weight: 400; letter-spacing: -0.01em; }
 
     :focus-visible {
@@ -197,18 +311,20 @@
       letter-spacing: -0.02em;
       font-size: var(--text-lg);
     }
-    .brand-mark {
-      width: 32px;
-      height: 32px;
-      border-radius: 9px;
-      background: var(--primary);
-      color: var(--primary-contrast);
-      display: grid;
-      place-items: center;
-      font-family: var(--font-display);
-      font-size: 1.15rem;
-      font-style: italic;
-      flex-shrink: 0;
+    .brand-logo {
+      height: 58px;
+      width: auto;
+      object-fit: contain;
+      display: block;
+    }
+    .brand-logo.logo-dark {
+      display: none;
+    }
+    [data-theme="dark"] .brand-logo.logo-light {
+      display: none;
+    }
+    [data-theme="dark"] .brand-logo.logo-dark {
+      display: block;
     }
     .brand small {
       display: block;
@@ -516,10 +632,10 @@
     @media (min-width: 880px) {
       .what-grid {
         grid-template-columns: 1.6fr 1fr;
-        grid-template-rows: auto auto;
+        grid-template-rows: auto auto auto;
         gap: var(--space-5);
       }
-      .what-card--big { grid-row: span 2; }
+      .what-card--big { grid-row: span 3; }
     }
     .what-card {
       background: var(--surface);
@@ -580,7 +696,7 @@
     }
     .stepper-track {
       position: absolute;
-      top: 22px;
+      top: 30px;
       left: 22px;
       right: 22px;
       height: 3px;
@@ -590,7 +706,7 @@
     }
     .stepper-progress {
       position: absolute;
-      top: 22px;
+      top: 30px;
       left: 22px;
       height: 3px;
       background: var(--primary);
@@ -1002,6 +1118,536 @@
       }
       .reveal { opacity: 1; transform: none; }
     }
+
+    /* ============================================================
+       PRICING SECTION (NEUROMARKETING OPTIMIZED)
+       ============================================================ */
+    .pricing-wrap {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-8);
+      align-items: center;
+    }
+    @media (min-width: 900px) {
+      .pricing-wrap {
+        grid-template-columns: 1.2fr 1fr;
+        gap: var(--space-12);
+      }
+    }
+    .pricing-content h3 {
+      font-family: var(--font-display);
+      font-size: var(--text-2xl);
+      font-weight: 400;
+      margin-bottom: var(--space-4);
+    }
+    .pricing-benefit-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+      margin-top: var(--space-6);
+    }
+    .pricing-benefit-item {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-3);
+    }
+    .pricing-benefit-item svg {
+      width: 20px;
+      height: 20px;
+      color: var(--success);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .pricing-benefit-text h4 {
+      font-size: var(--text-base);
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 2px;
+    }
+    .pricing-benefit-text p {
+      font-size: var(--text-sm);
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .pricing-box {
+      background: var(--surface);
+      border: 2px solid var(--primary);
+      border-radius: var(--radius-lg);
+      padding: var(--space-8);
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .pricing-badge {
+      position: absolute;
+      top: 24px;
+      right: -36px;
+      transform: rotate(45deg);
+      background: var(--accent);
+      color: white;
+      font-size: 0.65rem;
+      font-weight: 700;
+      padding: 4px 0;
+      width: 140px;
+      text-align: center;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      box-shadow: var(--shadow-sm);
+      z-index: 10;
+    }
+    .price-anchor {
+      font-size: var(--text-base);
+      color: var(--text-faint);
+      text-decoration: line-through;
+      font-weight: 500;
+      margin-bottom: var(--space-1);
+    }
+    .price-main {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: 4px;
+      margin-bottom: var(--space-1);
+    }
+    .price-currency {
+      font-size: var(--text-xl);
+      font-weight: 600;
+      color: var(--primary);
+    }
+    .price-amount {
+      font-family: var(--font-display);
+      font-size: clamp(3.5rem, 8vw, 4.5rem);
+      font-weight: 400;
+      line-height: 1;
+      color: var(--primary);
+    }
+    .price-period {
+      font-size: var(--text-sm);
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .price-note {
+      font-size: var(--text-xs);
+      color: var(--text-muted);
+      font-weight: 500;
+      margin-bottom: var(--space-6);
+    }
+    .price-bcv {
+      background: var(--primary-soft);
+      color: var(--primary);
+      font-size: var(--text-xs);
+      font-weight: 700;
+      padding: 6px 12px;
+      border-radius: var(--radius-sm);
+      margin-bottom: var(--space-6);
+      width: 100%;
+    }
+    .pricing-box .btn {
+      width: 100%;
+      justify-content: center;
+      min-height: 52px;
+      font-size: var(--text-base);
+      box-shadow: var(--shadow-primary);
+    }
+    .pricing-guarantee {
+      margin-top: var(--space-5);
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-xs);
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+    .pricing-guarantee svg {
+      width: 16px;
+      height: 16px;
+      color: var(--success);
+    }
+
+    /* ============================================================
+       CHATBOT WIDGET
+       ============================================================ */
+    .fab {
+      position: fixed;
+      bottom: var(--space-6);
+      right: var(--space-6);
+      z-index: 200;
+      width: 60px; height: 60px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: var(--primary-contrast);
+      border: none;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      box-shadow: var(--shadow-primary);
+      transition: transform var(--transition), background var(--transition);
+    }
+    .fab:hover { background: var(--primary-hover); transform: scale(1.06); }
+    .fab:active { transform: scale(0.94); }
+    .fab svg { width: 26px; height: 26px; }
+    .fab .fab-close { display: none; }
+    .fab.is-open .fab-open { display: none; }
+    .fab.is-open .fab-close { display: block; }
+
+    .chat-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 190;
+      background: oklch(0 0 0 / 0.3);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 280ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .chat-overlay.is-visible { opacity: 1; pointer-events: auto; }
+
+    .chat-panel {
+      position: fixed;
+      bottom: calc(60px + var(--space-6) + var(--space-4));
+      right: var(--space-6);
+      z-index: 195;
+      width: min(420px, calc(100vw - var(--space-8)));
+      height: min(580px, calc(100vh - 140px));
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-lg);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      transform: translateY(20px) scale(0.96);
+      opacity: 0;
+      pointer-events: none;
+      transition: transform 280ms cubic-bezier(0.16, 1, 0.3, 1),
+                  opacity 280ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .chat-panel.is-visible {
+      transform: none;
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .chat-panel-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--space-3) var(--space-4);
+      border-bottom: 1px solid var(--border);
+      background: var(--surface);
+      flex-shrink: 0;
+    }
+    .chat-panel-header-left {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+    }
+    .chat-panel-avatar {
+      width: 34px; height: 34px;
+      border-radius: var(--radius);
+      background: white;
+      border: 1px solid var(--border);
+      padding: 3px;
+      display: grid; place-items: center;
+      color: var(--primary-contrast);
+    }
+    .chat-panel-avatar svg { width: 18px; height: 18px; }
+    .chat-panel-avatar img { width: 100%; height: 100%; object-fit: contain; border-radius: inherit; }
+    .chat-panel-header h3 {
+      font-size: var(--text-sm);
+      font-weight: 600;
+    }
+    .chat-panel-header .status {
+      display: flex;
+      align-items: center;
+      gap: var(--space-1);
+      font-size: 0.65rem;
+      color: var(--text-muted);
+    }
+    .chat-panel-header .status-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--success);
+    }
+    .chat-panel-header-actions {
+      display: flex;
+      gap: var(--space-1);
+    }
+    .chat-panel-header-actions button {
+      width: 32px; height: 32px;
+      display: grid; place-items: center;
+      border-radius: var(--radius-full);
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      color: var(--text-muted);
+      transition: background var(--transition);
+    }
+    .chat-panel-header-actions button:hover { background: var(--surface-2); color: var(--text); }
+    .chat-panel-header-actions svg { width: 15px; height: 15px; }
+
+    .chat-panel-msgs {
+      flex: 1;
+      overflow-y: auto;
+      padding: var(--space-3);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+      scroll-behavior: smooth;
+    }
+    .chat-panel-msgs::-webkit-scrollbar { width: 4px; }
+    .chat-panel-msgs::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: var(--radius-full); }
+
+    .cmsg {
+      display: flex;
+      gap: var(--space-2);
+      max-width: 92%;
+      animation: cmsgIn 260ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+    @keyframes cmsgIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: none; }
+    }
+    .cmsg.user { align-self: flex-end; flex-direction: row-reverse; }
+    .cmsg.assistant { align-self: flex-start; }
+
+    .cmsg-avatar {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      display: grid; place-items: center;
+      flex-shrink: 0;
+      font-size: 0.6rem;
+    }
+    .cmsg.user .cmsg-avatar { background: var(--primary); color: var(--primary-contrast); }
+    .cmsg.assistant .cmsg-avatar { background: white; color: var(--text-muted); border: 1px solid var(--border); padding: 2px; }
+    .cmsg-avatar svg { width: 14px; height: 14px; }
+    .cmsg-avatar img { width: 100%; height: 100%; object-fit: contain; border-radius: inherit; }
+
+    .cmsg-bubble {
+      padding: var(--space-2) var(--space-3);
+      border-radius: var(--radius);
+      font-size: var(--text-xs);
+      line-height: 1.6;
+      word-wrap: break-word;
+    }
+    .cmsg.user .cmsg-bubble { background: var(--primary); color: var(--primary-contrast); border-bottom-right-radius: var(--radius-sm); }
+    .cmsg.assistant .cmsg-bubble { background: var(--bg); border: 1px solid var(--border); border-bottom-left-radius: var(--radius-sm); }
+    [data-theme="dark"] .cmsg.assistant .cmsg-bubble { background: var(--surface-3); }
+
+    .cmsg-bubble p { margin-bottom: var(--space-1); }
+    .cmsg-bubble p:last-child { margin-bottom: 0; }
+    .cmsg-bubble strong { font-weight: 600; }
+    .cmsg-bubble ul, .cmsg-bubble ol { padding-left: var(--space-4); margin-bottom: var(--space-1); }
+    .cmsg-bubble li { margin-bottom: 1px; }
+    .cmsg-bubble code { font-family: var(--font-mono); font-size: 0.85em; background: var(--surface-2); padding: 1px 4px; border-radius: 3px; }
+    .cmsg-bubble pre { background: var(--surface-3); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: var(--space-2); overflow-x: auto; margin-bottom: var(--space-1); font-size: 0.7rem; }
+    .cmsg-bubble pre code { background: none; padding: 0; }
+    .cmsg.user .cmsg-bubble code { background: oklch(0.40 0.060 192); }
+
+    .ctyping {
+      display: none;
+      align-self: flex-start;
+      gap: var(--space-2);
+      max-width: 92%;
+    }
+    .ctyping.active { display: flex; }
+    .ctyping .cmsg-bubble {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-bottom-left-radius: var(--radius-sm);
+      display: flex;
+      gap: 3px;
+      padding: var(--space-3) var(--space-4);
+    }
+    .ctyping .dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--text-faint);
+      animation: typingBounce 1.4s ease-in-out infinite;
+    }
+    .ctyping .dot:nth-child(2) { animation-delay: 0.2s; }
+    .ctyping .dot:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes typingBounce {
+      0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+      30% { transform: translateY(-6px); opacity: 1; }
+    }
+
+    .cmsg.error .cmsg-bubble { background: color-mix(in oklch, var(--warning) 15%, transparent); border-color: var(--warning); }
+
+    .chat-panel-foot {
+      padding: var(--space-3) var(--space-4);
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+      flex-shrink: 0;
+    }
+    .chat-panel-input-row {
+      display: flex;
+      gap: var(--space-2);
+      align-items: flex-end;
+    }
+    .chat-panel-input {
+      flex: 1;
+      resize: none;
+      min-height: 40px;
+      max-height: 80px;
+      padding: var(--space-2) var(--space-3);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: var(--bg);
+      font-family: var(--font-body);
+      font-size: var(--text-xs);
+      color: var(--text);
+      outline: none;
+      transition: border-color var(--transition);
+      line-height: 1.5;
+    }
+    .chat-panel-input:focus { border-color: var(--primary); box-shadow: 0 0 0 2px color-mix(in oklch, var(--primary) 20%, transparent); }
+    .chat-panel-input::placeholder { color: var(--text-faint); }
+    .chat-panel-send {
+      width: 40px; height: 40px;
+      display: grid; place-items: center;
+      border-radius: var(--radius);
+      border: none;
+      background: var(--primary);
+      color: var(--primary-contrast);
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: background var(--transition);
+    }
+    .chat-panel-send:hover { background: var(--primary-hover); }
+    .chat-panel-send:disabled { opacity: 0.4; cursor: not-allowed; }
+    .chat-panel-send svg { width: 18px; height: 18px; }
+    .chat-panel-footer-text {
+      display: flex;
+      justify-content: space-between;
+      margin-top: var(--space-1);
+      font-size: 0.6rem;
+      color: var(--text-faint);
+    }
+    .chat-panel-footer-text span:last-child { font-family: var(--font-mono); }
+
+    /* Sugerencias rápidas dentro del chat */
+    .chat-suggestions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-1);
+      padding: var(--space-2) var(--space-3);
+      border-bottom: 1px solid var(--border);
+      background: var(--surface-2);
+    }
+    .chat-suggestions button {
+      padding: var(--space-1) var(--space-2);
+      border-radius: var(--radius-full);
+      border: 1px solid var(--border);
+      background: var(--surface);
+      font-size: 0.6rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all var(--transition);
+      white-space: nowrap;
+    }
+    .chat-suggestions button:hover { border-color: var(--primary); color: var(--primary); background: var(--primary-soft); }
+
+    /* Confirm Modal Personalizado */
+    .chat-confirm-modal {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(4px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-4);
+      z-index: 100;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity var(--transition);
+      border-radius: inherit;
+    }
+    .chat-confirm-modal.is-visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .chat-confirm-content {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: var(--space-5);
+      width: 100%;
+      max-width: 280px;
+      box-shadow: var(--shadow-lg);
+      transform: translateY(10px);
+      transition: transform var(--transition);
+      text-align: center;
+    }
+    .chat-confirm-modal.is-visible .chat-confirm-content {
+      transform: translateY(0);
+    }
+    .chat-confirm-content h4 {
+      font-size: var(--text-sm);
+      font-weight: 700;
+      margin-bottom: var(--space-2);
+      color: var(--text);
+      margin-top: 0;
+    }
+    .chat-confirm-content p {
+      font-size: var(--text-xs);
+      color: var(--text-muted);
+      margin-bottom: var(--space-4);
+      line-height: 1.4;
+    }
+    .chat-confirm-actions {
+      display: flex;
+      gap: var(--space-2);
+      justify-content: center;
+    }
+    .chat-confirm-actions button {
+      padding: var(--space-2) var(--space-4);
+      border-radius: var(--radius-sm);
+      font-size: var(--text-xs);
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      outline: none;
+    }
+    .chat-confirm-actions .btn-cancel {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+    .chat-confirm-actions .btn-cancel:hover {
+      background: var(--surface-3);
+    }
+    .chat-confirm-actions .btn-confirm {
+      background: oklch(0.60 0.15 25);
+      border: none;
+      color: white;
+    }
+    .chat-confirm-actions .btn-confirm:hover {
+      background: oklch(0.55 0.15 25);
+    }
+
+    @media (max-width: 520px) {
+      .chat-panel {
+        right: var(--space-3);
+        bottom: calc(52px + var(--space-4));
+        width: calc(100vw - var(--space-6));
+        height: calc(100vh - 110px);
+        border-radius: var(--radius-lg);
+      }
+      .fab {
+        width: 52px; height: 52px;
+        bottom: var(--space-3);
+        right: var(--space-3);
+      }
+      .fab svg { width: 22px; height: 22px; }
+    }
   </style>
 </head>
 <body>
@@ -1010,12 +1656,9 @@
   <!-- ============ HEADER ============ -->
   <header class="site-header">
     <div class="container nav">
-      <a href="#" class="brand" aria-label="Tasas al Día, inicio">
-        <span class="brand-mark" aria-hidden="true">T</span>
-        <span>
-          Tasas al Día
-          <small>Sistema POS · Gestión · Nube</small>
-        </span>
+      <a href="#" class="brand" aria-label="Precios al Día, inicio">
+        <img class="brand-logo logo-light" src="logo-pagina.png" alt="Precios al Día" width="267" height="58" />
+        <img class="brand-logo logo-dark" src="logodark.png" alt="Precios al Día" width="267" height="58" />
       </a>
       <div class="nav-actions">
         <button class="theme-toggle" id="themeToggle" type="button" aria-label="Cambiar tema de color">
@@ -1052,10 +1695,7 @@
               <i data-lucide="arrow-up-right" aria-hidden="true"></i>
               Abrir Sistema
             </a>
-            <a class="btn btn-ghost" href="https://github.com/luiggiberaldi/preciosaldia-bodega" target="_blank" rel="noopener noreferrer">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
-              Ver código en GitHub
-            </a>
+
           </div>
           <ul class="hero-features">
             <li><i data-lucide="wifi-off" aria-hidden="true"></i> Offline-first</li>
@@ -1076,13 +1716,13 @@
             <span class="kpi-value">$ 1.245,80</span>
           </div>
           <div class="hero-card-rows">
-            <div class="hero-card-row"><span>Harina P.A.N 1kg</span><span>$ 4,50</span></div>
-            <div class="hero-card-row"><span>Refresco 1.5L</span><span>$ 3,20</span></div>
+            <div class="hero-card-row"><span>Harina P.A.N 1&nbsp;kg</span><span>$ 4,50</span></div>
+            <div class="hero-card-row"><span>Refresco 1.5&nbsp;L</span><span>$ 3,20</span></div>
             <div class="hero-card-row"><span>Queso blanco 500g</span><span>$ 6,80</span></div>
           </div>
           <div class="hero-card-foot">
-            <span>3 ventas · Caja abierta</span>
-            <span>Última sync · hace 2 min</span>
+            <span>3&nbsp;ventas · Caja abierta</span>
+            <span>Última sync · hace 2&nbsp;min</span>
           </div>
         </aside>
       </div>
@@ -1093,7 +1733,7 @@
       <div class="container">
         <div class="section-head reveal">
           <span class="section-eyebrow">¿Qué es?</span>
-          <h2 class="section-title" id="what-title">Tasas al Día Abasto, en palabras simples</h2>
+          <h2 class="section-title" id="what-title">Precios al Día Abasto, en palabras simples</h2>
         </div>
         <p class="what-intro reveal">
           Es un sistema hecho para la bodega y el abasto venezolano. Combina un punto de venta rápido con gestión de inventario, cierres de caja y sincronización en la nube — todo en una app que funciona con o sin internet. Lo abres, vendes, administras y cierras el día sin complicaciones.
@@ -1107,9 +1747,14 @@
             </p>
           </article>
           <article class="what-card reveal">
-            <div class="what-icon"><i data-lucide="map-pin" aria-hidden="true"></i></div>
-            <h3>Hecho para Venezuela</h3>
-            <p>Métodos de pago locales, tasas del día, tickets térmicos y moneda en bolívares.</p>
+            <div class="what-icon"><i data-lucide="calculator" aria-hidden="true"></i></div>
+            <h3>Vuelto Mixto y Tasas BCV</h3>
+            <p>Calcula vueltos combinados en Bs/USD/COP al instante según la tasa oficial del día sin descuadres ni retrasos.</p>
+          </article>
+          <article class="what-card reveal">
+            <div class="what-icon"><i data-lucide="smartphone" aria-hidden="true"></i></div>
+            <h3>Módulo Cashea</h3>
+            <p>Registra cobros en cuotas nativos. El cliente paga su inicial (60% o 40%) en caja y la porción restante se asigna como cuenta por cobrar automáticamente.</p>
           </article>
           <article class="what-card reveal">
             <div class="what-icon"><i data-lucide="shield-check" aria-hidden="true"></i></div>
@@ -1125,7 +1770,7 @@
       <div class="container">
         <div class="section-head reveal">
           <span class="section-eyebrow">Tutorial paso a paso</span>
-          <h2 class="section-title" id="tutorial-title">Empieza a usar el sistema en 6 pasos</h2>
+          <h2 class="section-title" id="tutorial-title">Empieza a usar el sistema en 6&nbsp;pasos</h2>
           <p class="section-lead">Navega con los botones Siguiente y Anterior. Cada paso incluye las acciones clave y un tip práctico.</p>
         </div>
 
@@ -1133,9 +1778,9 @@
         <div class="stepper-wrap reveal" role="group" aria-label="Progreso del tutorial">
           <div class="stepper-track" aria-hidden="true"></div>
           <div class="stepper-progress" id="stepperProgress" aria-hidden="true"></div>
-          <ol class="stepper-circles" id="stepperCircles">
+          <ol class="stepper-circles" id="stepperCircles" role="tablist" aria-label="Pasos del tutorial">
             <li>
-              <button class="step-btn active" data-step="0" type="button" aria-current="step">
+              <button class="step-btn active" data-step="0" type="button" role="tab" aria-selected="true" aria-controls="step-panel-0" aria-label="Paso 1: Primer acceso">
                 <span class="step-circle">
                   <span class="num">1</span>
                   <i class="check" data-lucide="check" aria-hidden="true"></i>
@@ -1144,7 +1789,7 @@
               </button>
             </li>
             <li>
-              <button class="step-btn" data-step="1" type="button">
+              <button class="step-btn" data-step="1" type="button" role="tab" aria-selected="false" aria-controls="step-panel-1" aria-label="Paso 2: Dashboard">
                 <span class="step-circle">
                   <span class="num">2</span>
                   <i class="check" data-lucide="check" aria-hidden="true"></i>
@@ -1153,7 +1798,7 @@
               </button>
             </li>
             <li>
-              <button class="step-btn" data-step="2" type="button">
+              <button class="step-btn" data-step="2" type="button" role="tab" aria-selected="false" aria-controls="step-panel-2" aria-label="Paso 3: Punto de venta">
                 <span class="step-circle">
                   <span class="num">3</span>
                   <i class="check" data-lucide="check" aria-hidden="true"></i>
@@ -1162,7 +1807,7 @@
               </button>
             </li>
             <li>
-              <button class="step-btn" data-step="3" type="button">
+              <button class="step-btn" data-step="3" type="button" role="tab" aria-selected="false" aria-controls="step-panel-3" aria-label="Paso 4: Inventario">
                 <span class="step-circle">
                   <span class="num">4</span>
                   <i class="check" data-lucide="check" aria-hidden="true"></i>
@@ -1171,7 +1816,7 @@
               </button>
             </li>
             <li>
-              <button class="step-btn" data-step="4" type="button">
+              <button class="step-btn" data-step="4" type="button" role="tab" aria-selected="false" aria-controls="step-panel-4" aria-label="Paso 5: Cierre de caja">
                 <span class="step-circle">
                   <span class="num">5</span>
                   <i class="check" data-lucide="check" aria-hidden="true"></i>
@@ -1180,7 +1825,7 @@
               </button>
             </li>
             <li>
-              <button class="step-btn" data-step="5" type="button">
+              <button class="step-btn" data-step="5" type="button" role="tab" aria-selected="false" aria-controls="step-panel-5" aria-label="Paso 6: Sincronización">
                 <span class="step-circle">
                   <span class="num">6</span>
                   <i class="check" data-lucide="check" aria-hidden="true"></i>
@@ -1195,7 +1840,7 @@
         <div id="stepPanels">
 
           <!-- Paso 1 -->
-          <article class="step-panel active" data-panel="0" role="tabpanel" aria-labelledby="step1-title">
+          <article class="step-panel active" id="step-panel-0" data-panel="0" role="tabpanel" aria-labelledby="step1-title">
             <header class="step-panel-head">
               <span class="step-tag"><span class="step-tag-num">1</span> Primer acceso</span>
               <h3 id="step1-title">Entra al sistema y configura tu cuenta</h3>
@@ -1205,9 +1850,9 @@
               <div class="step-actions">
                 <h4>Acciones</h4>
                 <ol>
-                  <li>Abre la app e ingresa tu usuario y contraseña.</li>
-                  <li>Si eres <strong>Administrador</strong>, verás todos los módulos; si eres <strong>Empleado</strong>, solo el POS y las ventas.</li>
-                  <li>Cambia tu contraseña desde <em>Configuración → Seguridad</em>.</li>
+                  <li>Abre la app, selecciona tu usuario en la pantalla de perfiles e ingresa tu PIN numérico.</li>
+                  <li>Si eres <strong>Administrador</strong>, verás todos los módulos; si eres <strong>Cajero</strong>, verás el POS, Inicio y Clientes de forma simplificada, y el Inventario como solo lectura.</li>
+                  <li>Cambia tu PIN desde <em>Configuración → Usuarios</em> pulsando el botón de llave al lado de tu perfil.</li>
                   <li>Cierra sesión siempre al terminar tu turno.</li>
                 </ol>
               </div>
@@ -1219,7 +1864,7 @@
           </article>
 
           <!-- Paso 2 -->
-          <article class="step-panel" data-panel="1" role="tabpanel" aria-labelledby="step2-title" hidden>
+          <article class="step-panel" id="step-panel-1" data-panel="1" role="tabpanel" aria-labelledby="step2-title" hidden>
             <header class="step-panel-head">
               <span class="step-tag"><span class="step-tag-num">2</span> Dashboard</span>
               <h3 id="step2-title">Conoce el panel principal</h3>
@@ -1230,20 +1875,20 @@
                 <h4>Acciones</h4>
                 <ol>
                   <li>Revisa las ventas del día y el total en caja.</li>
-                  <li>Consulta el indicador de conexión: <strong>verde</strong> = en línea, <strong>ámbar</strong> = sin conexión.</li>
+                  <li>Consulta el indicador de conexión en la esquina superior: <strong>verde (Online)</strong> = en línea, <strong>rojo (Offline)</strong> = sin conexión.</li>
                   <li>Verifica los productos con bajo stock destacados.</li>
                   <li>Accede rápido a cada módulo desde las tarjetas.</li>
                 </ol>
               </div>
               <div class="step-tip">
                 <div class="tip-icon"><i data-lucide="lightbulb" aria-hidden="true"></i><h4>Tip clave</h4></div>
-                <p>Si el indicador aparece ámbar, el sistema sigue funcionando con normalidad; solo esperará a tener internet para sincronizar los datos.</p>
+                <p>Si el indicador aparece en rojo (Offline), el sistema sigue funcionando con normalidad; todos los cambios se guardan localmente y se sincronizan al recuperar internet.</p>
               </div>
             </div>
           </article>
 
           <!-- Paso 3 -->
-          <article class="step-panel" data-panel="2" role="tabpanel" aria-labelledby="step3-title" hidden>
+          <article class="step-panel" id="step-panel-2" data-panel="2" role="tabpanel" aria-labelledby="step3-title" hidden>
             <header class="step-panel-head">
               <span class="step-tag"><span class="step-tag-num">3</span> Punto de venta</span>
               <h3 id="step3-title">Haz una venta en segundos</h3>
@@ -1255,7 +1900,7 @@
                 <ol>
                   <li>Busca el producto por nombre o código en la barra superior.</li>
                   <li>Toca el producto para agregarlo al carrito.</li>
-                  <li>Elige el método de pago (efectivo, transferencia, pago móvil, etc.).</li>
+                  <li>Elige el método de pago (efectivo, pago móvil, transferencia, saldo a favor o Cashea).</li>
                   <li>Confirma la venta e imprime el ticket térmico o expórtalo a PDF.</li>
                 </ol>
               </div>
@@ -1267,7 +1912,7 @@
           </article>
 
           <!-- Paso 4 -->
-          <article class="step-panel" data-panel="3" role="tabpanel" aria-labelledby="step4-title" hidden>
+          <article class="step-panel" id="step-panel-3" data-panel="3" role="tabpanel" aria-labelledby="step4-title" hidden>
             <header class="step-panel-head">
               <span class="step-tag"><span class="step-tag-num">4</span> Inventario</span>
               <h3 id="step4-title">Mantén tu inventario al día</h3>
@@ -1291,7 +1936,7 @@
           </article>
 
           <!-- Paso 5 -->
-          <article class="step-panel" data-panel="4" role="tabpanel" aria-labelledby="step5-title" hidden>
+          <article class="step-panel" id="step-panel-4" data-panel="4" role="tabpanel" aria-labelledby="step5-title" hidden>
             <header class="step-panel-head">
               <span class="step-tag"><span class="step-tag-num">5</span> Cierre de caja</span>
               <h3 id="step5-title">Cuadra el día con el cierre de caja</h3>
@@ -1315,11 +1960,11 @@
           </article>
 
           <!-- Paso 6 -->
-          <article class="step-panel" data-panel="5" role="tabpanel" aria-labelledby="step6-title" hidden>
+          <article class="step-panel" id="step-panel-5" data-panel="5" role="tabpanel" aria-labelledby="step6-title" hidden>
             <header class="step-panel-head">
               <span class="step-tag"><span class="step-tag-num">6</span> Sincronización</span>
               <h3 id="step6-title">Tu información siempre segura, online u offline</h3>
-              <p>El sistema guarda todo en el dispositivo y sube los datos a la nube cuando hay internet.</p>
+              <p>El sistema guarda todo en el dispositivo y sube los datos a la nube cuando hay internet. Los hashes de tus PINs de seguridad se guardan encriptados de forma estrictamente local y jamás se suben a la nube por seguridad.</p>
             </header>
             <div class="step-panel-body">
               <div class="step-actions">
@@ -1327,7 +1972,7 @@
                 <ol>
                   <li>Mira el indicador de conexión en la barra superior.</li>
                   <li>Los datos se sincronizan solos al recuperar la señal.</li>
-                  <li>Haz un backup manual desde <em>Configuración → Respaldos</em>.</li>
+                  <li>Haz un backup manual (exportando JSON) desde <em>Configuración → Sistema</em>.</li>
                   <li>Restaura un respaldo anterior si necesitas cambiar de dispositivo.</li>
                 </ol>
               </div>
@@ -1373,7 +2018,7 @@
             </button>
             <div class="faq-a" id="faq-a-1" role="region">
               <div class="faq-a-inner">
-                Sí. Tasas al Día funciona sin conexión. Todas las ventas y cambios se guardan en el dispositivo y se sincronizan automáticamente con la nube cuando recuperas internet. Puedes vender tranquilamente durante un corte de luz o de señal.
+                Sí. Precios al Día funciona sin conexión. Todas las ventas y cambios se guardan en el dispositivo y se sincronizan automáticamente con la nube cuando recuperas internet. Puedes vender tranquilamente durante un corte de luz o de señal.
               </div>
             </div>
           </div>
@@ -1409,7 +2054,7 @@
             </button>
             <div class="faq-a" id="faq-a-4" role="region">
               <div class="faq-a-inner">
-                Tu información está respaldada en la nube si habías sincronizado antes. Al iniciar sesión en otro dispositivo, los datos se descargan automáticamente. Además puedes hacer backups manuales desde <em>Configuración → Respaldos</em> para tener una copia extra cuando quieras.
+                Tu información está respaldada en la nube si habías sincronizado antes. Al iniciar sesión en otro dispositivo, los datos se descargan automáticamente. Además puedes exportar e importar backups manuales en formato JSON desde la sección de <em>Configuración → Sistema</em> para tener una copia extra cuando quieras.
               </div>
             </div>
           </div>
@@ -1421,7 +2066,7 @@
             </button>
             <div class="faq-a" id="faq-a-5" role="region">
               <div class="faq-a-inner">
-                Como Administrador, ve a <em>Configuración → Usuarios</em>, pulsa <em>«Nuevo usuario»</em>, asigna nombre, usuario, contraseña y el rol (<strong>Admin</strong> o <strong>Empleado</strong>). El nuevo usuario podrá entrar de inmediato desde cualquier dispositivo con sus credenciales.
+                Como Administrador, ve a <em>Configuración → Usuarios</em>, pulsa <em>«Agregar Usuario»</em>, asigna su nombre, el rol (<strong>Admin</strong> o <strong>Cajero</strong>) y un PIN numérico (de 6 dígitos para Admin o 4 para Cajero). El nuevo usuario podrá entrar de inmediato seleccionando su nombre en la pantalla de inicio.
               </div>
             </div>
           </div>
@@ -1433,11 +2078,118 @@
             </button>
             <div class="faq-a" id="faq-a-6" role="region">
               <div class="faq-a-inner">
-                Es un asistente con IA (impulsado por Groq SDK) integrado en la app. Te ayuda con consultas rápidas: cálculos, sugerencias de precios según la tasa, ayuda para usar el sistema y respuestas a dudas comunes, todo sin salir de la aplicación. Piensa en él como un ayudante siempre disponible dentro de tu bodega digital.
+                Es una herramienta de diagnóstico. Todas las auditorías de dinero, caja y vueltos son 100% exactas y matemáticas (deterministas, desarrolladas en código puro sin IA para evitar errores). El sistema utiliza IA (Groq SDK) de manera interna únicamente para interpretar los resultados de estas pruebas en el Panel Dev y redactar un informe diagnóstico narrado con recomendaciones prácticas para tu negocio.
               </div>
             </div>
           </div>
 
+          <div class="faq-item reveal">
+            <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a-7">
+              <span>¿Cómo funciona el cobro con Cashea en el POS?</span>
+              <span class="faq-icon"><i data-lucide="plus" aria-hidden="true"></i></span>
+            </button>
+            <div class="faq-a" id="faq-a-7" role="region">
+              <div class="faq-a-inner">
+                Precios al Día cuenta con un <strong>Módulo de Financiamiento Cashea</strong> integrado que funciona así:
+                <ul style="margin-top: var(--space-2); margin-left: var(--space-4); list-style-type: disc; display: flex; flex-direction: column; gap: var(--space-1.5);">
+                  <li><strong>Configuración:</strong> Habilita Cashea desde <code>Configuración → Ventas</code> y establece opcionalmente un monto mínimo en dólares para la compra.</li>
+                  <li><strong>Selección de Cliente (Requisito):</strong> Para que la opción de cobro con Cashea se active e ilustre en la pantalla de cobro (checkout), se debe seleccionar un cliente primero en la zona de cobro. El sistema activará el financiamiento si el cliente seleccionado tiene un Nivel de Cashea (del 1 al 6) y la venta cumple con el monto mínimo establecido.</li>
+                  <li><strong>Cobro en Caja:</strong> Al seleccionar Cashea en el checkout, el sistema te permite elegir el porcentaje de la cuota inicial (ej. 60% o 40%). El sistema calcula automáticamente la porción financiada que cubre Cashea.</li>
+                  <li><strong>Asociación al Cliente:</strong> Es obligatorio seleccionar un cliente para registrar la venta con Cashea. La porción financiada se guarda automáticamente como cobro pendiente en la ficha del cliente (<code>casheaDeuda</code>).</li>
+                  <li><strong>Cuadre de Caja:</strong> La venta se etiqueta como <code>VENTA_CASHEA</code> y el saldo financiado se suma a las deudas por cobrar en las métricas, evitando descuadres de efectivo en tu cierre.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item reveal">
+            <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a-8">
+              <span>¿Cómo funciona y cómo activo la prueba gratuita de 3 días (Demo)?</span>
+              <span class="faq-icon"><i data-lucide="plus" aria-hidden="true"></i></span>
+            </button>
+            <div class="faq-a" id="faq-a-8" role="region">
+              <div class="faq-a-inner">
+                Es muy simple. Al abrir el sistema por primera vez, verás la pantalla de activación con tu <strong>ID de Instalación</strong>. Debajo del botón principal de activación, verás la opción <strong>«Probar gratis 3 días»</strong>. Al hacer clic allí, el sistema se desbloqueará de inmediato para que comiences tu prueba con todas las funciones activadas (inventario, POS, tasas, etc.), sin necesidad de ingresar tarjetas de crédito ni datos de pago. Una vez que termine la prueba, puedes adquirir la licencia vitalicia ingresando tu código para continuar operando sin perder ningún dato registrado.
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PRECIOS ============ -->
+    <section class="section-pad animate-in fade-in" aria-labelledby="pricing-title" style="background: var(--surface-2); border-block: 1px solid var(--border);">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="section-eyebrow">Planes y Precios</span>
+          <h2 class="section-title" id="pricing-title">Un solo pago. Para siempre.</h2>
+          <p class="section-lead">Sin suscripciones mensuales, sin comisiones ocultas y sin sorpresas. Invierte hoy en tu negocio y úsalo de por vida.</p>
+        </div>
+
+        <div class="pricing-wrap reveal">
+          <div class="pricing-content">
+            <h3>¿Por qué pagar mensualidades es cosa del pasado?</h3>
+            <p>Sabemos lo difícil que es mantener un negocio en Venezuela cuando los gastos fijos no paran de subir. Por eso, eliminamos las suscripciones. Con un único pago, adquieres una herramienta definitiva que trabaja para ti todos los días.</p>
+            
+            <div class="pricing-benefit-list">
+              <div class="pricing-benefit-item">
+                <i data-lucide="check-circle-2" aria-hidden="true"></i>
+                <div class="pricing-benefit-text">
+                  <h4>Licencia Vitalicia Completa</h4>
+                  <p>Un solo pago. Instalas la PWA en tus teléfonos, tablets o computadoras sin limitaciones.</p>
+                </div>
+              </div>
+              <div class="pricing-benefit-item">
+                <i data-lucide="check-circle-2" aria-hidden="true"></i>
+                <div class="pricing-benefit-text">
+                  <h4>Sincronización en la Nube de por Vida</h4>
+                  <p>Respaldos automáticos en tiempo real y base de datos en Supabase incluida para mantener tu data a salvo.</p>
+                </div>
+              </div>
+              <div class="pricing-benefit-item">
+                <i data-lucide="check-circle-2" aria-hidden="true"></i>
+                <div class="pricing-benefit-text">
+                  <h4>Módulo Cashea y Vueltos Integrados</h4>
+                  <p>Registra tus ventas financiadas y calcula cambios exactos al instante según la tasa de tu preferencia.</p>
+                </div>
+              </div>
+              <div class="pricing-benefit-item">
+                <i data-lucide="check-circle-2" aria-hidden="true"></i>
+                <div class="pricing-benefit-text">
+                  <h4>Actualizaciones Gratis para Siempre</h4>
+                  <p>Accede a todas las nuevas características y optimizaciones del sistema sin costos adicionales de por vida.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="pricing-box">
+            <span class="pricing-badge">Lanzamiento</span>
+            <span class="price-anchor">$99.00 USD</span>
+            <div class="price-main">
+              <span class="price-currency">$</span>
+              <span class="price-amount">25</span>
+              <span class="price-period">/ Pago Único</span>
+            </div>
+            <span class="price-note">Acceso ilimitado para siempre</span>
+            <div class="price-bcv">
+              <i data-lucide="info" style="display:inline-block; width:14px; height:14px; vertical-align:middle; margin-right:4px;" aria-hidden="true"></i>
+              Pagadero en Bolívares al cambio oficial (Tasa BCV)
+            </div>
+            <a class="btn btn-primary" href="https://preciosaldia.vercel.app/" target="_blank" rel="noopener noreferrer">
+              <i data-lucide="rocket" aria-hidden="true"></i>
+              Activar Licencia Vitalicia
+            </a>
+            <a class="btn btn-ghost" href="https://preciosaldia.vercel.app/" target="_blank" rel="noopener noreferrer" style="margin-top: var(--space-2); width: 100%;">
+              <i data-lucide="gift" aria-hidden="true"></i>
+              Probar gratis 3 días (Demo)
+            </a>
+            <div class="pricing-guarantee">
+              <i data-lucide="shield-check" aria-hidden="true"></i>
+              <span>Garantía de funcionamiento Offline-first</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -1447,7 +2199,7 @@
       <div class="container">
         <div class="cta-final reveal">
           <h2 id="cta-title">¿Listo para empezar?</h2>
-          <p>Abre Tasas al Día ahora y vende más rápido desde el primer minuto.</p>
+          <p>Abre Precios al Día ahora y vende más rápido desde el primer minuto.</p>
           <a class="btn" href="https://preciosaldia.vercel.app/" target="_blank" rel="noopener noreferrer">
             <i data-lucide="arrow-up-right" aria-hidden="true"></i>
             Abrir Sistema
@@ -1463,28 +2215,95 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <span class="brand">
-            <span class="brand-mark" aria-hidden="true">T</span>
-            <span>
-              Tasas al Día
-              <small>Sistema POS · Gestión · Nube</small>
-            </span>
+            <img class="brand-logo logo-light" src="logo-pagina.png" alt="Precios al Día" width="267" height="58" loading="lazy" />
+            <img class="brand-logo logo-dark" src="logodark.png" alt="Precios al Día" width="267" height="58" loading="lazy" />
           </span>
-          <span class="footer-copy">© 2026 Tasas al Día. Todos los derechos reservados.</span>
+          <span class="footer-copy">© 2026 Precios al Día. Todos los derechos reservados.</span>
         </div>
         <nav class="footer-links" aria-label="Enlaces del pie de página">
           <a href="https://preciosaldia.vercel.app/" target="_blank" rel="noopener noreferrer">
             <i data-lucide="external-link" aria-hidden="true"></i>
             preciosaldia.vercel.app
           </a>
-          <a href="https://github.com/luiggiberaldi/preciosaldia-bodega" target="_blank" rel="noopener noreferrer">
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
-            Repositorio en GitHub
+          <a href="https://www.instagram.com/synaptica.oficial/" target="_blank" rel="noopener noreferrer">
+            <i data-lucide="instagram" aria-hidden="true"></i>
+            @synaptica.oficial
           </a>
         </nav>
       </div>
-      <p class="footer-dev">Desarrollado por Luigi Berardi</p>
+      <p class="footer-dev">Desarrollado por <a href="https://www.instagram.com/synaptica.oficial/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">Synaptica</a></p>
     </div>
   </footer>
+
+  <!-- ============ CHATBOT WIDGET ============ -->
+  <button class="fab" id="chatFab" type="button" aria-label="Abrir chat asistente">
+    <i class="fab-open" data-lucide="message-circle"></i>
+    <i class="fab-close" data-lucide="x"></i>
+  </button>
+  <div class="chat-overlay" id="chatOverlay"></div>
+  <div class="chat-panel" id="chatPanel" role="dialog" aria-label="Asistente IA" aria-hidden="true">
+    <div class="chat-panel-header">
+      <div class="chat-panel-header-left">
+        <div class="chat-panel-avatar"><img src="bot-avatar.png" alt="Bot Avatar" /></div>
+        <div>
+          <h3>Asistente IA</h3>
+          <span class="status"><span class="status-dot"></span> Conexión segura · IA</span>
+        </div>
+      </div>
+      <div class="chat-panel-header-actions">
+        <button id="chatClearBtn" type="button" aria-label="Limpiar conversación">
+          <i data-lucide="trash-2"></i>
+        </button>
+        <button id="chatCloseBtn" type="button" aria-label="Cerrar chat">
+          <i data-lucide="chevron-down"></i>
+        </button>
+      </div>
+    </div>
+    <div class="chat-suggestions" id="chatSuggestions">
+      <button data-prompt="¿Cómo hago una venta en el POS?">Venta POS</button>
+      <button data-prompt="¿Cómo funciona el modo offline?">Modo offline</button>
+      <button data-prompt="¿Cómo agrego un producto al inventario?">Agregar producto</button>
+      <button data-prompt="¿Qué es el cierre de caja?">Cierre de caja</button>
+    </div>
+    <div class="chat-panel-msgs" id="chatMsgs">
+      <div class="cmsg assistant">
+        <div class="cmsg-avatar"><img src="bot-avatar.png" alt="Bot Avatar" /></div>
+        <div class="cmsg-bubble">
+          <strong>¡Hola!</strong> Soy el asistente de <strong>Precios al Día</strong>.<br />
+          Pregúntame sobre POS, inventario, usuarios, cierres y más.
+        </div>
+      </div>
+    </div>
+    <div class="ctyping" id="chatTyping">
+      <div class="cmsg-avatar"><img src="bot-avatar.png" alt="Bot Avatar" /></div>
+      <div class="cmsg-bubble">
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+      </div>
+    </div>
+    <div class="chat-panel-foot">
+      <div class="chat-panel-input-row">
+        <textarea class="chat-panel-input" id="chatInput" rows="1" placeholder="Escribe tu pregunta..." maxlength="2000"></textarea>
+        <button class="chat-panel-send" id="chatSendBtn" type="button" aria-label="Enviar">
+          <i data-lucide="send"></i>
+        </button>
+      </div>
+      <div class="chat-panel-footer-text">
+        <span>Groq · Llama 3.3 70B</span>
+        <span id="chatKeyDisplay">Seguro</span>
+      </div>
+    </div>
+    <!-- Confirm Modal -->
+    <div class="chat-confirm-modal" id="chatConfirmModal">
+      <div class="chat-confirm-content">
+        <h4>Reiniciar Conversación</h4>
+        <p>¿Está seguro de que desea restablecer el chat? Se borrará el historial de la conversación actual.</p>
+        <div class="chat-confirm-actions">
+          <button id="chatConfirmCancel" class="btn-cancel" type="button">Cancelar</button>
+          <button id="chatConfirmOk" class="btn-confirm" type="button">Reiniciar</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script>
     (function () {
@@ -1509,16 +2328,16 @@
         if (meta) meta.setAttribute("content", theme === "dark" ? "#0a0f0f" : "#01696f");
       }
 
-      // Inicializar según preferencia del sistema
-      var prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
-      applyTheme(prefersDark ? "dark" : "light");
+      // Inicializar según el tema ya aplicado en el head para evitar parpadeos
+      var currentThemeOnLoad = root.getAttribute("data-theme") || "light";
+      applyTheme(currentThemeOnLoad);
 
       themeToggle.addEventListener("click", function () {
         var current = root.getAttribute("data-theme");
         applyTheme(current === "dark" ? "light" : "dark");
       });
 
-      // Reaccionar a cambios del sistema si el usuario no ha togglado (mantener simple: actualizar siempre)
+      // Reaccionar a cambios del sistema
       if (window.matchMedia) {
         window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", function (e) {
           applyTheme(e.matches ? "dark" : "light");
@@ -1539,11 +2358,11 @@
         // Botones de círculo
         stepBtns.forEach(function (btn, i) {
           btn.classList.remove("active", "done");
-          btn.removeAttribute("aria-current");
+          btn.setAttribute("aria-selected", "false");
           if (i < currentStep) btn.classList.add("done");
           if (i === currentStep) {
             btn.classList.add("active");
-            btn.setAttribute("aria-current", "step");
+            btn.setAttribute("aria-selected", "true");
           }
         });
 
@@ -1573,9 +2392,12 @@
         renderIcons();
       }
 
-      function goToStep(i) {
+      function goToStep(i, focusBtn) {
         currentStep = Math.max(0, Math.min(TOTAL_STEPS - 1, i));
         updateStepper();
+        if (focusBtn && stepBtns[currentStep]) {
+          stepBtns[currentStep].focus();
+        }
       }
 
       stepBtns.forEach(function (btn) {
@@ -1593,8 +2415,8 @@
       // Navegación con teclado entre pasos ( flechas izq/der cuando el foco está en el stepper )
       var stepperWrap = document.querySelector(".stepper-wrap");
       stepperWrap.addEventListener("keydown", function (e) {
-        if (e.key === "ArrowRight") { e.preventDefault(); goToStep(currentStep + 1); }
-        if (e.key === "ArrowLeft") { e.preventDefault(); goToStep(currentStep - 1); }
+        if (e.key === "ArrowRight") { e.preventDefault(); goToStep(currentStep + 1, true); }
+        if (e.key === "ArrowLeft") { e.preventDefault(); goToStep(currentStep - 1, true); }
       });
 
       updateStepper();
@@ -1658,6 +2480,330 @@
 
       // Re-render de iconos por si algunos llegaron tarde
       window.addEventListener("load", renderIcons);
+
+      /* ================================================================
+         CHATBOT — PROXY SEGURO
+         ================================================================ */
+      var CHAT_API_URL = (window.location.protocol === "file:" || window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1")
+        ? "http://localhost:3000/api/chat"
+        : "/api/chat";
+      var MAX_HIST = 20;
+      var chatHistory = [];
+      var chatProcessing = false;
+
+      var CHAT_SYSTEM = [
+        "Eres un asistente experto en \"Precios al Día\", un sistema POS y gestión de inventario offline-first para bodegas y abastos venezolanos.",
+        "",
+        "## CONOCIMIENTO DEL SISTEMA",
+        "",
+        "### Primer acceso y usuarios",
+        "- Pantalla de inicio muestra perfiles de usuarios con foto y nombre.",
+        "- Cada usuario tiene un PIN numérico: Admin = 6 dígitos, Cajero = 4 dígitos.",
+        "- Roles: Administrador (acceso total: POS, Inventario, Cierres, Usuarios, Reportes, Configuración) y Cajero (solo POS, Inicio, Clientes, Inventario en solo lectura).",
+        "- Para cambiar PIN: Configuración → Usuarios → botón llave al lado del perfil.",
+        "- Para agregar usuario: Configuración → Usuarios → \"Agregar Usuario\" → nombre, rol, PIN.",
+        "",
+        "### Dashboard / Inicio",
+        "- Muestra ventas del día, total en caja, indicador de conexión (verde = online, rojo = offline).",
+        "- Destaca productos con bajo stock.",
+        "- Tarjetas de acceso rápido a cada módulo.",
+        "",
+        "### POS (Punto de Venta)",
+        "- Buscar producto por nombre o código en barra superior.",
+        "- Tocar producto lo agrega al carrito con cantidad modificable.",
+        "- Métodos de pago configurables y optimizados para Venezuela: efectivo (Bs/USD/COP), transferencia, pago móvil, punto de venta (tarjeta de débito/crédito), saldo a favor y Cashea.",
+        "- La tasa de Pesos Colombianos (COP) puede ser automatizada vía TRM diaria o fijarse de forma manual.",
+        "- Al confirmar: imprime ticket térmico (si hay impresora conectada) o exporta a PDF.",
+        "- Soporta devoluciones y notas de crédito.",
+        "",
+        "### Módulo de Financiamiento Cashea (Registrar cobros en cuotas)",
+        "- Se puede activar o desactivar en Configuración → Ventas (sección «Financiamiento Cashea»). Allí se puede configurar un monto mínimo en dólares para permitir su uso.",
+        "- ¡IMPORTANTE!: Para que la opción de cobro con Cashea se active e ilustre en la pantalla de cobro (checkout), se debe seleccionar un cliente primero en la zona de cobro. El sistema activará el financiamiento automáticamente si el cliente seleccionado tiene configurado un Nivel de Cashea (del 1 al 6) y la venta cumple con el monto mínimo establecido.",
+        "- En el checkout del POS, al activar Cashea como método de pago, el sistema te permite elegir el porcentaje de la cuota inicial (ej. 60% o 40%) que el cliente paga en caja.",
+        "- El sistema calcula de forma automática el monto financiado por Cashea (la deuda): Monto Financiado = Total Carrito * (100 - % Inicial) / 100.",
+        "- Al confirmar la venta, la porción financiada se carga automáticamente como una cuenta por cobrar (deuda de Cashea) en la ficha del cliente (casheaDeuda), la cual se puede visualizar y saldar desde el módulo Clientes.",
+        "- En el Dashboard y Cierre de Caja, el dinero financiado se registra bajo la categoría VENTA_CASHEA como cobro pendiente para evitar descuadres en el efectivo real de la caja.",
+        "",
+        "### Inventario",
+        "- Agregar producto: nombre, precio de venta, precio de compra, stock inicial, código opcional, categoría.",
+        "- Editar precios (útil cuando cambia la tasa del día).",
+        "- Stock se descuenta automáticamente al vender.",
+        "- Marcar productos como agotados o destacados.",
+        "- Búsqueda y filtros por categoría.",
+        "",
+        "### Cierre de Caja",
+        "- Iniciar cierre desde el módulo Cierres.",
+        "- Resumen: ventas totales, desglose por método de pago, monto esperado vs real.",
+        "- Registrar monto físico contado en caja.",
+        "- Sistema marca diferencias entre esperado y real para investigar.",
+        "- Exportar reporte en PDF.",
+        "",
+        "### Sincronización y respaldos",
+        "- Offline-first: todo se guarda en IndexedDB local.",
+        "- Los hashes de los PINs de acceso de seguridad se guardan encriptados estrictamente de forma local en IndexedDB y jamás se sincronizan a la nube por seguridad (SEC-002).",
+        "- Al recuperar internet, sincroniza automáticamente los datos del negocio (ventas, stock, clientes) con Supabase.",
+        "- Sincronización bidireccional: múltiples dispositivos se mantienen actualizados.",
+        "- Backup manual: Configuración → Sistema → Exportar JSON.",
+        "- Restaurar backup: Configuración → Sistema → Importar JSON.",
+        "",
+        "### Demo gratuita de 3 días y Activación",
+        "- El sistema ofrece una prueba gratuita (Demo) de 3 días para que pruebes todas las funciones.",
+        "- ¿Cómo usar el Demo?: Al abrir la app por primera vez verás la pantalla de activación. Toca el botón celeste «Probar gratis 3 días» y el sistema se desbloqueará de inmediato sin pedir tarjetas ni códigos.",
+        "- ¿Cómo comprar u obtener la licencia definitiva?: En la misma pantalla de activación verás tu «ID de Instalación». Cópialo y envíalo al administrador del sistema. Él te generará un «Código de Activación» (formato ACTIV-XXXX-XXXX). Escribe ese código en el campo indicado y pulsa el botón del check verde para activar la licencia vitalicia.",
+        "- Nota: Al activar la licencia vitalicia después de los 3 días de demo, no perderás ningún dato que hayas registrado en la prueba.",
+        "",
+        "### Instalación",
+        "- PWA: abrir preciosaldia.vercel.app en Chrome Android → menú ⋮ → \"Instalar app\".",
+        "- APK nativo disponible vía Capacitor.",
+        "- También funciona en navegador de escritorio (Chrome, Edge, Firefox).",
+        "",
+        "### IA integrada (Híbrida)",
+        "- Las auditorías y validaciones financieras de caja son 100% matemáticas, exactas y deterministas (desarrolladas a nivel de código puro, sin alucinaciones).",
+        "- La IA (impulsada por Groq SDK) se utiliza de forma interna para interpretar los resultados de las auditorías en el Panel Dev (Tester), ofreciendo un informe diagnóstico en lenguaje natural y recomendaciones específicas.",
+        "",
+        "## REGLAS DE CONDUCTA",
+        "- Siempre respondes en español, claro y amable, como un experto hablando con un dueño de bodega de Venezuela (puedes usar terminología local como 'vuelto', 'pago móvil', 'fiado', 'abasto').",
+        "- Usas \"tú\" para dirigirte al usuario.",
+        "- Si no sabes algo, dilo honestamente: \"No tengo esa información, mejor consulta el manual o el administrador\".",
+        "- Puedes usar markdown básico: listas, **negritas** para énfasis, `código` para nombres de secciones.",
+        "- Tus respuestas deben ser prácticas y directas, pensadas para alguien que está operando el sistema en ese momento.",
+        "- Si el usuario parece confundido, ofrece ejemplos concretos."
+      ].join("\n");
+
+      // DOM
+      var fab = document.getElementById("chatFab");
+      var overlay = document.getElementById("chatOverlay");
+      var panel = document.getElementById("chatPanel");
+      var closeBtn = document.getElementById("chatCloseBtn");
+      var clearBtn = document.getElementById("chatClearBtn");
+      var msgs = document.getElementById("chatMsgs");
+      var input = document.getElementById("chatInput");
+      var sendBtn = document.getElementById("chatSendBtn");
+      var typing = document.getElementById("chatTyping");
+      var keyDisplay = document.getElementById("chatKeyDisplay");
+      var suggestions = document.getElementById("chatSuggestions");
+
+      function chatOpen() {
+        fab.classList.add("is-open");
+        overlay.classList.add("is-visible");
+        panel.classList.add("is-visible");
+        panel.setAttribute("aria-hidden", "false");
+        input.focus();
+      }
+
+      function chatClose() {
+        fab.classList.remove("is-open");
+        overlay.classList.remove("is-visible");
+        panel.classList.remove("is-visible");
+        panel.setAttribute("aria-hidden", "true");
+      }
+
+      fab.addEventListener("click", function () {
+        if (panel.classList.contains("is-visible")) chatClose();
+        else chatOpen();
+      });
+      overlay.addEventListener("click", chatClose);
+      closeBtn.addEventListener("click", chatClose);
+
+      function chatNextKey() {
+        if (keyDisplay) keyDisplay.textContent = "Seguro";
+        return "";
+      }
+
+      function chatAddMsg(role, html, isErr) {
+        var d = document.createElement("div");
+        d.className = "cmsg " + role + (isErr ? " error" : "");
+        var a = document.createElement("div");
+        a.className = "cmsg-avatar";
+        a.innerHTML = role === "user" ? '<i data-lucide="user"></i>' : '<i data-lucide="bot"></i>';
+        var b = document.createElement("div");
+        b.className = "cmsg-bubble";
+        b.innerHTML = html;
+        d.appendChild(a); d.appendChild(b);
+        msgs.appendChild(d);
+        msgs.scrollTop = msgs.scrollHeight;
+        if (!isErr) {
+          chatHistory.push({ role: role, content: html });
+          if (chatHistory.length > MAX_HIST) chatHistory = chatHistory.slice(-MAX_HIST);
+        }
+        renderIcons();
+      }
+
+      function chatSetTyping(active) {
+        typing.classList.toggle("active", active);
+        msgs.scrollTop = msgs.scrollHeight;
+      }
+
+      function chatEscape(text) {
+        var d = document.createElement("div");
+        d.textContent = text;
+        return d.innerHTML;
+      }
+
+      function chatRenderMd(text) {
+        if (!text) return "";
+        var h = chatEscape(text);
+        h = h.replace(/```(\w*)\n([\s\S]*?)```/g, function (_, lang, code) {
+          return "<pre><code>" + chatEscape(code.trim()) + "</code></pre>";
+        });
+        h = h.replace(/`([^`]+)`/g, "<code>$1</code>");
+        h = h.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
+        h = h.replace(/\*([^*]+)\*/g, "<em>$1</em>");
+        h = h.replace(/^- (.+)$/gm, "<li>$1</li>");
+        h = h.replace(/(<li>.*<\/li>\n?)+/g, "<ul>$&</ul>");
+        h = h.replace(/^\d+\.\s(.+)$/gm, "<li>$1</li>");
+        h = h.replace(/\n\n/g, "</p><p>");
+        h = h.replace(/\n/g, "<br />");
+        if (h.indexOf("<") !== 0) h = "<p>" + h + "</p>";
+        return h;
+      }
+
+      function chatBuildHistory(text) {
+        var msgs = [{ role: "system", content: CHAT_SYSTEM }];
+        var recent = chatHistory.slice(-10);
+        for (var i = 0; i < recent.length; i++) {
+          msgs.push(recent[i]);
+        }
+        msgs.push({ role: "user", content: text });
+        return msgs;
+      }
+
+      async function chatSendGroq(text) {
+        chatNextKey();
+        var body = JSON.stringify({
+          messages: chatBuildHistory(text)
+        });
+
+        var resp = await fetch(CHAT_API_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: body
+        });
+
+        if (!resp.ok) {
+          var errText = await resp.text();
+          throw new Error("Error " + resp.status + ": " + errText);
+        }
+
+        var reader = resp.body.getReader();
+        var decoder = new TextDecoder();
+        var full = "";
+
+        var d = document.createElement("div");
+        d.className = "cmsg assistant";
+        var a = document.createElement("div");
+        a.className = "cmsg-avatar";
+        a.innerHTML = '<img src="/bot-avatar.png" alt="Bot Avatar" />';
+        var b = document.createElement("div");
+        b.className = "cmsg-bubble";
+        d.appendChild(a); d.appendChild(b);
+        msgs.appendChild(d);
+
+        var buf = "";
+        while (true) {
+          var r = await reader.read();
+          if (r.done) break;
+          buf += decoder.decode(r.value, { stream: true });
+          var lines = buf.split("\n");
+          buf = lines.pop() || "";
+          for (var li = 0; li < lines.length; li++) {
+            var ln = lines[li].trim();
+            if (!ln || ln.indexOf("data: ") !== 0) continue;
+            var data = ln.slice(6);
+            if (data === "[DONE]") break;
+            try {
+              var p = JSON.parse(data);
+              var delta = p.choices && p.choices[0] && p.choices[0].delta && p.choices[0].delta.content;
+              if (delta) {
+                full += delta;
+                b.innerHTML = chatRenderMd(full);
+                msgs.scrollTop = msgs.scrollHeight;
+              }
+            } catch (_) {}
+          }
+        }
+
+        if (!full) b.innerHTML = "(sin respuesta)";
+        chatHistory.push({ role: "assistant", content: full || "(sin respuesta)" });
+        if (chatHistory.length > MAX_HIST) chatHistory = chatHistory.slice(-MAX_HIST);
+        renderIcons();
+        msgs.scrollTop = msgs.scrollHeight;
+      }
+
+      async function chatHandleSend() {
+        var text = input.value.trim();
+        if (!text || chatProcessing) return;
+        input.value = "";
+        input.style.height = "auto";
+        chatAddMsg("user", chatEscape(text));
+        chatProcessing = true;
+        sendBtn.disabled = true;
+        input.disabled = true;
+        chatSetTyping(true);
+        suggestions.style.display = "none";
+
+        try {
+          await chatSendGroq(text);
+        } catch (err) {
+          chatSetTyping(false);
+          chatAddMsg("assistant", "⚠️ Error: " + chatEscape(err.message), true);
+        } finally {
+          chatSetTyping(false);
+          chatProcessing = false;
+          sendBtn.disabled = false;
+          input.disabled = false;
+          input.focus();
+        }
+      }
+
+      input.addEventListener("input", function () {
+        input.style.height = "auto";
+        input.style.height = Math.min(input.scrollHeight, 80) + "px";
+      });
+      input.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); chatHandleSend(); }
+      });
+      sendBtn.addEventListener("click", chatHandleSend);
+
+      suggestions.addEventListener("click", function (e) {
+        var btn = e.target.closest("button");
+        if (!btn) return;
+        input.value = btn.dataset.prompt;
+        chatHandleSend();
+      });
+
+      var confirmModal = document.getElementById("chatConfirmModal");
+      var confirmCancel = document.getElementById("chatConfirmCancel");
+      var confirmOk = document.getElementById("chatConfirmOk");
+
+      clearBtn.addEventListener("click", function () {
+        confirmModal.classList.add("is-visible");
+      });
+
+      confirmCancel.addEventListener("click", function () {
+        confirmModal.classList.remove("is-visible");
+      });
+
+      confirmOk.addEventListener("click", function () {
+        confirmModal.classList.remove("is-visible");
+        chatHistory = [];
+        msgs.innerHTML = "";
+        var w = document.createElement("div");
+        w.className = "cmsg assistant";
+        w.innerHTML = '<div class="cmsg-avatar"><img src="/bot-avatar.png" alt="Bot Avatar" /></div><div class="cmsg-bubble"><strong>¡Hola!</strong> Soy el asistente de <strong>Precios al Día</strong>.<br />Pregúntame sobre POS, inventario, usuarios, cierres y m&aacute;s.</div>';
+        msgs.appendChild(w);
+        renderIcons();
+        suggestions.style.display = "flex";
+      });
+
+      // Keyboard shortcut: Ctrl+Shift+K to open
+      document.addEventListener("keydown", function (e) {
+        if (e.ctrlKey && e.shiftKey && e.key === "K") {
+          e.preventDefault();
+          if (panel.classList.contains("is-visible")) chatClose();
+          else chatOpen();
+        }
+      });
     })();
   </script>
 </body>

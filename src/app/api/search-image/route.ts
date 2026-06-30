@@ -1,4 +1,9 @@
 import { NextResponse } from "next/server";
+import { createClient } from "@supabase/supabase-js";
+
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "";
+const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "";
+const supabase = createClient(supabaseUrl, supabaseKey);
 
 export async function OPTIONS() {
   return new Response(null, {
@@ -9,6 +14,15 @@ export async function OPTIONS() {
       "Access-Control-Allow-Headers": "Content-Type",
     },
   });
+}
+
+function getSlug(name: string): string {
+  return name
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "") // remove accents
+    .replace(/[^a-z0-9]+/g, "-") // replace non-alphanumeric with hyphens
+    .replace(/(^-|-$)+/g, ""); // remove leading/trailing hyphens
 }
 
 export async function GET(req: Request) {
@@ -23,105 +37,81 @@ export async function GET(req: Request) {
       );
     }
 
-    const q = encodeURIComponent(query.trim());
+    const trimmedQuery = query.trim();
+    const slug = getSlug(trimmedQuery);
 
-    // 1. Obtener vqd token de la página principal de DuckDuckGo
-    const htmlResponse = await fetch(`https://duckduckgo.com/?q=${q}`, {
-      headers: {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-      },
-    });
+    // 1. Try exact slug match
+    const { data: exactMatch } = await supabase
+      .from("product_images_catalog")
+      .select("name, image_url")
+      .eq("id", slug)
+      .maybeSingle();
 
-    if (!htmlResponse.ok) {
+    if (exactMatch) {
+      console.log(`[CatalogSearch] Exact match found for slug "${slug}": ${exactMatch.name}`);
       return NextResponse.json(
-        { error: "Error al consultar buscador base." },
-        { status: 502, headers: { "Access-Control-Allow-Origin": "*" } }
-      );
-    }
-
-    const html = await htmlResponse.text();
-    const vqdMatch = html.match(/vqd=["']?([^"']+)["']?/);
-    if (!vqdMatch) {
-      return NextResponse.json(
-        { error: "No se pudo autorizar la consulta automática." },
-        { status: 500, headers: { "Access-Control-Allow-Origin": "*" } }
-      );
-    }
-
-    const vqd = vqdMatch[1];
-
-    // 2. Buscar imágenes usando el token vqd
-    const imagesResponse = await fetch(`https://duckduckgo.com/i.js?l=wt-wt&o=json&q=${q}&vqd=${vqd}&f=,,,`, {
-      headers: {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-        "Accept": "application/json",
-      },
-    });
-
-    if (!imagesResponse.ok) {
-      return NextResponse.json(
-        { error: "Error al buscar imágenes en el catálogo web." },
-        { status: 502, headers: { "Access-Control-Allow-Origin": "*" } }
-      );
-    }
-
-    const data = await imagesResponse.json();
-    if (!data.results || data.results.length === 0) {
-      return NextResponse.json(
-        { success: false, message: "No se encontraron imágenes para este producto." },
-        { headers: { "Access-Control-Allow-Origin": "*" } }
-      );
-    }
-
-    // 3. Intentar descargar las mejores coincidencias (máximo top 5) por si alguna falla
-    const maxAttempts = Math.min(data.results.length, 5);
-    let winningDataUri = null;
-    let winningTitle = "";
-
-    for (let i = 0; i < maxAttempts; i++) {
-      const imageUrl = data.results[i].image;
-      const title = data.results[i].title;
-
-      try {
-        const imgRes = await fetch(imageUrl, {
-          signal: AbortSignal.timeout(5000), // Timeout de 5s por imagen
-          headers: {
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-          },
-        });
-
-        if (imgRes.ok) {
-          const arrayBuffer = await imgRes.arrayBuffer();
-          const buffer = Buffer.from(arrayBuffer);
-          const contentType = imgRes.headers.get("content-type") || "image/jpeg";
-          const base64 = buffer.toString("base64");
-          
-          winningDataUri = `data:${contentType};base64,${base64}`;
-          winningTitle = title;
-          break; // Descarga exitosa, detener bucle
-        }
-      } catch (err) {
-        console.warn(`[SearchImageProxy] Intento ${i + 1} falló para URL: ${imageUrl}`);
-      }
-    }
-
-    if (!winningDataUri) {
-      return NextResponse.json(
-        { error: "No se pudo descargar ninguna de las imágenes encontradas." },
-        { status: 502, headers: { "Access-Control-Allow-Origin": "*" } }
-      );
-    }
-
-    return NextResponse.json(
-      { success: true, title: winningTitle, dataUri: winningDataUri },
-      {
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Methods": "GET, OPTIONS",
+        {
+          success: true,
+          matches: [{ title: exactMatch.name, dataUri: exactMatch.image_url }]
         },
+        {
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "GET, OPTIONS",
+          },
+        }
+      );
+    }
+
+    // 2. Try partial tag match or keyword similarity match
+    const words = trimmedQuery.toLowerCase().split(/\s+/).filter(w => w.length > 2);
+    if (words.length > 0) {
+      // Pull catalog items to match locally using array overlaps
+      const { data: matches } = await supabase
+        .from("product_images_catalog")
+        .select("id, name, image_url")
+        .overlaps("tags", words);
+
+      if (matches && matches.length > 0) {
+        const ranked = matches.map(item => {
+          let score = 0;
+          const nameLower = item.name.toLowerCase();
+          words.forEach(w => {
+            if (nameLower.includes(w)) score += 10;
+          });
+          return { ...item, score };
+        })
+        .filter(item => item.score > 0)
+        .sort((a, b) => b.score - a.score);
+
+        if (ranked.length > 0) {
+          const topMatches = ranked.slice(0, 5).map(item => ({
+            title: item.name,
+            dataUri: item.image_url
+          }));
+          
+          console.log(`[CatalogSearch] Found ${topMatches.length} similarity matches for query: "${trimmedQuery}"`);
+          return NextResponse.json(
+            { success: true, matches: topMatches },
+            {
+              headers: {
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Methods": "GET, OPTIONS",
+              },
+            }
+          );
+        }
       }
+    }
+
+    // If nothing found
+    return NextResponse.json(
+      { error: "No se encontraron imágenes en el catálogo para el producto especificado." },
+      { status: 404, headers: { "Access-Control-Allow-Origin": "*" } }
     );
+
   } catch (error: any) {
+    console.error("[CatalogSearch] Error:", error);
     return NextResponse.json(
       { error: error.message },
       { status: 500, headers: { "Access-Control-Allow-Origin": "*" } }

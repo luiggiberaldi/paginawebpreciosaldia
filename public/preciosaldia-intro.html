@@ -834,8 +834,60 @@
       display: grid;
       gap: var(--space-8);
     }
-    @media (min-width: 760px) {
-      .step-panel-body { grid-template-columns: 1fr 1fr; align-items: start; }
+    .step-details {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-6);
+    }
+    .step-media {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .mock-browser {
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      width: 100%;
+    }
+    .mock-browser-header {
+      background: var(--surface-muted, #f1f5f9);
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      border-bottom: 1px solid var(--border);
+    }
+    [data-theme="dark"] .mock-browser-header {
+      background: #252422;
+    }
+    .mock-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+    .mock-dot.red { background: #ef4444; }
+    .mock-dot.yellow { background: #eab308; }
+    .mock-dot.green { background: #22c55e; }
+    
+    .mock-browser-content {
+      position: relative;
+      background: #000;
+    }
+    .mock-browser-content img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+    .mock-browser:hover .mock-browser-content img {
+      transform: scale(1.02);
+    }
+    @media (min-width: 992px) {
+      .step-panel-body { grid-template-columns: 1fr 1.3fr; align-items: start; }
     }
     .step-actions h4,
     .step-tip h4 {
@@ -1846,18 +1898,32 @@
               <p>Cuando entras por primera vez, usas las credenciales que te dio el administrador. El sistema distingue dos roles con permisos diferentes.</p>
             </header>
             <div class="step-panel-body">
-              <div class="step-actions">
-                <h4>Acciones</h4>
-                <ol>
-                  <li>Abre la app, selecciona tu usuario en la pantalla de perfiles e ingresa tu PIN numérico.</li>
-                  <li>Si eres <strong>Administrador</strong>, verás todos los módulos; si eres <strong>Cajero</strong>, verás el POS, Inicio y Clientes de forma simplificada, y el Inventario como solo lectura.</li>
-                  <li>Cambia tu PIN desde <em>Configuración → Usuarios</em> pulsando el botón de llave al lado de tu perfil.</li>
-                  <li>Cierra sesión siempre al terminar tu turno.</li>
-                </ol>
+              <div class="step-details">
+                <div class="step-actions">
+                  <h4>Acciones</h4>
+                  <ol>
+                    <li>Abre la app, selecciona tu usuario en la pantalla de perfiles e ingresa tu PIN numérico.</li>
+                    <li>Si eres <strong>Administrador</strong>, verás todos los módulos; si eres <strong>Cajero</strong>, verás el POS, Inicio y Clientes de forma simplificada, y el Inventario como solo lectura.</li>
+                    <li>Cambia tu PIN desde <em>Configuración → Usuarios</em> pulsando el botón de llave al lado de tu perfil.</li>
+                    <li>Cierra sesión siempre al terminar tu turno.</li>
+                  </ol>
+                </div>
+                <div class="step-tip">
+                  <div class="tip-icon"><i data-lucide="lightbulb" aria-hidden="true"></i><h4>Tip clave</h4></div>
+                  <p>El rol Empleado no puede ver reportes de ventas ni modificar el inventario. Así proteges tu negocio y evitas errores.</p>
+                </div>
               </div>
-              <div class="step-tip">
-                <div class="tip-icon"><i data-lucide="lightbulb" aria-hidden="true"></i><h4>Tip clave</h4></div>
-                <p>El rol Empleado no puede ver reportes de ventas ni modificar el inventario. Así proteges tu negocio y evitas errores.</p>
+              <div class="step-media">
+                <div class="mock-browser">
+                  <div class="mock-browser-header">
+                    <span class="mock-dot red"></span>
+                    <span class="mock-dot yellow"></span>
+                    <span class="mock-dot green"></span>
+                  </div>
+                  <div class="mock-browser-content">
+                    <img src="screenshots/login.png" alt="Pantalla de inicio de sesión de Precios al Día" loading="lazy" />
+                  </div>
+                </div>
               </div>
             </div>
           </article>
@@ -1870,18 +1936,32 @@
               <p>El panel te muestra de un vistazo cómo va tu día: ventas, caja y estado de la sincronización.</p>
             </header>
             <div class="step-panel-body">
-              <div class="step-actions">
-                <h4>Acciones</h4>
-                <ol>
-                  <li>Revisa las ventas del día y el total en caja.</li>
-                  <li>Consulta el indicador de conexión en la esquina superior: <strong>verde (Online)</strong> = en línea, <strong>rojo (Offline)</strong> = sin conexión.</li>
-                  <li>Verifica los productos con bajo stock destacados.</li>
-                  <li>Accede rápido a cada módulo desde las tarjetas.</li>
-                </ol>
+              <div class="step-details">
+                <div class="step-actions">
+                  <h4>Acciones</h4>
+                  <ol>
+                    <li>Revisa las ventas del día y el total en caja.</li>
+                    <li>Consulta el indicador de conexión en la esquina superior: <strong>verde (Online)</strong> = en línea, <strong>rojo (Offline)</strong> = sin conexión.</li>
+                    <li>Verifica los productos con bajo stock destacados.</li>
+                    <li>Accede rápido a cada módulo desde las tarjetas.</li>
+                  </ol>
+                </div>
+                <div class="step-tip">
+                  <div class="tip-icon"><i data-lucide="lightbulb" aria-hidden="true"></i><h4>Tip clave</h4></div>
+                  <p>Si el indicador aparece en rojo (Offline), el sistema sigue funcionando con normalidad; todos los cambios se guardan localmente y se sincronizan al recuperar internet.</p>
+                </div>
               </div>
-              <div class="step-tip">
-                <div class="tip-icon"><i data-lucide="lightbulb" aria-hidden="true"></i><h4>Tip clave</h4></div>
-                <p>Si el indicador aparece en rojo (Offline), el sistema sigue funcionando con normalidad; todos los cambios se guardan localmente y se sincronizan al recuperar internet.</p>
+              <div class="step-media">
+                <div class="mock-browser">
+                  <div class="mock-browser-header">
+                    <span class="mock-dot red"></span>
+                    <span class="mock-dot yellow"></span>
+                    <span class="mock-dot green"></span>
+                  </div>
+                  <div class="mock-browser-content">
+                    <img src="screenshots/dashboard.png" alt="Dashboard principal de Precios al Día" loading="lazy" />
+                  </div>
+                </div>
               </div>
             </div>
           </article>
@@ -1894,18 +1974,32 @@
               <p>El POS está diseñado para vender rápido: busca, agrega, cobra y listo.</p>
             </header>
             <div class="step-panel-body">
-              <div class="step-actions">
-                <h4>Acciones</h4>
-                <ol>
-                  <li>Busca el producto por nombre o código en la barra superior.</li>
-                  <li>Toca el producto para agregarlo al carrito.</li>
-                  <li>Elige el método de pago (efectivo, pago móvil, transferencia, saldo a favor o Cashea).</li>
-                  <li>Confirma la venta e imprime el ticket térmico o expórtalo a PDF.</li>
-                </ol>
+              <div class="step-details">
+                <div class="step-actions">
+                  <h4>Acciones</h4>
+                  <ol>
+                    <li>Busca el producto por nombre o código en la barra superior.</li>
+                    <li>Toca el producto para agregarlo al carrito.</li>
+                    <li>Elige el método de pago (efectivo, pago móvil, transferencia, saldo a favor o Cashea).</li>
+                    <li>Confirma la venta e imprime el ticket térmico o expórtalo a PDF.</li>
+                  </ol>
+                </div>
+                <div class="step-tip">
+                  <div class="tip-icon"><i data-lucide="lightbulb" aria-hidden="true"></i><h4>Tip clave</h4></div>
+                  <p>Puedes configurar tus propios métodos de pago según lo que aceptes en tu bodega. Adapta el sistema a tu rutina, no al revés.</p>
+                </div>
               </div>
-              <div class="step-tip">
-                <div class="tip-icon"><i data-lucide="lightbulb" aria-hidden="true"></i><h4>Tip clave</h4></div>
-                <p>Puedes configurar tus propios métodos de pago según lo que aceptes en tu bodega. Adapta el sistema a tu rutina, no al revés.</p>
+              <div class="step-media">
+                <div class="mock-browser">
+                  <div class="mock-browser-header">
+                    <span class="mock-dot red"></span>
+                    <span class="mock-dot yellow"></span>
+                    <span class="mock-dot green"></span>
+                  </div>
+                  <div class="mock-browser-content">
+                    <img src="screenshots/pos.png" alt="Punto de venta de Precios al Día" loading="lazy" />
+                  </div>
+                </div>
               </div>
             </div>
           </article>
@@ -1918,18 +2012,32 @@
               <p>Para que las ventas sean exactas y nunca te quedes sin saber qué hay en la nevera.</p>
             </header>
             <div class="step-panel-body">
-              <div class="step-actions">
-                <h4>Acciones</h4>
-                <ol>
-                  <li>Agrega nuevos productos con nombre, precio y stock inicial.</li>
-                  <li>Edita los precios cuando cambien las tasas del día.</li>
-                  <li>Revisa el stock disponible producto por producto.</li>
-                  <li>Marca productos como agotados para reponer a tiempo.</li>
-                </ol>
+              <div class="step-details">
+                <div class="step-actions">
+                  <h4>Acciones</h4>
+                  <ol>
+                    <li>Agrega nuevos productos con nombre, precio y stock inicial.</li>
+                    <li>Edita los precios cuando cambien las tasas del día.</li>
+                    <li>Revisa el stock disponible producto por producto.</li>
+                    <li>Marca productos como agotados para reponer a tiempo.</li>
+                  </ol>
+                </div>
+                <div class="step-tip">
+                  <div class="tip-icon"><i data-lucide="lightbulb" aria-hidden="true"></i><h4>Tip clave</h4></div>
+                  <p>Actualiza los precios en bloque al inicio del día según la tasa vigente. Así no pierdes tiempo cambiándolos en cada venta.</p>
+                </div>
               </div>
-              <div class="step-tip">
-                <div class="tip-icon"><i data-lucide="lightbulb" aria-hidden="true"></i><h4>Tip clave</h4></div>
-                <p>Actualiza los precios en bloque al inicio del día según la tasa vigente. Así no pierdes tiempo cambiándolos en cada venta.</p>
+              <div class="step-media">
+                <div class="mock-browser">
+                  <div class="mock-browser-header">
+                    <span class="mock-dot red"></span>
+                    <span class="mock-dot yellow"></span>
+                    <span class="mock-dot green"></span>
+                  </div>
+                  <div class="mock-browser-content">
+                    <img src="screenshots/inventory.png" alt="Gestión de Inventario de Precios al Día" loading="lazy" />
+                  </div>
+                </div>
               </div>
             </div>
           </article>
@@ -1942,18 +2050,32 @@
               <p>Al final del turno, haz el cierre para cuadrar lo vendido y dejar todo listo para mañana.</p>
             </header>
             <div class="step-panel-body">
-              <div class="step-actions">
-                <h4>Acciones</h4>
-                <ol>
-                  <li>Ve a <em>Cierres de caja</em> y pulsa «Iniciar cierre».</li>
-                  <li>Revisa el resumen: ventas por método, total esperado y total real.</li>
-                  <li>Registra el monto físico que contaste.</li>
-                  <li>Exporta el reporte en PDF para tu control.</li>
-                </ol>
+              <div class="step-details">
+                <div class="step-actions">
+                  <h4>Acciones</h4>
+                  <ol>
+                    <li>Ve a <em>Cierres de caja</em> y pulsa «Iniciar cierre».</li>
+                    <li>Revisa el resumen: ventas por método, total esperado y total real.</li>
+                    <li>Registra el monto físico que contaste.</li>
+                    <li>Exporta el reporte en PDF para tu control.</li>
+                  </ol>
+                </div>
+                <div class="step-tip">
+                  <div class="tip-icon"><i data-lucide="lightbulb" aria-hidden="true"></i><h4>Tip clave</h4></div>
+                  <p>Si hay diferencia entre lo esperado y lo real, el sistema te la marca para que investigues antes de cerrar. Nunca te queda una caja sin cuadrar.</p>
+                </div>
               </div>
-              <div class="step-tip">
-                <div class="tip-icon"><i data-lucide="lightbulb" aria-hidden="true"></i><h4>Tip clave</h4></div>
-                <p>Si hay diferencia entre lo esperado y lo real, el sistema te la marca para que investigues antes de cerrar. Nunca te queda una caja sin cuadrar.</p>
+              <div class="step-media">
+                <div class="mock-browser">
+                  <div class="mock-browser-header">
+                    <span class="mock-dot red"></span>
+                    <span class="mock-dot yellow"></span>
+                    <span class="mock-dot green"></span>
+                  </div>
+                  <div class="mock-browser-content">
+                    <img src="screenshots/reports.png" alt="Módulo de reportes y cierres de Precios al Día" loading="lazy" />
+                  </div>
+                </div>
               </div>
             </div>
           </article>
@@ -1966,18 +2088,32 @@
               <p>El sistema guarda todo en el dispositivo y sube los datos a la nube cuando hay internet. Los hashes de tus PINs de seguridad se guardan encriptados de forma estrictamente local y jamás se suben a la nube por seguridad.</p>
             </header>
             <div class="step-panel-body">
-              <div class="step-actions">
-                <h4>Acciones</h4>
-                <ol>
-                  <li>Mira el indicador de conexión en la barra superior.</li>
-                  <li>Los datos se sincronizan solos al recuperar la señal.</li>
-                  <li>Haz un backup manual (exportando JSON) desde <em>Configuración → Sistema</em>.</li>
-                  <li>Restaura un respaldo anterior si necesitas cambiar de dispositivo.</li>
-                </ol>
+              <div class="step-details">
+                <div class="step-actions">
+                  <h4>Acciones</h4>
+                  <ol>
+                    <li>Mira el indicador de conexión en la barra superior.</li>
+                    <li>Los datos se sincronizan solos al recuperar la señal.</li>
+                    <li>Haz un backup manual (exportando JSON) desde <em>Configuración → Sistema</em>.</li>
+                    <li>Restaura un respaldo anterior si necesitas cambiar de dispositivo.</li>
+                  </ol>
+                </div>
+                <div class="step-tip">
+                  <div class="tip-icon"><i data-lucide="lightbulb" aria-hidden="true"></i><h4>Tip clave</h4></div>
+                  <p>Haz un backup manual al menos una vez por semana como medida extra de seguridad. Es tu red de protección además de la sincronización automática.</p>
+                </div>
               </div>
-              <div class="step-tip">
-                <div class="tip-icon"><i data-lucide="lightbulb" aria-hidden="true"></i><h4>Tip clave</h4></div>
-                <p>Haz un backup manual al menos una vez por semana como medida extra de seguridad. Es tu red de protección además de la sincronización automática.</p>
+              <div class="step-media">
+                <div class="mock-browser">
+                  <div class="mock-browser-header">
+                    <span class="mock-dot red"></span>
+                    <span class="mock-dot yellow"></span>
+                    <span class="mock-dot green"></span>
+                  </div>
+                  <div class="mock-browser-content">
+                    <img src="screenshots/dashboard.png" alt="Sincronización y estado de conexión en Precios al Día" loading="lazy" />
+                  </div>
+                </div>
               </div>
             </div>
           </article>

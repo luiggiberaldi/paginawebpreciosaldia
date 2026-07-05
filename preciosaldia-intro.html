@@ -633,9 +633,10 @@
       .what-grid {
         grid-template-columns: 1.6fr 1fr;
         grid-template-rows: auto auto auto;
+        align-items: start;
         gap: var(--space-5);
       }
-      .what-card--big { grid-row: span 3; }
+      .what-card--big { grid-row: span 3; align-self: stretch; }
     }
     .what-card {
       background: var(--surface);
@@ -674,7 +675,29 @@
       color: var(--text-muted);
       font-size: var(--text-base);
     }
-    .what-card--big p { font-size: var(--text-lg); }
+    .what-card--big p { font-size: var(--text-lg); line-height: 1.7; }
+    .what-card--big .what-benefits {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+      margin-top: var(--space-6);
+      padding-top: var(--space-6);
+      border-top: 1px solid var(--border);
+    }
+    .what-card--big .what-benefits li {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      font-size: var(--text-base);
+      color: var(--text);
+      font-weight: 500;
+    }
+    .what-card--big .what-benefits li svg {
+      width: 17px; height: 17px;
+      color: var(--primary);
+      flex-shrink: 0;
+    }
     .what-intro {
       max-width: 60ch;
       font-size: var(--text-lg);
@@ -1825,6 +1848,12 @@
             <p>
               Tu venta nunca se detiene por falta de señal. Todo se guarda en el dispositivo y, cuando vuelve la conexión, el sistema sube los cambios a la nube automáticamente — sin que tengas que hacer nada.
             </p>
+            <ul class="what-benefits" aria-label="Características principales">
+              <li><i data-lucide="check-circle-2" aria-hidden="true"></i> Ventas offline sin límite de tiempo</li>
+              <li><i data-lucide="check-circle-2" aria-hidden="true"></i> Sincronización automática al reconectarse</li>
+              <li><i data-lucide="check-circle-2" aria-hidden="true"></i> Instalable como app en celular, tablet o PC</li>
+              <li><i data-lucide="check-circle-2" aria-hidden="true"></i> Historial completo en la nube de por vida</li>
+            </ul>
           </article>
           <article class="what-card reveal">
             <div class="what-icon"><i data-lucide="calculator" aria-hidden="true"></i></div>

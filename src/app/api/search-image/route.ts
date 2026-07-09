@@ -1,9 +1,19 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "";
-const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "";
-const supabase = createClient(supabaseUrl, supabaseKey);
+let supabase: ReturnType<typeof createClient> | null = null;
+
+function getSupabase() {
+  if (!supabase) {
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "";
+    const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "";
+    if (!supabaseUrl || !supabaseKey) {
+      throw new Error("Supabase environment variables NEXT_PUBLIC_SUPABASE_URL or NEXT_PUBLIC_SUPABASE_ANON_KEY are missing.");
+    }
+    supabase = createClient(supabaseUrl, supabaseKey);
+  }
+  return supabase;
+}
 
 export async function OPTIONS() {
   return new Response(null, {
@@ -41,7 +51,7 @@ export async function GET(req: Request) {
     const slug = getSlug(trimmedQuery);
 
     // 1. Try exact slug match
-    const { data: exactMatch } = await supabase
+    const { data: exactMatch } = await getSupabase()
       .from("product_images_catalog")
       .select("name, image_url")
       .eq("id", slug)
@@ -67,7 +77,7 @@ export async function GET(req: Request) {
     const words = trimmedQuery.toLowerCase().split(/\s+/).filter(w => w.length > 2);
     if (words.length > 0) {
       // Pull catalog items to match locally using array overlaps
-      const { data: matches } = await supabase
+      const { data: matches } = await getSupabase()
         .from("product_images_catalog")
         .select("id, name, image_url")
         .overlaps("tags", words);

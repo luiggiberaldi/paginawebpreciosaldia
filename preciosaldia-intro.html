@@ -2425,7 +2425,7 @@
             <span class="price-anchor">$99.00 USD</span>
             <div class="price-main">
               <span class="price-currency">$</span>
-              <span class="price-amount">25</span>
+              <span class="price-amount">50</span>
               <span class="price-period">/ Pago Único</span>
             </div>
             <span class="price-note">Para 1 Equipo + Modo Supervisor (requiere internet)</span>
@@ -2815,7 +2815,7 @@
         "- Restaurar copia de seguridad: Configuración → Sistema → Importar copia.",
         "",
         "### Planes, Precios y Oferta de Lanzamiento",
-        "- Licencia Vitalicia (Un solo pago para siempre): Precio único promocional de $25 USD (precio regular $99 USD).",
+        "- Licencia Vitalicia (Un solo pago para siempre): Precio único promocional de $50 USD (precio regular $99 USD).",
         "- ¿Qué incluye la licencia?: Licencia válida para solo 1 equipo principal de ventas (Caja) con soporte ilimitado de por vida, e incluye gratis el Modo Supervisor (Monitoreo en Vivo) para enlazar el celular del dueño (nota: el monitoreo remoto requiere conexión a internet tanto en la Caja como en el celular del supervisor), respaldo automático en la nube, módulo Cashea y vuelto mixto integrados, y actualizaciones gratuitas para siempre.",
         "- Formas de Pago: Puedes pagar en dólares o en Bolívares al cambio oficial según la tasa del Banco Central de Venezuela (Tasa BCV del día).",
         "- Demo de 3 días: Puedes probar el sistema completamente gratis por 3 días sin ingresar tarjetas de crédito ni crear cuentas complejas. Si decides activar la licencia vitalicia después, no perderás ningún dato.",
@@ -3092,7 +3092,7 @@
           var data = await res.json();
           var rate = parseFloat(data.promedio);
           if (rate > 0) {
-            var totalBs = (25 * rate).toLocaleString("es-VE", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            var totalBs = (50 * rate).toLocaleString("es-VE", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
             var rateFormatted = rate.toLocaleString("es-VE", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
             amountSpan.textContent = totalBs;
             rateSpan.textContent = rateFormatted;

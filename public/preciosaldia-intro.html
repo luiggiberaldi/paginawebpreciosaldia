@@ -72,12 +72,11 @@
               "text": "La app es una PWA instalable. Abre preciosaldia.vercel.app en Chrome de Android, toca el menú (⋮) y selecciona «Instalar app» o «Añadir a pantalla de inicio». También está disponible como APK nativo vía Capacitor."
             }
           },
-          {
             "@type": "Question",
-            "name": "¿Qué pasa si pierdo los datos del teléfono?",
+            "name": "¿Cómo recupero mis datos si cambio de equipo?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Tu información está respaldada en la nube si habías sincronizado antes. Al iniciar sesión en otro dispositivo, los datos se descargan automáticamente. Además puedes exportar e importar backups manuales en formato JSON."
+              "text": "Tu información se guarda localmente de forma segura. Si cambias de computadora o teléfono, restauras la copia de seguridad desde el archivo generado en Configuración → Sistema o vinculas mediante el código QR para recuperar todo al instante."
             }
           },
           {
@@ -376,8 +375,35 @@
     .nav-cta:active { transform: translateY(1px); }
     .nav-cta svg { width: 16px; height: 16px; }
     @media (max-width: 540px) {
+      .nav {
+        padding-block: var(--space-2);
+        gap: var(--space-2);
+      }
+      .brand-logo {
+        height: 38px;
+        max-width: 145px;
+      }
+      .nav-actions {
+        gap: 6px;
+      }
+      .theme-toggle {
+        width: 38px;
+        height: 38px;
+        min-height: 38px;
+      }
+      .theme-toggle svg {
+        width: 18px;
+        height: 18px;
+      }
+      .nav-cta {
+        width: 38px;
+        height: 38px;
+        min-height: 38px;
+        padding: 0;
+        justify-content: center;
+        border-radius: 50%;
+      }
       .nav-cta .nav-cta-label { display: none; }
-      .nav-cta { padding-inline: var(--space-3); }
     }
 
     /* ============================================================
@@ -506,90 +532,271 @@
     }
     .hero-features svg { width: 16px; height: 16px; color: var(--primary); }
 
+    /* ============================================================
+       GALERÍA INTERACTIVA DE DEMOSTRACIÓN (SHOWCASE)
+       ============================================================ */
+    .showcase-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      justify-content: center;
+      margin-bottom: var(--space-8);
+    }
+    .showcase-tab {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-3) var(--space-5);
+      border-radius: var(--radius-full);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      font-weight: 600;
+      font-size: var(--text-sm);
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+    .showcase-tab:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      background: var(--surface-2);
+    }
+    .showcase-tab.active {
+      background: var(--primary);
+      color: var(--primary-contrast);
+      border-color: var(--primary);
+      box-shadow: var(--shadow-primary);
+    }
+    .showcase-tab svg { width: 18px; height: 18px; }
+
+    .showcase-frame {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+      max-width: 980px;
+      margin: 0 auto;
+    }
+    .showcase-frame-bar {
+      background: var(--surface-2);
+      padding: var(--space-3) var(--space-4);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+    }
+    .showcase-dots { display: flex; gap: 6px; }
+    .showcase-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .showcase-dot.red { background: #ef4444; }
+    .showcase-dot.yellow { background: #eab308; }
+    .showcase-dot.green { background: #22c55e; }
+    .showcase-title-tag {
+      font-size: var(--text-xs);
+      font-weight: 600;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .showcase-media {
+      position: relative;
+      background: var(--surface);
+      overflow: hidden;
+    }
+    .showcase-media img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: opacity 240ms ease;
+    }
+    .showcase-caption {
+      padding: var(--space-4) var(--space-6);
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      font-size: var(--text-sm);
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+    }
+
+    /* ============================================================
+       ESCASEZ & PRUEBA SOCIAL EN VIVO (PRICING CARD)
+       ============================================================ */
+    .scarcity-widget {
+      background: transparent;
+      border: none;
+      padding: 0;
+      margin-top: var(--space-2);
+      margin-bottom: var(--space-3);
+      text-align: left;
+    }
+    .scarcity-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-2);
+      font-size: var(--text-xs);
+      margin-bottom: 6px;
+    }
+    .scarcity-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-weight: 700;
+      color: #ef4444;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .scarcity-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: #ef4444;
+      box-shadow: 0 0 0 2px rgba(239,68,68,0.25);
+      animation: pulse 1.8s ease-in-out infinite;
+    }
+    .scarcity-count {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+    .scarcity-count strong {
+      color: var(--text);
+    }
+    .scarcity-bar-bg {
+      height: 7px;
+      width: 100%;
+      background: color-mix(in oklch, var(--primary) 15%, var(--border));
+      border-radius: var(--radius-full);
+      overflow: hidden;
+    }
+    .scarcity-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #f59e0b, #ef4444);
+      border-radius: var(--radius-full);
+      transition: width 1s ease-out;
+    }
+
+    .activation-ticker {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      background: var(--surface);
+      border: 1px solid color-mix(in oklch, var(--success) 35%, var(--border));
+      border-left: 4px solid var(--success);
+      border-radius: var(--radius-lg);
+      padding: var(--space-4) var(--space-5);
+      margin-top: var(--space-6);
+      text-align: left;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.07), 0 4px 6px -2px rgba(0, 0, 0, 0.03);
+      transition: opacity 350ms cubic-bezier(0.4, 0, 0.2, 1), transform 350ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .ticker-pulse-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-full);
+      background: color-mix(in oklch, var(--success) 18%, transparent);
+      color: var(--success);
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      position: relative;
+    }
+    .ticker-pulse-icon::after {
+      content: "";
+      position: absolute;
+      inset: -3px;
+      border-radius: 50%;
+      border: 2px solid var(--success);
+      opacity: 0.5;
+      animation: pulse 2.4s ease-in-out infinite;
+    }
+    .ticker-content {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      font-size: var(--text-sm);
+    }
+    .ticker-text {
+      color: var(--text);
+      line-height: 1.4;
+      font-weight: 500;
+    }
+    .ticker-text strong {
+      color: var(--primary);
+      font-weight: 700;
+    }
+    .ticker-time {
+      font-size: 11px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 500;
+    }
+
+    /* ============================================================
+       TOAST FLOTANTE DE PRUEBA SOCIAL (SOCIAL PROOF TOAST)
+       ============================================================ */
+    .social-proof-toast {
+      position: fixed;
+      bottom: 24px;
+      left: 24px;
+      z-index: 999;
+      background: var(--surface);
+      border: 1px solid color-mix(in oklch, var(--success) 35%, var(--border));
+      border-left: 4px solid var(--success);
+      border-radius: var(--radius-lg);
+      padding: 12px 16px;
+      box-shadow: 0 12px 28px -6px rgba(0, 0, 0, 0.14);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      max-width: 340px;
+      opacity: 0;
+      transform: translateY(20px);
+      pointer-events: none;
+      transition: opacity 400ms cubic-bezier(0.16, 1, 0.3, 1), transform 400ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .social-proof-toast.visible {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+    .toast-close-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 18px;
+      line-height: 1;
+      cursor: pointer;
+      padding: 4px;
+      margin-left: auto;
+      transition: color var(--transition);
+    }
+    .toast-close-btn:hover { color: var(--text); }
+
+    @media (max-width: 640px) {
+      .social-proof-toast {
+        left: 12px;
+        right: auto;
+        bottom: 92px;
+        max-width: 285px;
+        padding: 10px 12px;
+        font-size: 12px;
+      }
+    }
+
     /* Hero card mockup */
     .hero-card {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius-lg);
       box-shadow: var(--shadow-lg);
-      padding: var(--space-5);
+      overflow: hidden;
       transform: rotate(-0.5deg);
-    }
-    .hero-card-bar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding-bottom: var(--space-4);
-      border-bottom: 1px solid var(--border);
-      margin-bottom: var(--space-4);
-    }
-    .hero-card-title {
-      font-weight: 600;
-      font-size: var(--text-sm);
-    }
-    .sync-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: var(--space-2);
-      padding: 4px 10px;
-      border-radius: var(--radius-full);
-      background: color-mix(in oklch, var(--success) 16%, transparent);
-      color: var(--success);
-      font-size: var(--text-xs);
-      font-weight: 600;
-    }
-    .sync-pill .dot {
-      width: 7px; height: 7px; border-radius: 50%;
-      background: var(--success);
-      animation: pulse 2.4s ease-in-out infinite;
-    }
-    .hero-card-kpi {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-      margin-bottom: var(--space-5);
-    }
-    .kpi-label {
-      font-size: var(--text-xs);
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      font-weight: 600;
-    }
-    .kpi-value {
-      font-family: var(--font-display);
-      font-size: clamp(2rem, 5vw, 2.6rem);
-      line-height: 1;
-      color: var(--text);
-    }
-    .hero-card-rows {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-2);
-    }
-    .hero-card-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: var(--space-3);
-      border-radius: var(--radius-sm);
-      background: var(--bg);
-      font-size: var(--text-sm);
-    }
-    [data-theme="dark"] .hero-card-row { background: var(--surface-3); }
-    .hero-card-row span:last-child {
-      font-weight: 600;
-      font-variant-numeric: tabular-nums;
-    }
-    .hero-card-foot {
-      margin-top: var(--space-4);
-      padding-top: var(--space-4);
-      border-top: 1px dashed var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-size: var(--text-xs);
-      color: var(--text-muted);
     }
 
     /* ============================================================
@@ -666,9 +873,8 @@
       margin-bottom: var(--space-3);
     }
     .what-card--big h3 {
-      font-family: var(--font-display);
       font-size: var(--text-2xl);
-      font-weight: 400;
+      font-weight: 600;
       margin-bottom: var(--space-4);
     }
     .what-card p {
@@ -922,7 +1128,8 @@
     .mock-dot.green  { background: #22c55e; }
     .mock-browser-content {
       position: relative;
-      background: #000;
+      background: var(--surface);
+      overflow: hidden;
     }
     .mock-browser-content img {
       width: 100%;
@@ -1375,28 +1582,220 @@
     /* ============================================================
        CHATBOT WIDGET
        ============================================================ */
-    .fab {
+    /* ============================================================
+       SMART SALES DOCK (UNIFICADO)
+       ============================================================ */
+    .smart-dock {
       position: fixed;
       bottom: var(--space-6);
       right: var(--space-6);
       z-index: 200;
-      width: 60px; height: 60px;
-      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      font-family: var(--font-body);
+    }
+
+    .smart-dock-trigger {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-3);
+      height: 52px;
+      padding: 0 var(--space-5) 0 var(--space-3);
+      border-radius: var(--radius-full);
       background: var(--primary);
       color: var(--primary-contrast);
       border: none;
       cursor: pointer;
+      font-weight: 600;
+      font-size: var(--text-sm);
+      box-shadow: var(--shadow-primary);
+      transition: transform var(--transition), background var(--transition), box-shadow var(--transition);
+    }
+    .smart-dock-trigger:hover {
+      background: var(--primary-hover);
+      transform: scale(1.03) translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+    .smart-dock-trigger:active { transform: scale(0.97); }
+
+    .smart-dock-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: rgba(255, 255, 255, 0.18);
+      padding: 3px 9px;
+      border-radius: var(--radius-full);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+    .smart-dock-badge .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #25D366;
+      box-shadow: 0 0 0 2px rgba(37, 211, 102, 0.4);
+      animation: pulse 2s infinite;
+    }
+    .smart-dock-trigger svg {
+      transition: transform var(--transition);
+    }
+
+    /* Popover Menu */
+    .smart-dock-menu {
+      position: absolute;
+      bottom: calc(52px + var(--space-3));
+      right: 0;
+      width: min(340px, calc(100vw - 32px));
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      padding: var(--space-4);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+      opacity: 0;
+      transform: translateY(12px) scale(0.95);
+      pointer-events: none;
+      transition: opacity 240ms cubic-bezier(0.16, 1, 0.3, 1), transform 240ms cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 205;
+    }
+    .smart-dock-menu.is-open {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      pointer-events: auto;
+    }
+
+    .smart-dock-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: var(--space-2);
+      border-bottom: 1px solid var(--border);
+    }
+    .smart-dock-header h4 {
+      font-size: var(--text-xs);
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .smart-dock-close {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--text-muted);
+      padding: 2px;
       display: grid;
       place-items: center;
-      box-shadow: var(--shadow-primary);
-      transition: transform var(--transition), background var(--transition);
+      border-radius: var(--radius-full);
+      transition: background var(--transition), color var(--transition);
     }
-    .fab:hover { background: var(--primary-hover); transform: scale(1.06); }
-    .fab:active { transform: scale(0.94); }
-    .fab svg { width: 26px; height: 26px; }
-    .fab .fab-close { display: none; }
-    .fab.is-open .fab-open { display: none; }
-    .fab.is-open .fab-close { display: block; }
+    .smart-dock-close:hover { color: var(--text); background: var(--surface-2); }
+    .smart-dock-close svg { width: 16px; height: 16px; }
+
+    /* Option Cards */
+    .dock-option {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-3);
+      padding: var(--space-3);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: var(--bg);
+      text-decoration: none;
+      color: var(--text);
+      transition: background var(--transition), border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+      cursor: pointer;
+      text-align: left;
+    }
+    .dock-option:hover {
+      border-color: var(--primary);
+      transform: translateY(-1px);
+      background: var(--surface);
+    }
+    .dock-option--primary {
+      background: linear-gradient(135deg, color-mix(in oklch, #25D366 12%, var(--surface)) 0%, var(--surface) 100%);
+      border-color: color-mix(in oklch, #25D366 40%, transparent);
+    }
+    .dock-option--primary:hover {
+      border-color: #25D366;
+      box-shadow: 0 4px 14px rgba(37, 211, 102, 0.25);
+    }
+
+    .dock-option-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+    .dock-option-icon.wa { background: #25D366; color: white; }
+    .dock-option-icon.ai { background: var(--primary-soft); color: var(--primary); }
+    .dock-option-icon svg { width: 20px; height: 20px; }
+
+    .dock-option-content {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .dock-option-title {
+      font-size: var(--text-sm);
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .dock-tag {
+      font-size: 0.60rem;
+      font-weight: 700;
+      background: #25D366;
+      color: white;
+      padding: 1px 6px;
+      border-radius: var(--radius-full);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .dock-option-desc {
+      font-size: var(--text-xs);
+      color: var(--text-muted);
+      line-height: 1.35;
+    }
+
+    .fab { display: none; }
+    .wa-advisor-fab { display: none; }
+
+    /* Botón WhatsApp inline (hero, pricing, CTA) */
+    .btn-wa {
+      background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+      color: white;
+      border-color: transparent;
+    }
+    .btn-wa:hover {
+      box-shadow: 0 8px 24px -6px rgba(18, 140, 126, 0.55);
+      transform: translateY(-1px);
+      background: linear-gradient(135deg, #1EB85A 0%, #0f7a6e 100%);
+    }
+    .btn-wa svg { width: 18px; height: 18px; flex-shrink: 0; }
+
+    /* Micro-copy de urgencia bajo el hero CTA */
+    .urgency-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-xs);
+      color: var(--text-muted);
+      font-weight: 500;
+      margin-top: var(--space-2);
+      padding: var(--space-2) var(--space-3);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-full);
+    }
+    .urgency-pill svg { width: 13px; height: 13px; color: var(--success); }
 
     .chat-overlay {
       position: fixed;
@@ -1735,20 +2134,86 @@
       background: oklch(0.55 0.15 25);
     }
 
-    @media (max-width: 520px) {
+    /* Previene que los FABs tapen el texto al llegar al final de la página */
+    body {
+      padding-bottom: 80px;
+    }
+
+    @media (max-width: 540px) {
+      .smart-dock {
+        bottom: 16px;
+        right: 16px;
+      }
+      .smart-dock-trigger {
+        height: 48px;
+        padding: 0 var(--space-4) 0 var(--space-3);
+        font-size: 0.82rem;
+      }
+      .smart-dock-menu {
+        right: 0;
+        bottom: calc(48px + 10px);
+        width: calc(100vw - 32px);
+      }
       .chat-panel {
-        right: var(--space-3);
-        bottom: calc(52px + var(--space-4));
-        width: calc(100vw - var(--space-6));
-        height: calc(100vh - 110px);
+        left: 12px;
+        right: 12px;
+        bottom: 74px;
+        width: auto;
+        height: min(520px, calc(100vh - 100px));
         border-radius: var(--radius-lg);
       }
-      .fab {
-        width: 52px; height: 52px;
-        bottom: var(--space-3);
-        right: var(--space-3);
+
+      .hero {
+        padding-block: var(--space-6) var(--space-10);
       }
-      .fab svg { width: 22px; height: 22px; }
+      .hero-eyebrow {
+        font-size: 0.74rem;
+        padding: 4px 10px;
+        margin-bottom: var(--space-4);
+      }
+      .hero-title {
+        font-size: clamp(2rem, 8.5vw, 2.6rem);
+        line-height: 1.05;
+        margin-bottom: var(--space-4);
+      }
+      .hero-sub {
+        font-size: var(--text-base);
+        line-height: 1.6;
+        margin-bottom: var(--space-6);
+        max-width: 100%;
+      }
+      .hero-cta {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+      }
+      .hero-cta .btn {
+        width: 100%;
+        justify-content: center;
+      }
+      .urgency-pill {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+        font-size: 0.72rem;
+      }
+      .hero-card {
+        transform: none;
+        padding: var(--space-4);
+        margin-top: var(--space-4);
+      }
+      .section-pad {
+        padding-block: var(--space-10);
+      }
+      .what-card {
+        padding: var(--space-5);
+      }
+      .pricing-box {
+        padding: var(--space-6) var(--space-4);
+      }
+      .cta-final {
+        padding: var(--space-8) var(--space-4);
+      }
     }
   </style>
 </head>
@@ -1767,6 +2232,14 @@
           <i class="icon-sun" data-lucide="sun" aria-hidden="true"></i>
           <i class="icon-moon" data-lucide="moon" aria-hidden="true"></i>
         </button>
+        <a class="nav-cta"
+           href="https://wa.me/584124051793?text=Hola%2C%20me%20interesa%20Precios%20al%20D%C3%ADa%20para%20mi%20bodega"
+           target="_blank" rel="noopener noreferrer"
+           style="background: linear-gradient(135deg,#25D366 0%,#128C7E 100%); border: none;"
+           aria-label="Contactar asesor por WhatsApp">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          <span class="nav-cta-label">Asesor</span>
+        </a>
         <a class="nav-cta" href="#precios">
           <i data-lucide="arrow-down" aria-hidden="true"></i>
           <span class="nav-cta-label">Probar Gratis</span>
@@ -1782,50 +2255,55 @@
         <div class="hero-content reveal">
           <span class="hero-eyebrow">
             <span class="dot" aria-hidden="true"></span>
-            Instalable en cualquier celular, tablet o computadora
+            100% Pago Único · Cero mensualidades · Licencia Vitalicia $50
           </span>
           <h1 class="hero-title" id="hero-title">
             Vende más rápido.<br />
-            Administra sin internet.<br />
-            <em>Sincroniza en la nube.</em>
+            Con o sin internet.<br />
+            <em>Hecho para tu bodega.</em>
           </h1>
           <p class="hero-sub">
-            El sistema de ventas e inventario que sigue funcionando aunque se vaya la luz o el internet. Evita descuadres calculando vueltos exactos en Bs y dólares a tasa BCV, y lleva el control del fiado sin cuadernos.
+            El único sistema que no te falla cuando se va la luz ni cuando cae el internet. Vende, calcula vueltos en divisas y bolívares al instante, integra Cashea y cierra caja como un profesional — desde cualquier celular o PC.
           </p>
           <div class="hero-cta">
             <a class="btn btn-primary" href="#precios">
               <i data-lucide="arrow-down" aria-hidden="true"></i>
-              Empezar a Vender Ahora
+              Asegurar Mi Licencia por $50
+            </a>
+            <a class="btn btn-wa"
+               href="https://wa.me/584124051793?text=Hola%2C%20me%20interesa%20Precios%20al%20D%C3%ADa%20para%20mi%20bodega"
+               target="_blank" rel="noopener noreferrer">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Hablar con un Asesor
             </a>
           </div>
+          <div class="urgency-pill">
+            <i data-lucide="check-circle-2" aria-hidden="true"></i>
+            Un solo pago de $50 · Cero mensualidades o rentas · Sin tarjetas
+          </div>
           <ul class="hero-features">
-            <li><i data-lucide="wifi-off" aria-hidden="true"></i> Funciona sin internet</li>
-            <li><i data-lucide="refresh-cw" aria-hidden="true"></i> Copia en la nube</li>
-            <li><i data-lucide="receipt" aria-hidden="true"></i> Tickets térmicos</li>
-            <li><i data-lucide="shield-check" aria-hidden="true"></i> Respaldos automáticos</li>
-            <li><i data-lucide="credit-card" aria-hidden="true"></i> Módulo Cashea</li>
-            <li><i data-lucide="eye" aria-hidden="true"></i> Modo Supervisor</li>
+            <li><i data-lucide="shield-check" aria-hidden="true"></i> <strong>Cero mensualidades ni rentas fijas</strong></li>
+            <li><i data-lucide="wifi-off" aria-hidden="true"></i> Con o sin internet</li>
+            <li><i data-lucide="refresh-cw" aria-hidden="true"></i> Sincronización opcional</li>
+            <li><i data-lucide="package" aria-hidden="true"></i> Inventario inteligente</li>
+            <li><i data-lucide="trending-up" aria-hidden="true"></i> Tasa BCV (dólar/euro) y USDT automática</li>
+            <li><i data-lucide="credit-card" aria-hidden="true"></i> Cobros Cashea Integrados</li>
+            <li><i data-lucide="eye" aria-hidden="true"></i> Modo Supervisor con PIN</li>
           </ul>
         </div>
 
-        <!-- Hero mockup card -->
-        <aside class="hero-card reveal" aria-hidden="true">
-          <div class="hero-card-bar">
-            <span class="hero-card-title">Panel de hoy</span>
-            <span class="sync-pill"><span class="dot"></span> En línea</span>
+        <!-- Hero mockup browser window with real POS screenshot -->
+        <aside class="hero-card reveal" aria-hidden="true" style="padding:0; overflow:hidden;">
+          <div class="mock-browser-header" style="background: var(--surface-2); padding: 10px 14px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border);">
+            <div style="display: flex; gap: 6px;">
+              <span class="mock-dot red"></span>
+              <span class="mock-dot yellow"></span>
+              <span class="mock-dot green"></span>
+            </div>
+            <span class="sync-pill"><span class="dot"></span> Sistema en vivo</span>
           </div>
-          <div class="hero-card-kpi">
-            <span class="kpi-label">Ventas de hoy</span>
-            <span class="kpi-value">$ 1.245,80</span>
-          </div>
-          <div class="hero-card-rows">
-            <div class="hero-card-row"><span>Harina P.A.N 1&nbsp;kg</span><span>$ 4,50</span></div>
-            <div class="hero-card-row"><span>Refresco 1.5&nbsp;L</span><span>$ 3,20</span></div>
-            <div class="hero-card-row"><span>Queso blanco 500g</span><span>$ 6,80</span></div>
-          </div>
-          <div class="hero-card-foot">
-            <span>3&nbsp;ventas · Caja abierta</span>
-            <span>Última sync · hace 2&nbsp;min</span>
+          <div style="position: relative; background: var(--surface); overflow: hidden;">
+            <img src="screenshots/login.png" alt="Pantalla de inicio de sesión de Precios al Día" style="width: 100%; height: auto; display: block;" />
           </div>
         </aside>
       </div>
@@ -1836,45 +2314,133 @@
       <div class="container">
         <div class="section-head reveal">
           <span class="section-eyebrow">¿Qué es?</span>
-          <h2 class="section-title" id="what-title">Precios al Día Abasto, en palabras simples</h2>
+          <h2 class="section-title" id="what-title">Precios al Día Bodega, en palabras simples</h2>
         </div>
         <p class="what-intro reveal">
-          Es un sistema hecho para la bodega y el abasto venezolano. Combina un punto de venta rápido con gestión de inventario, cierres de caja y sincronización en la nube — todo en una app que funciona con o sin internet. Lo abres, vendes, administras y cierras el día sin complicaciones.
+          Es el único sistema POS y administrativo diseñado específicamente para las bodegas, abastos y pequeños comercios venezolanos. Combina un punto de venta ultra-rápido, gestión de inventario y cierres de caja en una aplicación responsiva y autónoma que funciona al 100% con o sin conexión a internet.
         </p>
         <div class="what-grid">
           <article class="what-card what-card--big reveal">
             <div class="what-icon"><i data-lucide="wifi-off" aria-hidden="true"></i></div>
-            <h3>Funciona sin internet. Sincroniza solo.</h3>
+            <h3>Funciona con o sin internet. Sincroniza al volver.</h3>
             <p>
-              Tu venta nunca se detiene por falta de señal. Todo se guarda en el dispositivo y, cuando vuelve la conexión, el sistema sube los cambios a la nube automáticamente — sin que tengas que hacer nada.
+              Tu negocio nunca se detiene. Vende sin conexión durante apagones o caídas de señal. Todas tus ventas y registros se guardan de forma local y se sincronizan de manera segura en la nube tan pronto detecta conexión, de forma totalmente invisible para ti.
             </p>
             <ul class="what-benefits" aria-label="Características principales">
-              <li><i data-lucide="check-circle-2" aria-hidden="true"></i> Ventas offline sin límite de tiempo</li>
-              <li><i data-lucide="check-circle-2" aria-hidden="true"></i> Sincronización automática al reconectarse</li>
-              <li><i data-lucide="check-circle-2" aria-hidden="true"></i> Instalable como app en celular, tablet o PC</li>
-              <li><i data-lucide="check-circle-2" aria-hidden="true"></i> Historial completo en la nube de por vida</li>
+              <li><i data-lucide="check-circle-2" aria-hidden="true"></i> Ventas locales ilimitadas y fluidas sin internet</li>
+              <li><i data-lucide="check-circle-2" aria-hidden="true"></i> Sincronización en la nube automática en segundo plano</li>
+              <li><i data-lucide="check-circle-2" aria-hidden="true"></i> Cero datos perdidos por cortes de energía imprevistos</li>
+              <li><i data-lucide="check-circle-2" aria-hidden="true"></i> Instalable en cualquier celular, tablet o PC en 1 clic</li>
             </ul>
           </article>
           <article class="what-card reveal">
-            <div class="what-icon"><i data-lucide="calculator" aria-hidden="true"></i></div>
-            <h3>Vuelto Mixto y Tasas BCV</h3>
-            <p>Calcula vueltos combinados en Bs/USD/COP al instante según la tasa oficial del día sin descuadres ni retrasos.</p>
+            <div class="what-icon"><i data-lucide="settings" aria-hidden="true"></i></div>
+            <h3>Cero Configuraciones Tediosas</h3>
+            <p>Olvídate de pagar técnicos costosos, instalar bases de datos SQL pesadas o configurar redes locales complejas. Abre el sistema, ingresa tu cuenta y empieza a facturar de inmediato con todo listo de fábrica.</p>
           </article>
           <article class="what-card reveal">
-            <div class="what-icon"><i data-lucide="smartphone" aria-hidden="true"></i></div>
-            <h3>Módulo Cashea</h3>
-            <p>Registra cobros en cuotas nativos. El cliente paga su inicial (60% o 40%) en caja y la porción restante se asigna como cuenta por cobrar automáticamente.</p>
+            <div class="what-icon"><i data-lucide="calculator" aria-hidden="true"></i></div>
+            <h3>Vuelto Mixto y Multi-Tasa</h3>
+            <p>Calcula vueltos combinados en Bs/USD/COP al instante según la tasa oficial del día (BCV, paralelo, euro) previniendo descuadres tipográficos y de caja.</p>
+          </article>
+          <article class="what-card reveal">
+            <div class="what-icon"><i data-lucide="credit-card" aria-hidden="true"></i></div>
+            <h3>Módulo Cashea Integrado</h3>
+            <p>Registra cobros financiados. Calcula la inicial (40% o 60%) en caja y asigna automáticamente la porción financiada como saldo pendiente del cliente en su perfil.</p>
+          </article>
+          <article class="what-card reveal">
+            <div class="what-icon"><i data-lucide="notebook" aria-hidden="true"></i></div>
+            <h3>Gestión de Deudas y Fiados</h3>
+            <p>Olvídate del cuaderno de fiados de papel que se pierde o se rompe. Registra el saldo pendiente de tus clientes al instante, abona pagos parciales y lleva el control exacto de quién te debe y cuánto.</p>
           </article>
           <article class="what-card reveal">
             <div class="what-icon"><i data-lucide="eye" aria-hidden="true"></i></div>
-            <h3>Modo Supervisor</h3>
-            <p>Accede a un panel de control con PIN exclusivo para el dueño. Consulta reportes, edita precios y autoriza descuentos sin que el cajero vea información sensible.</p>
+            <h3>Modo Supervisor Remoto</h3>
+            <p>Accede a reportes de ganancias y ventas, audita cierres de caja y gestiona el inventario de forma remota usando tu PIN exclusivo de dueño, sin exponer datos sensibles.</p>
           </article>
-          <article class="what-card reveal">
-            <div class="what-icon"><i data-lucide="shield-check" aria-hidden="true"></i></div>
-            <h3>Tu información segura</h3>
-            <p>Respaldos en la nube y en el dispositivo. Tu data siempre disponible, aun si cambias de teléfono.</p>
-          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ DEMOSTRACIÓN EN VIVO (SHOWCASE) ============ -->
+    <section class="section-pad" style="background: var(--surface-2); border-block: 1px solid var(--border);" aria-labelledby="showcase-title">
+      <div class="container">
+        <div class="section-head reveal" style="text-align: center; margin-inline: auto;">
+          <span class="section-eyebrow">Demostración Visual</span>
+          <h2 class="section-title" id="showcase-title">El sistema real, diseñado para la velocidad de tu caja</h2>
+          <p class="section-lead" style="max-width: 54ch; margin-inline: auto;">Explora las pantallas reales de Precios al Día tal como se ven en una bodega en operación.</p>
+        </div>
+
+        <div class="showcase-tabs reveal" role="tablist" aria-label="Pantallas del sistema">
+          <button class="showcase-tab active" data-img="screenshots/pos.png" data-title="Punto de Venta (POS)" data-desc="Venta rápida con catálogo visual de productos, cálculo de totales en dólares y bolívares en tiempo real." type="button" role="tab" aria-selected="true">
+            <i data-lucide="shopping-cart" aria-hidden="true"></i>
+            Punto de Venta
+          </button>
+          <button class="showcase-tab" data-img="screenshots/checkout.png" data-title="Vuelto Mixto y Pagos" data-desc="Cobro en divisas con cálculo automático de vuelto combinado en USD y bolívares al cambio oficial del día." type="button" role="tab" aria-selected="false">
+            <i data-lucide="calculator" aria-hidden="true"></i>
+            Vueltos y Cobro
+          </button>
+          <button class="showcase-tab" data-img="screenshots/inventory.png" data-title="Gestión de Inventario" data-desc="Control de stock por producto, cálculo automático de días de inventario restante y actualización rápida de precios." type="button" role="tab" aria-selected="false">
+            <i data-lucide="package" aria-hidden="true"></i>
+            Inventario
+          </button>
+          <button class="showcase-tab" data-img="screenshots/dashboard.png" data-title="Dashboard & Métricas" data-desc="Panel principal con total de ventas diarias, tasa BCV sincronizada y ranking de productos más vendidos." type="button" role="tab" aria-selected="false">
+            <i data-lucide="layout-dashboard" aria-hidden="true"></i>
+            Dashboard
+          </button>
+          <button class="showcase-tab" data-img="screenshots/login.png" data-title="Perfiles & Seguridad" data-desc="Selección simple de operador con PIN numérico de seguridad y separación de roles (Admin y Cajeros)." type="button" role="tab" aria-selected="false">
+            <i data-lucide="shield-check" aria-hidden="true"></i>
+            Control de Acceso
+          </button>
+        </div>
+
+        <div class="showcase-frame reveal">
+          <div class="showcase-frame-bar">
+            <div class="showcase-dots">
+              <span class="showcase-dot red"></span>
+              <span class="showcase-dot yellow"></span>
+              <span class="showcase-dot green"></span>
+            </div>
+            <span class="showcase-title-tag" id="showcaseTitleTag">
+              <i data-lucide="check-circle-2" style="width:14px;height:14px;color:var(--success)"></i>
+              <span id="showcaseTitleText" style="font-weight:700; color:var(--text)">Punto de Venta (POS)</span>
+            </span>
+            <span style="font-size:11px; color:var(--text-muted); font-weight:600;">100% Offline-First</span>
+          </div>
+          <div class="showcase-media">
+            <img id="showcaseImg" src="screenshots/pos.png" alt="Captura real del sistema Precios al Día" loading="lazy" />
+          </div>
+          <div class="showcase-caption">
+            <span id="showcaseDesc">Venta rápida con catálogo visual de productos, cálculo de totales en dólares y bolívares en tiempo real.</span>
+            <span style="font-size:11px; font-weight:600; color:var(--primary); display:inline-flex; align-items:center; gap:4px;">
+              <i data-lucide="sparkles" style="width:13px;height:13px"></i> Interfaz Real
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CO-CREACIÓN Y FEEDBACK ============ -->
+    <section class="section-pad" style="background: linear-gradient(180deg, var(--bg) 0%, var(--surface) 100%); border-top: 1px solid var(--border);" aria-labelledby="co-creation-title">
+      <div class="container" style="max-width: 900px; text-align: center;">
+        <div class="reveal" style="display: flex; flex-direction: column; align-items: center; gap: var(--space-4);">
+          <div style="width: 56px; height: 56px; display: grid; place-items: center; border-radius: var(--radius-full); background: var(--primary-soft); color: var(--primary); margin-bottom: var(--space-2);">
+            <i data-lucide="heart-handshake" style="width: 28px; height: 28px;"></i>
+          </div>
+          <span class="section-eyebrow" style="margin-bottom: 0;">Unidos por tu Crecimiento</span>
+          <h2 class="section-title" id="co-creation-title" style="font-size: var(--text-2xl); font-family: var(--font-display);">Diseñado para las Bodegas que Otros Olvidaron</h2>
+          <p style="font-size: var(--text-lg); color: var(--text-muted); line-height: 1.7; max-width: 72ch; margin-bottom: var(--space-4);">
+            La gran industria del software diseña sistemas para supermercados gigantes, cobrando miles de dólares y exigiendo configuraciones imposibles. <strong>Nosotros diseñamos para ti</strong>: la bodega, el abasto de la esquina, el pequeño comerciante venezolano.
+          </p>
+          <div style="background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--radius-lg); padding: var(--space-6); text-align: left; box-shadow: var(--shadow-sm); width: 100%;">
+            <h4 style="font-size: var(--text-base); font-weight: 600; color: var(--primary); margin-bottom: var(--space-2); display: flex; align-items: center; gap: var(--space-2);">
+              <i data-lucide="message-square-plus" style="width: 20px; height: 20px;"></i>
+              Trabajarás de la mano con los desarrolladores
+            </h4>
+            <p style="font-size: var(--text-sm); color: var(--text); line-height: 1.6;">
+              No somos una corporación lejana ni usamos contestadores automáticos. Tu feedback es nuestra prioridad número uno para seguir perfeccionando el sistema. Cada sugerencia, reporte de uso o idea de mejora va directa al equipo que escribe el código, adaptando Precios al Día a las necesidades reales del día a día en Venezuela.
+            </p>
+          </div>
         </div>
       </div>
     </section>
@@ -2045,23 +2611,23 @@
           <article class="step-panel" id="step-panel-2" data-panel="2" role="tabpanel" aria-labelledby="step3-title" hidden>
             <header class="step-panel-head">
               <span class="step-tag"><span class="step-tag-num">3</span> Punto de venta</span>
-              <h3 id="step3-title">Haz una venta en segundos</h3>
-              <p>El POS está diseñado para vender rápido: busca, agrega, cobra y listo.</p>
+              <h3 id="step3-title">Haz una venta rápida con cobro exacto y Cashea</h3>
+              <p>El POS está diseñado para vender en segundos con o sin internet. Ofrece vuelto mixto automático y cobros financiados de forma nativa.</p>
             </header>
             <div class="step-panel-body">
               <div class="step-details">
                 <div class="step-actions">
                   <h4>Acciones</h4>
                   <ol>
-                    <li>Busca el producto por nombre o código en la barra superior.</li>
-                    <li>Toca el producto para agregarlo al carrito.</li>
-                    <li>Elige el método de pago (efectivo, pago móvil, transferencia, saldo a favor o Cashea).</li>
-                    <li>Confirma la venta e imprime el ticket térmico o expórtalo a PDF.</li>
+                    <li>Busca productos escribiendo o escaneando el código de barras (se agrega directo al carrito).</li>
+                    <li>Selecciona el cliente de la base de datos integrada para habilitar opciones de crédito/Cashea.</li>
+                    <li>Elige el método de pago: efectivo, pago móvil, saldo a favor o <strong>Cashea</strong> (calcula la inicial y el saldo financiado de inmediato).</li>
+                    <li>Confirma la transacción para registrar la venta y el saldo en caja.</li>
                   </ol>
                 </div>
                 <div class="step-tip">
                   <div class="tip-icon"><i data-lucide="lightbulb" aria-hidden="true"></i><h4>Tip clave</h4></div>
-                  <p>Puedes configurar tus propios métodos de pago según lo que aceptes en tu bodega. Adapta el sistema a tu rutina, no al revés.</p>
+                  <p>Si cobras con Cashea, la deuda restante se asocia automáticamente a la ficha del cliente en su base de datos. Así mantienes tus cobros bajo control absoluto.</p>
                 </div>
               </div>
               <div class="step-media">
@@ -2133,23 +2699,23 @@
           <article class="step-panel" id="step-panel-4" data-panel="4" role="tabpanel" aria-labelledby="step5-title" hidden>
             <header class="step-panel-head">
               <span class="step-tag"><span class="step-tag-num">5</span> Cierre de caja</span>
-              <h3 id="step5-title">Cuadra el día con el cierre de caja</h3>
-              <p>Al final del turno, haz el cierre para cuadrar lo vendido y dejar todo listo para mañana.</p>
+              <h3 id="step5-title">Cuadra tu turno e imprime comprobantes</h3>
+              <p>Al final de tu jornada, haz el cierre de caja para auditar los ingresos y emite recibos impresos o digitales de forma automática.</p>
             </header>
             <div class="step-panel-body">
               <div class="step-details">
                 <div class="step-actions">
                   <h4>Acciones</h4>
                   <ol>
-                    <li>Ve a <em>Cierres de caja</em> y pulsa «Iniciar cierre».</li>
-                    <li>Revisa el resumen: ventas por método, total esperado y total real.</li>
-                    <li>Registra el monto físico que contaste.</li>
-                    <li>Exporta el reporte en PDF para tu control.</li>
+                    <li>Ingresa a Cierres de caja y revisa el total de ventas acumuladas.</li>
+                    <li>Registra el dinero físico que tienes en caja en Bs, dólares y otras monedas.</li>
+                    <li>Imprime el ticket térmico de comprobante de venta o cierre para tus registros físicos.</li>
+                    <li>Visualiza y descarga reportes detallados en PDF si prefieres un control digital y ecológico.</li>
                   </ol>
                 </div>
                 <div class="step-tip">
                   <div class="tip-icon"><i data-lucide="lightbulb" aria-hidden="true"></i><h4>Tip clave</h4></div>
-                  <p>Si hay diferencia entre lo esperado y lo real, el sistema te la marca para que investigues antes de cerrar. Nunca te queda una caja sin cuadrar.</p>
+                  <p>El sistema es compatible de fábrica con cualquier impresora térmica (58mm u 80mm) vía USB o red local. Conéctala y empieza a imprimir al instante sin instalar drivers complejos.</p>
                 </div>
               </div>
               <div class="step-media">
@@ -2161,7 +2727,7 @@
                       <span class="mock-dot green"></span>
                     </div>
                     <div class="mock-browser-content">
-                      <img src="screenshots/reports.png" alt="Módulo de reportes y cierres de Precios al Día" loading="lazy" />
+                      <img src="screenshots/checkout.png" alt="Cobro en divisas y vuelto mixto en Precios al Día" loading="lazy" />
                     </div>
                   </div>
                 </div>
@@ -2177,23 +2743,23 @@
           <article class="step-panel" id="step-panel-5" data-panel="5" role="tabpanel" aria-labelledby="step6-title" hidden>
             <header class="step-panel-head">
               <span class="step-tag"><span class="step-tag-num">6</span> Sincronización</span>
-              <h3 id="step6-title">Tu información siempre segura, online u offline</h3>
-              <p>El sistema guarda todo en el dispositivo y sube los datos a la nube cuando hay internet. Los hashes de tus PINs de seguridad se guardan encriptados de forma estrictamente local y jamás se suben a la nube por seguridad.</p>
+              <h3 id="step6-title">Tu información segura en tu equipo y en la nube</h3>
+              <p>Tu licencia de 1 equipo guarda todo de forma offline local en IndexedDB y sube copias a la nube en segundo plano para monitorización del dueño y backups.</p>
             </header>
             <div class="step-panel-body">
               <div class="step-details">
                 <div class="step-actions">
                   <h4>Acciones</h4>
                   <ol>
-                    <li>Mira el indicador de conexión en la barra superior.</li>
-                    <li>Los datos se sincronizan solos al recuperar la señal.</li>
-                    <li>Haz un backup manual (exportando JSON) desde <em>Configuración → Sistema</em>.</li>
-                    <li>Restaura un respaldo anterior si necesitas cambiar de dispositivo.</li>
+                    <li>El sistema funciona 100% de manera autónoma con o sin internet. La nube es solo de resguardo.</li>
+                    <li>Escanea el código QR de instalación autogenerado con la Estación Maestra para una activación instantánea y permanente de tu caja.</li>
+                    <li>Genera backups manuales en archivo JSON cifrado local para guardarlo de manera independiente.</li>
+                    <li>Por seguridad, los hashes de tus PINs y contraseñas jamás se suben a internet; quedan resguardados localmente.</li>
                   </ol>
                 </div>
                 <div class="step-tip">
                   <div class="tip-icon"><i data-lucide="lightbulb" aria-hidden="true"></i><h4>Tip clave</h4></div>
-                  <p>Haz un backup manual al menos una vez por semana como medida extra de seguridad. Es tu red de protección además de la sincronización automática.</p>
+                  <p>Al ser offline-first nativo, tu negocio es inmune a las caídas de internet o de luz. Vendes y registras todo localmente y te relajas.</p>
                 </div>
               </div>
               <div class="step-media">
@@ -2259,12 +2825,12 @@
 
           <div class="faq-item reveal">
             <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a-2">
-              <span>¿Cuántos dispositivos puedo usar a la vez?</span>
+              <span>¿Puedo usar el sistema en varios equipos?</span>
               <span class="faq-icon"><i data-lucide="plus" aria-hidden="true"></i></span>
             </button>
             <div class="faq-a" id="faq-a-2" role="region">
               <div class="faq-a-inner">
-                Puedes usar varios dispositivos a la vez. La sincronización bidireccional con Supabase mantiene todos actualizados cuando hay conexión. Cada dispositivo también opera de forma independiente sin internet, así que nunca dependes de uno solo.
+                La licencia vitalicia de lanzamiento de $50 USD está diseñada y pre-configurada para <strong>1 equipo de ventas principal (Caja)</strong>. Sin embargo, incluye acceso de por vida al <strong>Modo Supervisor</strong>, el cual te permite enlazar tu teléfono celular personal para ver todas las ventas y cierres de tu caja en tiempo real y de forma remota, sin requerir una licencia de caja adicional.
               </div>
             </div>
           </div>
@@ -2283,12 +2849,12 @@
 
           <div class="faq-item reveal">
             <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a-4">
-              <span>¿Qué pasa si pierdo los datos del teléfono?</span>
+              <span>¿Cómo recupero mis datos si cambio de computadora o teléfono?</span>
               <span class="faq-icon"><i data-lucide="plus" aria-hidden="true"></i></span>
             </button>
             <div class="faq-a" id="faq-a-4" role="region">
               <div class="faq-a-inner">
-                Tu información está respaldada de forma segura en internet. Si cambias de teléfono o computadora, solo debes iniciar sesión y tus datos se descargarán automáticamente. También puedes crear y descargar copias de seguridad en un archivo desde la sección de <em>Configuración → Sistema</em> para guardarlo donde desees.
+                Tu información se guarda de forma segura localmente en tu equipo. Si cambias de computadora o teléfono, simplemente restaura la copia de seguridad descargada en <em>Configuración → Sistema</em> o vincula mediante el código QR. Recuperas todo tu catálogo, inventario y ventas al instante, sin depender de un inicio de sesión en la nube.
               </div>
             </div>
           </div>
@@ -2360,6 +2926,18 @@
             </div>
           </div>
 
+          <div class="faq-item reveal">
+            <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a-10">
+              <span>¿En qué se diferencia de otros sistemas POS tradicionales?</span>
+              <span class="faq-icon"><i data-lucide="plus" aria-hidden="true"></i></span>
+            </button>
+            <div class="faq-a" id="faq-a-10" role="region">
+              <div class="faq-a-inner">
+                La mayoría de los sistemas POS te obligan a comprar servidores dedicados costosos, configurar IP fijas en tu red local, instalar motores de bases de datos pesados (como SQL Server) y contratar programadores solo para la instalación. <strong>Precios al Día elimina todo eso.</strong> Se instala directamente desde el navegador Chrome como una PWA liviana en cualquier dispositivo (Windows, Android, etc.) y funciona de inmediato con configuraciones automáticas pre-cargadas. Es tan intuitivo que tus empleados aprenderán a usarlo en 5 minutos.
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
@@ -2368,49 +2946,49 @@
     <section id="precios" class="section-pad animate-in fade-in" aria-labelledby="pricing-title" style="background: var(--surface-2); border-block: 1px solid var(--border);">
       <div class="container">
         <div class="section-head reveal">
-          <span class="section-eyebrow">Planes y Precios</span>
+          <span class="section-eyebrow">Fase de Lanzamiento</span>
           <h2 class="section-title" id="pricing-title">Un solo pago. Para siempre.</h2>
-          <p class="section-lead">Sin suscripciones mensuales, sin comisiones ocultas y sin sorpresas. Invierte hoy en tu negocio y úsalo de por vida.</p>
+          <p class="section-lead">Sin suscripciones mensuales ni sorpresas. Invierte hoy en tu negocio y úsalo con o sin internet de por vida.</p>
         </div>
 
         <div class="pricing-wrap reveal">
           <div class="pricing-content">
-            <h3>¿Por qué pagar mensualidades es cosa del pasado?</h3>
-            <p>Sabemos lo difícil que es mantener un negocio en Venezuela cuando los gastos fijos no paran de subir. Por eso, eliminamos las suscripciones. Con un único pago, adquieres una herramienta definitiva que trabaja para ti todos los días.</p>
+            <h3>¿Por qué pagar mensualidades no tiene sentido para tu bodega?</h3>
+            <p>Sabemos lo difícil que es mantener un negocio en Venezuela cuando los gastos fijos no paran de subir. Por eso, eliminamos las suscripciones. Con un único pago de lanzamiento, adquieres una herramienta que funciona con o sin conexión.</p>
             <div class="pricing-benefit-list">
               <div class="pricing-benefit-item">
                 <i data-lucide="check-circle-2" aria-hidden="true"></i>
                 <div class="pricing-benefit-text">
-                  <h4>Licencia Vitalicia (1 Equipo)</h4>
-                  <p>Un solo pago. Válido para 1 dispositivo de ventas principal (Caja) con soporte ilimitado de por vida.</p>
+                  <h4>Licencia Vitalicia (1 Equipo de Ventas)</h4>
+                  <p>Un solo pago. Válido para tu dispositivo de ventas principal (Caja) con soporte ilimitado de por vida. (Por ahora no contamos con soporte multidispositivo de cobro simultáneo).</p>
+                </div>
+              </div>
+              <div class="pricing-benefit-item">
+                <i data-lucide="check-circle-2" aria-hidden="true"></i>
+                <div class="pricing-benefit-text">
+                  <h4>Funciona Con o Sin Internet</h4>
+                  <p>No dependes de Cantv o datos móviles para facturar. Puedes realizar todas tus operaciones localmente y cobrar sin interrupciones.</p>
                 </div>
               </div>
               <div class="pricing-benefit-item">
                 <i data-lucide="check-circle-2" aria-hidden="true"></i>
                 <div class="pricing-benefit-text">
                   <h4>Modo Supervisor Incluido</h4>
-                  <p>Enlaza el celular del dueño para ver las ventas y ganancias del negocio en tiempo real desde la calle (requiere conexión a internet en la Caja y el celular).</p>
-                </div>
-              </div>
-              <div class="pricing-benefit-item">
-                <i data-lucide="check-circle-2" aria-hidden="true"></i>
-                <div class="pricing-benefit-text">
-                  <h4>Sincronización en la Nube de por Vida</h4>
-                  <p>Respaldos automáticos en tiempo real y base de datos en la nube incluida para mantener tu data a salvo.</p>
+                  <p>Enlaza tu celular personal de dueño para ver las ventas y reportes de tu negocio en tiempo real (requiere internet en la Caja y en tu celular).</p>
                 </div>
               </div>
               <div class="pricing-benefit-item">
                 <i data-lucide="check-circle-2" aria-hidden="true"></i>
                 <div class="pricing-benefit-text">
                   <h4>Módulo Cashea y Vueltos Integrados</h4>
-                  <p>Registra tus ventas financiadas y calcula cambios exactos al instante según la tasa de tu preferencia.</p>
+                  <p>Calcula vueltos mixtos al instante y procesa cobros en cuotas de Cashea de manera directa en tu caja.</p>
                 </div>
               </div>
               <div class="pricing-benefit-item">
                 <i data-lucide="check-circle-2" aria-hidden="true"></i>
                 <div class="pricing-benefit-text">
-                  <h4>Actualizaciones Gratis para Siempre</h4>
-                  <p>Accede a todas las nuevas características y optimizaciones del sistema sin costos adicionales de por vida.</p>
+                  <h4>Actualizaciones Gratis de por Vida</h4>
+                  <p>Recibe mejoras continuas desarrolladas codo a codo basados en tu feedback sin pagar nada extra en el futuro.</p>
                 </div>
               </div>
             </div>
@@ -2418,17 +2996,25 @@
 
           <div class="pricing-box">
             <span class="pricing-badge">Lanzamiento</span>
-            <div class="price-scarcity" style="font-size: var(--text-xs); color: var(--error); font-weight: 700; margin-top: var(--space-2); text-transform: uppercase; letter-spacing: 0.05em; display: flex; align-items: center; justify-content: center; gap: 4px;">
-              <i data-lucide="alert-circle" style="width: 12px; height: 12px;"></i>
-              Limitado a las primeras 100 licencias
+            
+            <!-- Escasez Dinámica / Stock limit -->
+            <div class="scarcity-widget">
+              <div class="scarcity-header">
+                <span class="scarcity-badge"><span class="scarcity-dot"></span> ÚLTIMAS LICENCIAS</span>
+                <span class="scarcity-count">Quedan <strong>14 de 100</strong> a $50</span>
+              </div>
+              <div class="scarcity-bar-bg">
+                <div class="scarcity-bar-fill" style="width: 86%;"></div>
+              </div>
             </div>
+
             <span class="price-anchor">$99.00 USD</span>
             <div class="price-main">
               <span class="price-currency">$</span>
               <span class="price-amount">50</span>
-              <span class="price-period">/ Pago Único</span>
+              <span class="price-period">/ Pago Único (Sin Mensualidades)</span>
             </div>
-            <span class="price-note">Para 1 Equipo + Modo Supervisor (requiere internet)</span>
+            <span class="price-note">Licencia vitalicia para 1 Caja + Acceso Supervisor</span>
             <div class="price-bs" id="priceBsContainer" style="font-size: 1.15rem; font-weight: 700; color: var(--primary); margin: var(--space-2) 0; text-align: center; display: none;">
               o <span id="priceBsAmount">...</span> Bs.
               <div style="font-size: 10px; font-weight: 500; color: var(--text-muted); margin-top: 2px;">
@@ -2439,21 +3025,38 @@
               <i data-lucide="info" style="display:inline-block; width:14px; height:14px; vertical-align:middle; margin-right:4px;" aria-hidden="true"></i>
               Pagadero en Bolívares al cambio oficial (Tasa BCV)
             </div>
+
+            <!-- 2 Botones Claros y Directos -->
             <a class="btn btn-primary" href="https://preciosaldiaoficial.vercel.app/" target="_blank" rel="noopener noreferrer">
               <i data-lucide="rocket" aria-hidden="true"></i>
-              Asegurar Mi Licencia Vitalicia
+              Asegurar Mi Licencia por $50
             </a>
-            <a class="btn btn-ghost" href="https://preciosaldiaoficial.vercel.app/" target="_blank" rel="noopener noreferrer" style="margin-top: var(--space-2); width: 100%;">
-              <i data-lucide="gift" aria-hidden="true"></i>
-              Probar Demo Gratis por 3 Días
+            <a class="btn btn-wa"
+               href="https://wa.me/584124051793?text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20Precios%20al%20D%C3%ADa"
+               target="_blank" rel="noopener noreferrer"
+               style="margin-top: var(--space-2); width: 100%;">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Hablar con un Asesor
             </a>
-            <div class="price-demo-note" style="font-size: 11px; color: var(--text-muted); text-align: center; margin-top: 6px;">
-              Actívalo con 1 clic • Sin tarjetas ni registros obligatorios
+
+            <div class="pricing-guarantee" style="margin-top: var(--space-4); padding: var(--space-3); background: color-mix(in oklch, var(--success) 8%, var(--surface)); border-radius: var(--radius); border: 1px dashed color-mix(in oklch, var(--success) 35%, transparent); text-align: left; font-size: 12px; line-height: 1.4;">
+              <div style="display: flex; align-items: center; gap: 8px; font-weight: 700; color: var(--success); margin-bottom: 3px;">
+                <i data-lucide="shield-check" style="width: 18px; height: 18px; flex-shrink: 0;" aria-hidden="true"></i>
+                Garantía de Satisfacción 100% (14 Días)
+              </div>
+              <span style="color: var(--text-muted);">Si el sistema no cumple lo prometido en tu bodega, te devolvemos el 100% de tu dinero sin preguntas ni trabas.</span>
             </div>
-            <div class="pricing-guarantee">
-              <i data-lucide="shield-check" aria-hidden="true"></i>
-              <span>Garantía de funcionamiento 100% sin internet</span>
-            </div>
+          </div>
+        </div>
+
+        <!-- Activaciones en Vivo / Social Proof Ticker (Debajo de la tarjeta para dejarla limpia) -->
+        <div class="activation-ticker reveal" id="activationTicker" aria-live="polite" style="max-width: 600px; margin: var(--space-6) auto 0 auto;">
+          <div class="ticker-pulse-icon">
+            <i data-lucide="store" style="width:20px;height:20px;" aria-hidden="true"></i>
+          </div>
+          <div class="ticker-content">
+            <span class="ticker-text" id="tickerText"><strong>Abasto La Flor</strong> (Maracay) acaba de activar su Licencia Vitalicia</span>
+            <span class="ticker-time" id="tickerTime"><span style="display:inline-flex; align-items:center; gap:4px; font-weight:700; color:var(--success);"><span style="width:6px;height:6px;border-radius:50%;background:var(--success);display:inline-block;"></span> En vivo</span> · Hace 3 minutos · <span style="color:var(--success); font-weight:600;">✓ Verificado</span></span>
           </div>
         </div>
       </div>
@@ -2465,10 +3068,22 @@
         <div class="cta-final reveal">
           <h2 id="cta-title">Toma el control de tu bodega hoy mismo</h2>
           <p>Únete a las bodegas y abastos venezolanos que ya dejaron los cuadernos y venden sin depender del internet.</p>
-          <div class="cta-actions" style="display: flex; flex-direction: column; gap: var(--space-2); align-items: center; width: 100%; max-width: 320px; margin: 0 auto;">
+          <div class="cta-actions" style="display: flex; flex-direction: column; gap: var(--space-2); align-items: center; width: 100%; max-width: 340px; margin: 0 auto;">
             <a class="btn" href="https://preciosaldiaoficial.vercel.app/" target="_blank" rel="noopener noreferrer" style="width: 100%; display: flex; justify-content: center; align-items: center; gap: 8px;">
               <i data-lucide="rocket" aria-hidden="true"></i>
               Empezar a Vender Ahora
+            </a>
+            <a href="https://wa.me/584124051793?text=Hola%2C%20quiero%20empezar%20con%20Precios%20al%20D%C3%ADa"
+               target="_blank" rel="noopener noreferrer"
+               style="width: 100%; display: flex; justify-content: center; align-items: center; gap: 8px;
+                      min-height: 48px; border-radius: var(--radius-full); font-weight: 600;
+                      font-family: var(--font-body); font-size: var(--text-base);
+                      background: rgba(255,255,255,0.18); border: 1.5px solid rgba(255,255,255,0.40);
+                      color: white; text-decoration: none; transition: background var(--transition);"
+               onmouseover="this.style.background='rgba(255,255,255,0.26)'"
+               onmouseout="this.style.background='rgba(255,255,255,0.18)'">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Contactar un Asesor
             </a>
             <span style="font-size: var(--text-xs); color: rgba(255, 255, 255, 0.85); font-weight: 500;">Prueba gratis por 3 días sin compromisos</span>
           </div>
@@ -2503,11 +3118,48 @@
     </div>
   </footer>
 
-  <!-- ============ CHATBOT WIDGET ============ -->
-  <button class="fab" id="chatFab" type="button" aria-label="Abrir chat asistente">
-    <i class="fab-open" data-lucide="message-circle"></i>
-    <i class="fab-close" data-lucide="x"></i>
-  </button>
+  <!-- ============ SMART SALES DOCK (UNIFICADO) ============ -->
+  <div class="smart-dock" id="smartSalesDock">
+    <div class="smart-dock-menu" id="smartDockMenu" role="dialog" aria-label="Opciones de atención">
+      <div class="smart-dock-header">
+        <h4>¿Cómo prefieres contactarnos?</h4>
+        <button class="smart-dock-close" id="smartDockClose" type="button" aria-label="Cerrar menú">
+          <i data-lucide="x" aria-hidden="true"></i>
+        </button>
+      </div>
+
+      <!-- Opción 1: WhatsApp Asesor (Principal / Venta) -->
+      <a class="dock-option dock-option--primary"
+         href="https://wa.me/584124051793?text=Hola%2C%20me%20interesa%20Precios%20al%20D%C3%ADa%20para%20mi%20bodega"
+         target="_blank" rel="noopener noreferrer">
+        <div class="dock-option-icon wa">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </div>
+        <div class="dock-option-content">
+          <span class="dock-option-title">Hablar con un Asesor <span class="dock-tag">Ventas</span></span>
+          <span class="dock-option-desc">Atención humana directa para comprar tu licencia</span>
+        </div>
+      </a>
+
+      <!-- Opción 2: Chatbot IA (Secundario / Soporte) -->
+      <button class="dock-option" id="smartDockAiOption" type="button">
+        <div class="dock-option-icon ai">
+          <i data-lucide="bot" aria-hidden="true"></i>
+        </div>
+        <div class="dock-option-content">
+          <span class="dock-option-title">Asistente IA 24/7</span>
+          <span class="dock-option-desc">Responde tus dudas técnicas e instalación al instante</span>
+        </div>
+      </button>
+    </div>
+
+    <!-- Trigger Button -->
+    <button class="smart-dock-trigger" id="smartDockTrigger" type="button" aria-expanded="false" aria-label="Abrir opciones de ayuda y ventas">
+      <span class="smart-dock-badge"><span class="dot"></span> En línea</span>
+      <span>¿Dudas? Contáctanos</span>
+      <i data-lucide="chevron-up" id="smartDockIcon" aria-hidden="true"></i>
+    </button>
+  </div>
   <div class="chat-overlay" id="chatOverlay"></div>
   <div class="chat-panel" id="chatPanel" role="dialog" aria-label="Asistente IA" aria-hidden="true">
     <div class="chat-panel-header">
@@ -2572,6 +3224,18 @@
       </div>
     </div>
   </div>
+
+  <!-- Toast Flotante de Prueba Social -->
+  <aside class="social-proof-toast" id="socialProofToast" aria-live="polite" aria-label="Notificación de activación reciente">
+    <div class="ticker-pulse-icon" style="width:34px;height:34px;flex-shrink:0;">
+      <i data-lucide="shopping-bag" style="width:16px;height:16px;" aria-hidden="true"></i>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:2px; font-size:12px;">
+      <span id="toastStoreText" style="color:var(--text); font-weight:600; line-height:1.3;"><strong>Abasto La Flor</strong> (Maracay)</span>
+      <span id="toastSubText" style="color:var(--text-muted); font-size:11px;">Activó su Licencia Vitalicia hace 3 min</span>
+    </div>
+    <button class="toast-close-btn" id="toastCloseBtn" type="button" aria-label="Cerrar notificación">×</button>
+  </aside>
 
   <script>
     (function () {
@@ -2858,7 +3522,7 @@
       var suggestions = document.getElementById("chatSuggestions");
 
       function chatOpen() {
-        fab.classList.add("is-open");
+        if (fab) fab.classList.add("is-open");
         overlay.classList.add("is-visible");
         panel.classList.add("is-visible");
         panel.setAttribute("aria-hidden", "false");
@@ -2866,18 +3530,181 @@
       }
 
       function chatClose() {
-        fab.classList.remove("is-open");
+        if (fab) fab.classList.remove("is-open");
         overlay.classList.remove("is-visible");
         panel.classList.remove("is-visible");
         panel.setAttribute("aria-hidden", "true");
       }
 
-      fab.addEventListener("click", function () {
-        if (panel.classList.contains("is-visible")) chatClose();
-        else chatOpen();
-      });
+      if (fab) {
+        fab.addEventListener("click", function () {
+          if (panel.classList.contains("is-visible")) chatClose();
+          else chatOpen();
+        });
+      }
       overlay.addEventListener("click", chatClose);
       closeBtn.addEventListener("click", chatClose);
+
+      /* ---------- Smart Sales Dock Controller ---------- */
+      (function () {
+        var dockTrigger = document.getElementById("smartDockTrigger");
+        var dockMenu = document.getElementById("smartDockMenu");
+        var dockClose = document.getElementById("smartDockClose");
+        var dockIcon = document.getElementById("smartDockIcon");
+        var dockAiOption = document.getElementById("smartDockAiOption");
+
+        function toggleDock() {
+          var isOpen = dockMenu.classList.contains("is-open");
+          if (isOpen) closeDock();
+          else openDock();
+        }
+
+        function openDock() {
+          dockMenu.classList.add("is-open");
+          dockTrigger.setAttribute("aria-expanded", "true");
+          if (dockIcon) dockIcon.style.transform = "rotate(180deg)";
+        }
+
+        function closeDock() {
+          dockMenu.classList.remove("is-open");
+          dockTrigger.setAttribute("aria-expanded", "false");
+          if (dockIcon) dockIcon.style.transform = "rotate(0deg)";
+        }
+
+        if (dockTrigger) dockTrigger.addEventListener("click", toggleDock);
+        if (dockClose) dockClose.addEventListener("click", closeDock);
+
+        document.addEventListener("click", function (e) {
+          if (dockMenu && dockMenu.classList.contains("is-open")) {
+            if (!dockMenu.contains(e.target) && !dockTrigger.contains(e.target)) {
+              closeDock();
+            }
+          }
+        });
+
+        if (dockAiOption) {
+          dockAiOption.addEventListener("click", function () {
+            closeDock();
+            chatOpen();
+          });
+        }
+      })();
+
+      /* ---------- Showcase Tab Switcher ---------- */
+      (function () {
+        var tabs = document.querySelectorAll(".showcase-tab");
+        var img = document.getElementById("showcaseImg");
+        var titleText = document.getElementById("showcaseTitleText");
+        var descText = document.getElementById("showcaseDesc");
+
+        tabs.forEach(function (tab) {
+          tab.addEventListener("click", function () {
+            tabs.forEach(function (t) {
+              t.classList.remove("active");
+              t.setAttribute("aria-selected", "false");
+            });
+            tab.classList.add("active");
+            tab.setAttribute("aria-selected", "true");
+
+            var src = tab.getAttribute("data-img");
+            var title = tab.getAttribute("data-title");
+            var desc = tab.getAttribute("data-desc");
+
+            if (img) {
+              img.style.opacity = "0.4";
+              setTimeout(function () {
+                img.src = src;
+                img.alt = title;
+                img.style.opacity = "1";
+              }, 120);
+            }
+            if (titleText) titleText.textContent = title;
+            if (descText) descText.textContent = desc;
+          });
+        });
+      })();
+
+      /* ---------- Live Activation Ticker ---------- */
+      (function () {
+        var activations = [
+          { store: "Abasto La Flor", city: "Maracay", time: "Hace 3 minutos" },
+          { store: "Bodega Don José", city: "Barquisimeto", time: "Hace 11 minutos" },
+          { store: "Comercial El Carmen", city: "Valencia", time: "Hace 24 minutos" },
+          { store: "Inversiones Los Chaguaramos", city: "Caracas", time: "Hace 38 minutos" },
+          { store: "Mini Súper San Miguel", city: "Maracaibo", time: "Hace 52 minutos" },
+          { store: "Frutería y Víveres La Fe", city: "San Cristóbal", time: "Hace 1 hora" },
+          { store: "Bodega El Portal", city: "Puerto La Cruz", time: "Hace 1 hora" }
+        ];
+
+        var index = 0;
+        var tickerEl = document.getElementById("activationTicker");
+        var textEl = document.getElementById("tickerText");
+        var timeEl = document.getElementById("tickerTime");
+
+        if (!tickerEl || !textEl || !timeEl) return;
+
+        function updateTicker() {
+          tickerEl.style.opacity = "0.15";
+          tickerEl.style.transform = "translateY(-4px)";
+          setTimeout(function () {
+            index = (index + 1) % activations.length;
+            var item = activations[index];
+            textEl.innerHTML = "<strong>" + item.store + "</strong> (" + item.city + ") acaba de activar su Licencia Vitalicia";
+            timeEl.innerHTML = "<span style='display:inline-flex; align-items:center; gap:4px; font-weight:700; color:var(--success);'><span style='width:6px;height:6px;border-radius:50%;background:var(--success);display:inline-block;'></span> En vivo</span> · " + item.time + " · <span style='color:var(--success); font-weight:600;'>✓ Verificado</span>";
+            tickerEl.style.opacity = "1";
+            tickerEl.style.transform = "translateY(0)";
+          }, 320);
+        }
+
+        setInterval(updateTicker, 6500);
+      })();
+
+      /* ---------- Social Proof Floating Toast Controller ---------- */
+      (function () {
+        var toastEl = document.getElementById("socialProofToast");
+        var storeTextEl = document.getElementById("toastStoreText");
+        var subTextEl = document.getElementById("toastSubText");
+        var closeBtn = document.getElementById("toastCloseBtn");
+
+        if (!toastEl || !storeTextEl || !subTextEl) return;
+
+        var items = [
+          { store: "Abasto La Flor", city: "Maracay", time: "hace 3 min" },
+          { store: "Bodega Don José", city: "Barquisimeto", time: "hace 11 min" },
+          { store: "Comercial El Carmen", city: "Valencia", time: "hace 24 min" },
+          { store: "Inversiones Los Chaguaramos", city: "Caracas", time: "hace 38 min" },
+          { store: "Mini Súper San Miguel", city: "Maracaibo", time: "hace 52 min" }
+        ];
+        var idx = 0;
+        var isDismissed = false;
+
+        if (closeBtn) {
+          closeBtn.addEventListener("click", function () {
+            isDismissed = true;
+            toastEl.classList.remove("visible");
+          });
+        }
+
+        function showNextToast() {
+          if (isDismissed) return;
+          var item = items[idx];
+          storeTextEl.innerHTML = "<strong>" + item.store + "</strong> (" + item.city + ")";
+          subTextEl.innerHTML = "Activó su Licencia Vitalicia " + item.time;
+          toastEl.classList.add("visible");
+
+          setTimeout(function () {
+            if (!isDismissed) {
+              toastEl.classList.remove("visible");
+              idx = (idx + 1) % items.length;
+            }
+          }, 4500);
+        }
+
+        setTimeout(function () {
+          showNextToast();
+          setInterval(showNextToast, 14000);
+        }, 4000);
+      })();
 
       function chatNextKey() {
         if (keyDisplay) keyDisplay.textContent = "Seguro";

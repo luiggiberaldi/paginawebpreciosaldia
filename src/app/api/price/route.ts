@@ -1,7 +1,38 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
+import fs from "fs";
+import path from "path";
 
-let inMemoryPrice: number = 50;
+const DB_FILE_PATH = path.join(process.cwd(), "db", "price_config.json");
+
+function getStoredPriceFromFile(): number {
+  try {
+    if (fs.existsSync(DB_FILE_PATH)) {
+      const content = fs.readFileSync(DB_FILE_PATH, "utf-8");
+      const json = JSON.parse(content);
+      if (json && typeof json.price === "number" && json.price > 0) {
+        return json.price;
+      }
+    }
+  } catch (err) {
+    console.warn("Error reading price file:", err);
+  }
+  return 50;
+}
+
+function savePriceToFile(price: number): boolean {
+  try {
+    const dir = path.dirname(DB_FILE_PATH);
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir, { recursive: true });
+    }
+    fs.writeFileSync(DB_FILE_PATH, JSON.stringify({ price, updatedAt: new Date().toISOString() }, null, 2), "utf-8");
+    return true;
+  } catch (err) {
+    console.warn("Error writing price file:", err);
+    return false;
+  }
+}
 
 function getSupabase() {
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "";
@@ -20,6 +51,8 @@ export async function GET() {
     "Cache-Control": "no-store, max-age=0",
   };
 
+  let currentPrice = getStoredPriceFromFile();
+
   try {
     const supabase = getSupabase();
     if (supabase) {
@@ -32,7 +65,8 @@ export async function GET() {
       if (!error && data && data.value) {
         const parsed = parseInt(data.value, 10);
         if (!isNaN(parsed) && parsed > 0) {
-          inMemoryPrice = parsed;
+          currentPrice = parsed;
+          savePriceToFile(parsed);
           return NextResponse.json({ price: parsed, source: "supabase" }, { headers });
         }
       }
@@ -41,7 +75,7 @@ export async function GET() {
     console.warn("Supabase fetch price warning:", err);
   }
 
-  return NextResponse.json({ price: inMemoryPrice, source: "memory" }, { headers });
+  return NextResponse.json({ price: currentPrice, source: "file" }, { headers });
 }
 
 export async function POST(req: Request) {
@@ -59,30 +93,36 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Invalid price" }, { status: 400, headers });
     }
 
-    inMemoryPrice = newPrice;
+    // 1. Permanently save to server disk file
+    savePriceToFile(newPrice);
 
-    const supabase = getSupabase();
+    // 2. Try saving to Supabase
     let savedInSupabase = false;
+    try {
+      const supabase = getSupabase();
+      if (supabase) {
+        const { error } = await supabase
+          .from("site_settings")
+          .upsert(
+            { key: "license_price", value: newPrice.toString(), updated_at: new Date().toISOString() },
+            { onConflict: "key" }
+          );
 
-    if (supabase) {
-      const { error } = await supabase
-        .from("site_settings")
-        .upsert(
-          { key: "license_price", value: newPrice.toString(), updated_at: new Date().toISOString() },
-          { onConflict: "key" }
-        );
-
-      if (!error) {
-        savedInSupabase = true;
-      } else {
-        console.warn("Supabase upsert price warning:", error.message);
+        if (!error) {
+          savedInSupabase = true;
+        } else {
+          console.warn("Supabase upsert price warning:", error.message);
+        }
       }
+    } catch (e: any) {
+      console.warn("Supabase error during POST:", e.message);
     }
 
     return NextResponse.json(
       {
         success: true,
         price: newPrice,
+        savedInFile: true,
         savedInSupabase,
       },
       { headers }

@@ -4215,21 +4215,26 @@
 
       // Initialize BCV rate and restore saved price from localStorage / Supabase
       fetchBcvRate();
-      var savedPrice = localStorage.getItem("psd_custom_price");
-      if (savedPrice) {
-        updateGlobalPrice(savedPrice, false, true);
+      var localSavedPrice = localStorage.getItem("psd_custom_price");
+      if (localSavedPrice) {
+        updateGlobalPrice(localSavedPrice, false, true);
       }
 
-      // Fetch live price from Supabase API
+      // Fetch live price from Server / Supabase API
       fetch("/api/price")
         .then(function (res) { return res.json(); })
         .then(function (data) {
           if (data && data.price) {
-            updateGlobalPrice(data.price, false, true);
+            if (data.price !== 50 || !localSavedPrice) {
+              updateGlobalPrice(data.price, false, true);
+            } else if (localSavedPrice && parseInt(localSavedPrice, 10) !== 50) {
+              // Sync local custom price to server if server returned default 50
+              savePriceToApi(localSavedPrice);
+            }
           }
         })
         .catch(function (err) {
-          console.warn("Error fetching price from Supabase API:", err);
+          console.warn("Error fetching price from API:", err);
         });
     })();
   </script>

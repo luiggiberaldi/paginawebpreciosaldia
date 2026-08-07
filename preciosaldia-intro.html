@@ -3701,31 +3701,63 @@
         });
       })();
 
+      /* ---------- Shared Venezuelan Store Activations Data ---------- */
+      var STORE_ACTIVATIONS_LIST = [
+        { store: "Abasto La Flor", city: "Maracay", time: "Hace 3 minutos" },
+        { store: "Bodega Don José", city: "Barquisimeto", time: "Hace 11 minutos" },
+        { store: "Comercial El Carmen", city: "Valencia", time: "Hace 24 minutos" },
+        { store: "Inversiones Los Chaguaramos", city: "Caracas", time: "Hace 38 minutos" },
+        { store: "Mini Súper San Miguel", city: "Maracaibo", time: "Hace 52 minutos" },
+        { store: "Frutería y Víveres La Fe", city: "San Cristóbal", time: "Hace 1 hora" },
+        { store: "Bodega El Portal", city: "Puerto La Cruz", time: "Hace 1 hora" },
+        { store: "Super Bodega La Económica", city: "Mérida", time: "Hace 1 hora" },
+        { store: "Víveres Santa Rosa", city: "Barquisimeto", time: "Hace 2 horas" },
+        { store: "Abasto El Tunal", city: "Acarigua", time: "Hace 2 horas" },
+        { store: "Comercial El Roble", city: "Puerto Ordaz", time: "Hace 3 horas" },
+        { store: "Mini Abasto La Paragua", city: "Ciudad Bolívar", time: "Hace 3 horas" },
+        { store: "Bodega Las Palmeras", city: "Porlamar", time: "Hace 4 horas" },
+        { store: "Víveres Los Andes", city: "Valera", time: "Hace 4 horas" },
+        { store: "Supermercado Express", city: "La Victoria", time: "Hace 5 horas" },
+        { store: "Abasto y Carnicería Don Pancho", city: "Los Teques", time: "Hace 5 horas" },
+        { store: "Bodega La Gran Esquina", city: "San Felipe", time: "Hace 6 horas" },
+        { store: "Comercial El Granero", city: "Maturín", time: "Hace 6 horas" },
+        { store: "Inversiones Santa Rita", city: "Maracaibo", time: "Hace 7 horas" },
+        { store: "Mini Súper El Samán", city: "Naguanagua", time: "Hace 8 horas" },
+        { store: "Bodega La Estrella", city: "Cumaná", time: "Hace 9 horas" },
+        { store: "Víveres Don Miguel", city: "Coro", time: "Hace 9 horas" },
+        { store: "Abasto El Milagro", city: "Punto Fijo", time: "Hace 10 horas" },
+        { store: "Comercial Los Jabillos", city: "San Juan de los Morros", time: "Hace 11 horas" },
+        { store: "Charcutería Central", city: "Barinas", time: "Hace 12 horas" },
+        { store: "Mini Abasto Bella Vista", city: "Caracas", time: "Hace 13 horas" },
+        { store: "Inversiones Los Pinos", city: "Cabudare", time: "Hace 14 horas" },
+        { store: "Abasto La Esperanza", city: "Guatire", time: "Hace 15 horas" },
+        { store: "Bodega Don Teo", city: "Barcelona", time: "Hace 16 horas" },
+        { store: "Comercial El Trébol", city: "San Fernando de Apure", time: "Hace 18 horas" }
+      ];
+
       /* ---------- Live Activation Ticker ---------- */
       (function () {
-        var activations = [
-          { store: "Abasto La Flor", city: "Maracay", time: "Hace 3 minutos" },
-          { store: "Bodega Don José", city: "Barquisimeto", time: "Hace 11 minutos" },
-          { store: "Comercial El Carmen", city: "Valencia", time: "Hace 24 minutos" },
-          { store: "Inversiones Los Chaguaramos", city: "Caracas", time: "Hace 38 minutos" },
-          { store: "Mini Súper San Miguel", city: "Maracaibo", time: "Hace 52 minutos" },
-          { store: "Frutería y Víveres La Fe", city: "San Cristóbal", time: "Hace 1 hora" },
-          { store: "Bodega El Portal", city: "Puerto La Cruz", time: "Hace 1 hora" }
-        ];
-
-        var index = 0;
         var tickerEl = document.getElementById("activationTicker");
         var textEl = document.getElementById("tickerText");
         var timeEl = document.getElementById("tickerTime");
 
         if (!tickerEl || !textEl || !timeEl) return;
 
+        var lastIndex = -1;
+        function getRandomItem() {
+          var nextIndex;
+          do {
+            nextIndex = Math.floor(Math.random() * STORE_ACTIVATIONS_LIST.length);
+          } while (nextIndex === lastIndex && STORE_ACTIVATIONS_LIST.length > 1);
+          lastIndex = nextIndex;
+          return STORE_ACTIVATIONS_LIST[nextIndex];
+        }
+
         function updateTicker() {
           tickerEl.style.opacity = "0.15";
           tickerEl.style.transform = "translateY(-4px)";
           setTimeout(function () {
-            index = (index + 1) % activations.length;
-            var item = activations[index];
+            var item = getRandomItem();
             textEl.innerHTML = "<strong>" + item.store + "</strong> (" + item.city + ") acaba de activar su Licencia Vitalicia";
             timeEl.innerHTML = "<span style='display:inline-flex; align-items:center; gap:4px; font-weight:700; color:var(--success);'><span style='width:6px;height:6px;border-radius:50%;background:var(--success);display:inline-block;'></span> En vivo</span> · " + item.time + " · <span style='color:var(--success); font-weight:600;'>✓ Verificado</span>";
             tickerEl.style.opacity = "1";
@@ -3733,7 +3765,7 @@
           }, 320);
         }
 
-        setInterval(updateTicker, 6500);
+        setInterval(updateTicker, 8000);
       })();
 
       /* ---------- Social Proof Floating Toast Controller ---------- */
@@ -3745,15 +3777,8 @@
 
         if (!toastEl || !storeTextEl || !subTextEl) return;
 
-        var items = [
-          { store: "Abasto La Flor", city: "Maracay", time: "hace 3 min" },
-          { store: "Bodega Don José", city: "Barquisimeto", time: "hace 11 min" },
-          { store: "Comercial El Carmen", city: "Valencia", time: "hace 24 min" },
-          { store: "Inversiones Los Chaguaramos", city: "Caracas", time: "hace 38 min" },
-          { store: "Mini Súper San Miguel", city: "Maracaibo", time: "hace 52 min" }
-        ];
-        var idx = 0;
         var isDismissed = false;
+        var lastToastIndex = -1;
 
         if (closeBtn) {
           closeBtn.addEventListener("click", function () {
@@ -3762,11 +3787,20 @@
           });
         }
 
+        function getNextToastItem() {
+          var nextIndex;
+          do {
+            nextIndex = Math.floor(Math.random() * STORE_ACTIVATIONS_LIST.length);
+          } while (nextIndex === lastToastIndex && STORE_ACTIVATIONS_LIST.length > 1);
+          lastToastIndex = nextIndex;
+          return STORE_ACTIVATIONS_LIST[nextIndex];
+        }
+
         function showNextToast() {
           if (isDismissed) return;
-          var item = items[idx];
+          var item = getNextToastItem();
           storeTextEl.innerHTML = "<strong>" + item.store + "</strong> (" + item.city + ")";
-          subTextEl.innerHTML = "Activó su Licencia Vitalicia " + item.time;
+          subTextEl.innerHTML = "Activó su Licencia Vitalicia " + item.time.toLowerCase();
           toastEl.classList.add("visible");
 
           setTimeout(function () {

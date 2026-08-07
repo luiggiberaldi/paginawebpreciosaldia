@@ -2224,6 +2224,72 @@
         padding: var(--space-8) var(--space-4);
       }
     }
+
+    /* Modal Secret Admin Styles */
+    .secret-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      background: rgba(0, 0, 0, 0.70);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .secret-modal-backdrop.is-open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .secret-modal-card {
+      width: 90%;
+      max-width: 420px;
+      background: var(--surface, #1e293b);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: var(--radius-md, 16px);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+      overflow: hidden;
+      transform: scale(0.92);
+      transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .secret-modal-backdrop.is-open .secret-modal-card {
+      transform: scale(1);
+    }
+    .secret-modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 18px;
+      background: rgba(255, 255, 255, 0.04);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .secret-modal-badge {
+      font-size: 10px;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 4px;
+      background: var(--primary);
+      color: white;
+      letter-spacing: 0.5px;
+    }
+    .secret-modal-close {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 24px;
+      cursor: pointer;
+      line-height: 1;
+      padding: 0 4px;
+    }
+    .secret-modal-close:hover {
+      color: var(--text-heading);
+    }
+    .secret-modal-body {
+      padding: 20px;
+    }
   </style>
 </head>
 <body>
@@ -2232,7 +2298,7 @@
   <!-- ============ HEADER ============ -->
   <header class="site-header">
     <div class="container nav">
-      <a href="#" class="brand" aria-label="Precios al Día, inicio">
+      <a href="#" class="brand" data-secret-trigger aria-label="Precios al Día, inicio">
         <img class="brand-logo logo-light" src="logo-pagina.webp" alt="Precios al Día" width="267" height="58" />
         <img class="brand-logo logo-dark" src="logodark.webp" alt="Precios al Día" width="267" height="58" />
       </a>
@@ -2264,7 +2330,7 @@
         <div class="hero-content reveal">
           <span class="hero-eyebrow">
             <span class="dot" aria-hidden="true"></span>
-            100% Pago Único · Cero mensualidades · Licencia Vitalicia $50
+            100% Pago Único · Cero mensualidades · Licencia Vitalicia <span data-price-dollar>$50</span>
           </span>
           <h1 class="hero-title" id="hero-title">
             Vende más rápido.<br />
@@ -2277,7 +2343,7 @@
           <div class="hero-cta">
             <a class="btn btn-primary" href="#precios" onclick="if(typeof gtag==='function'){gtag('event','click_hero_asegurar_licencia',{'event_category':'engagement'});}">
               <i data-lucide="arrow-down" aria-hidden="true"></i>
-              Asegurar Mi Licencia por $50
+              Asegurar Mi Licencia por <span data-price-dollar>$50</span>
             </a>
             <a class="btn btn-wa"
                href="https://wa.me/584124051793?text=Hola%2C%20me%20interesa%20Precios%20al%20D%C3%ADa%20para%20mi%20bodega"
@@ -2289,7 +2355,7 @@
           </div>
           <div class="urgency-pill">
             <i data-lucide="check-circle-2" aria-hidden="true"></i>
-            Un solo pago de $50 · Cero mensualidades o rentas · Sin tarjetas
+            Un solo pago de <span data-price-dollar>$50</span> · Cero mensualidades o rentas · Sin tarjetas
           </div>
           <ul class="hero-features">
             <li><i data-lucide="shield-check" aria-hidden="true"></i> <strong>Cero mensualidades ni rentas fijas</strong></li>
@@ -2840,7 +2906,7 @@
             </button>
             <div class="faq-a" id="faq-a-2" role="region">
               <div class="faq-a-inner">
-                La licencia vitalicia de lanzamiento de $50 USD está diseñada y pre-configurada para <strong>1 equipo de ventas principal (Caja)</strong>. Sin embargo, incluye acceso de por vida al <strong>Modo Supervisor</strong>, el cual te permite enlazar tu teléfono celular personal para ver todas las ventas y cierres de tu caja en tiempo real y de forma remota, sin requerir una licencia de caja adicional.
+                La licencia vitalicia de lanzamiento de <span data-price-usd>$50 USD</span> está diseñada y pre-configurada para <strong>1 equipo de ventas principal (Caja)</strong>. Sin embargo, incluye acceso de por vida al <strong>Modo Supervisor</strong>, el cual te permite enlazar tu teléfono celular personal para ver todas las ventas y cierres de tu caja en tiempo real y de forma remota, sin requerir una licencia de caja adicional.
               </div>
             </div>
           </div>
@@ -3011,7 +3077,7 @@
             <div class="scarcity-widget">
               <div class="scarcity-header">
                 <span class="scarcity-badge"><span class="scarcity-dot"></span> ÚLTIMAS LICENCIAS</span>
-                <span class="scarcity-count">Quedan <strong>14 de 100</strong> a $50</span>
+                <span class="scarcity-count">Quedan <strong>14 de 100</strong> a <span data-price-dollar>$50</span></span>
               </div>
               <div class="scarcity-bar-bg">
                 <div class="scarcity-bar-fill" style="width: 86%;"></div>
@@ -3021,7 +3087,7 @@
             <span class="price-anchor">$99.00 USD</span>
             <div class="price-main">
               <span class="price-currency">$</span>
-              <span class="price-amount">50</span>
+              <span class="price-amount" data-price-amount>50</span>
               <span class="price-period">/ Pago Único (Sin Mensualidades)</span>
             </div>
             <span class="price-note">Licencia vitalicia para 1 Caja + Acceso Supervisor</span>
@@ -3037,9 +3103,9 @@
             </div>
 
             <!-- 2 Botones Claros y Directos con Tracking GA4 -->
-            <a class="btn btn-primary" href="https://preciosaldiaoficial.vercel.app/" target="_blank" rel="noopener noreferrer" onclick="if(typeof gtag==='function'){gtag('event','click_asegurar_licencia_50',{'event_category':'conversion','event_label':'Asegurar Licencia $50','value':50});}">
+            <a class="btn btn-primary" href="https://preciosaldiaoficial.vercel.app/" target="_blank" rel="noopener noreferrer" onclick="if(typeof gtag==='function'){gtag('event','click_asegurar_licencia_50',{'event_category':'conversion','event_label':'Asegurar Licencia $50','value':window.CURRENT_PRICE||50});}">
               <i data-lucide="rocket" aria-hidden="true"></i>
-              Asegurar Mi Licencia por $50
+              Asegurar Mi Licencia por <span data-price-dollar>$50</span>
             </a>
             <a class="btn btn-wa"
                href="https://wa.me/584124051793?text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20Precios%20al%20D%C3%ADa"
@@ -3918,6 +3984,7 @@
       });
 
       /* ---------- BCV Rate Fetch & Price calculation ---------- */
+      var cachedBcvRate = 0;
       async function fetchBcvRate() {
         var container = document.getElementById("priceBsContainer");
         var amountSpan = document.getElementById("priceBsAmount");
@@ -3925,13 +3992,16 @@
         if (!container || !amountSpan || !rateSpan) return;
 
         try {
-          var res = await fetch("https://ve.dolarapi.com/v1/dolares/oficial");
-          if (!res.ok) throw new Error("API response error");
-          var data = await res.json();
-          var rate = parseFloat(data.promedio);
-          if (rate > 0) {
-            var totalBs = (50 * rate).toLocaleString("es-VE", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-            var rateFormatted = rate.toLocaleString("es-VE", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+          if (cachedBcvRate <= 0) {
+            var res = await fetch("https://ve.dolarapi.com/v1/dolares/oficial");
+            if (!res.ok) throw new Error("API response error");
+            var data = await res.json();
+            cachedBcvRate = parseFloat(data.promedio);
+          }
+          if (cachedBcvRate > 0) {
+            var currentPrice = window.CURRENT_PRICE || 50;
+            var totalBs = (currentPrice * cachedBcvRate).toLocaleString("es-VE", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            var rateFormatted = cachedBcvRate.toLocaleString("es-VE", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
             amountSpan.textContent = totalBs;
             rateSpan.textContent = rateFormatted;
             container.style.display = "block";
@@ -3941,6 +4011,226 @@
         }
       }
       fetchBcvRate();
+    })();
+  </script>
+
+  <!-- ============ MODAL ZONA OCULTA (ADMIN PRECIO) ============ -->
+  <div id="secretPriceModal" class="secret-modal-backdrop" aria-hidden="true" role="dialog" aria-labelledby="secretModalTitle">
+    <div class="secret-modal-card">
+      <div class="secret-modal-header">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span class="secret-modal-badge">MODO ADMIN</span>
+          <h3 id="secretModalTitle" style="font-size: 1rem; font-weight: 700; margin: 0; color: var(--text-heading);">Configurar Precio de Licencia</h3>
+        </div>
+        <button type="button" id="secretModalClose" class="secret-modal-close" aria-label="Cerrar modal">&times;</button>
+      </div>
+      <div class="secret-modal-body">
+        <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">
+          Este menú secreto permite cambiar el precio de la licencia en tiempo real en toda la página (Hero, Tarjeta, FAQ y cálculo Tasa BCV).
+        </p>
+        <div style="display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px;">
+          <label for="secretPriceInput" style="font-size: 12px; font-weight: 600; color: var(--text-heading);">Nuevo Precio en USD ($):</label>
+          <div style="position: relative; display: flex; align-items: center;">
+            <span style="position: absolute; left: 12px; font-weight: 700; color: var(--primary);">$</span>
+            <input type="number" id="secretPriceInput" min="1" max="9999" step="1" placeholder="Ej. 70"
+                   style="width: 100%; padding: 10px 12px 10px 28px; border-radius: var(--radius-sm); border: 1px solid rgba(255,255,255,0.15); background: var(--surface); color: var(--text-heading); font-size: 1.1rem; font-weight: 700; outline: none;" />
+          </div>
+        </div>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+          <button type="button" id="secretPriceSaveBtn" class="btn btn-primary" style="flex: 1; padding: 10px 16px; font-size: 13px; font-weight: 600; cursor: pointer;">
+            Guardar y Aplicar
+          </button>
+          <button type="button" id="secretPriceResetBtn" style="padding: 10px 14px; font-size: 12px; font-weight: 600; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: var(--text-muted); border-radius: var(--radius-sm); cursor: pointer; transition: background 0.2s;">
+            Restablecer ($50)
+          </button>
+        </div>
+        <div id="secretPriceToast" style="display: none; margin-top: 12px; padding: 8px 12px; border-radius: var(--radius-sm); background: color-mix(in oklch, var(--success) 15%, transparent); border: 1px solid var(--success); color: var(--success); font-size: 12px; font-weight: 600; text-align: center;">
+          ✓ ¡Precio actualizado correctamente!
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      /* ---------- BCV Rate Fetch & Price calculation ---------- */
+      var cachedBcvRate = 0;
+      async function fetchBcvRate() {
+        var container = document.getElementById("priceBsContainer");
+        var amountSpan = document.getElementById("priceBsAmount");
+        var rateSpan = document.getElementById("bcvRateValue");
+        if (!container || !amountSpan || !rateSpan) return;
+
+        try {
+          if (cachedBcvRate <= 0) {
+            var res = await fetch("https://ve.dolarapi.com/v1/dolares/oficial");
+            if (!res.ok) throw new Error("API response error");
+            var data = await res.json();
+            cachedBcvRate = parseFloat(data.promedio);
+          }
+          if (cachedBcvRate > 0) {
+            var currentPrice = window.CURRENT_PRICE || 50;
+            var totalBs = (currentPrice * cachedBcvRate).toLocaleString("es-VE", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            var rateFormatted = cachedBcvRate.toLocaleString("es-VE", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            amountSpan.textContent = totalBs;
+            rateSpan.textContent = rateFormatted;
+            container.style.display = "block";
+          }
+        } catch (err) {
+          console.warn("Error fetching BCV rate:", err);
+        }
+      }
+
+      window.CURRENT_PRICE = 50;
+
+      async function savePriceToApi(price) {
+        try {
+          await fetch("/api/price", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ price: price })
+          });
+        } catch (err) {
+          console.warn("Error syncing price with API:", err);
+        }
+      }
+
+      function updateGlobalPrice(newPrice, showToast, skipApiSync) {
+        newPrice = parseInt(newPrice, 10);
+        if (isNaN(newPrice) || newPrice <= 0) return;
+
+        window.CURRENT_PRICE = newPrice;
+        localStorage.setItem("psd_custom_price", newPrice);
+
+        // Update all price tags across the page
+        document.querySelectorAll("[data-price-dollar]").forEach(function (el) {
+          el.textContent = "$" + newPrice;
+        });
+        document.querySelectorAll("[data-price-usd]").forEach(function (el) {
+          el.textContent = "$" + newPrice + " USD";
+        });
+        document.querySelectorAll("[data-price-amount]").forEach(function (el) {
+          el.textContent = newPrice;
+        });
+
+        // Recalculate BCV Bolivares amount
+        fetchBcvRate();
+
+        var secretInput = document.getElementById("secretPriceInput");
+        var secretToast = document.getElementById("secretPriceToast");
+        if (secretInput) secretInput.value = newPrice;
+
+        if (showToast && secretToast) {
+          secretToast.style.display = "block";
+          secretToast.textContent = "✓ ¡Precio actualizado a $" + newPrice + " USD (guardado en Supabase)!";
+          setTimeout(function () {
+            secretToast.style.display = "none";
+          }, 3000);
+        }
+
+        if (!skipApiSync) {
+          savePriceToApi(newPrice);
+        }
+      }
+
+      function openSecretModal() {
+        var secretModal = document.getElementById("secretPriceModal");
+        var secretInput = document.getElementById("secretPriceInput");
+        if (!secretModal) return;
+        if (secretInput) secretInput.value = window.CURRENT_PRICE || 50;
+        secretModal.classList.add("is-open");
+        secretModal.setAttribute("aria-hidden", "false");
+        setTimeout(function() { if (secretInput) secretInput.focus(); }, 100);
+      }
+
+      function closeSecretModal() {
+        var secretModal = document.getElementById("secretPriceModal");
+        if (!secretModal) return;
+        secretModal.classList.remove("is-open");
+        secretModal.setAttribute("aria-hidden", "true");
+      }
+
+      // Event Listeners setup
+      function setupSecretListeners() {
+        var secretModal = document.getElementById("secretPriceModal");
+        var secretCloseBtn = document.getElementById("secretModalClose");
+        var secretSaveBtn = document.getElementById("secretPriceSaveBtn");
+        var secretResetBtn = document.getElementById("secretPriceResetBtn");
+        var secretInput = document.getElementById("secretPriceInput");
+
+        if (secretCloseBtn) secretCloseBtn.addEventListener("click", closeSecretModal);
+        if (secretModal) {
+          secretModal.addEventListener("click", function (e) {
+            if (e.target === secretModal) closeSecretModal();
+          });
+        }
+        if (secretSaveBtn) {
+          secretSaveBtn.addEventListener("click", function () {
+            if (secretInput) updateGlobalPrice(secretInput.value, true);
+          });
+        }
+        if (secretResetBtn) {
+          secretResetBtn.addEventListener("click", function () {
+            updateGlobalPrice(50, true);
+          });
+        }
+
+        // Multi-click secret trigger listener (5 clics en 2.5s)
+        var secretClickCount = 0;
+        var secretClickTimer = null;
+        document.querySelectorAll("[data-secret-trigger]").forEach(function (triggerEl) {
+          triggerEl.style.cursor = "pointer";
+          triggerEl.addEventListener("click", function (e) {
+            secretClickCount++;
+            if (secretClickCount === 1) {
+              secretClickTimer = setTimeout(function () {
+                secretClickCount = 0;
+              }, 2500);
+            }
+            if (secretClickCount >= 5) {
+              e.preventDefault();
+              clearTimeout(secretClickTimer);
+              secretClickCount = 0;
+              openSecretModal();
+            }
+          });
+        });
+      }
+
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", setupSecretListeners);
+      } else {
+        setupSecretListeners();
+      }
+
+      // Keyboard shortcut secret trigger: Ctrl + Shift + P
+      document.addEventListener("keydown", function (e) {
+        if (e.ctrlKey && e.shiftKey && (e.key === "P" || e.key === "p")) {
+          e.preventDefault();
+          var secretModal = document.getElementById("secretPriceModal");
+          if (secretModal && secretModal.classList.contains("is-open")) closeSecretModal();
+          else openSecretModal();
+        }
+      });
+
+      // Initialize BCV rate and restore saved price from localStorage / Supabase
+      fetchBcvRate();
+      var savedPrice = localStorage.getItem("psd_custom_price");
+      if (savedPrice) {
+        updateGlobalPrice(savedPrice, false, true);
+      }
+
+      // Fetch live price from Supabase API
+      fetch("/api/price")
+        .then(function (res) { return res.json(); })
+        .then(function (data) {
+          if (data && data.price) {
+            updateGlobalPrice(data.price, false, true);
+          }
+        })
+        .catch(function (err) {
+          console.warn("Error fetching price from Supabase API:", err);
+        });
     })();
   </script>
 </body>

@@ -3725,37 +3725,47 @@
 
       /* ---------- Shared Venezuelan Store Activations Data ---------- */
       var STORE_ACTIVATIONS_LIST = [
-        { store: "Abasto La Flor", city: "Maracay", time: "Hace 3 minutos" },
-        { store: "Bodega Don José", city: "Barquisimeto", time: "Hace 11 minutos" },
-        { store: "Comercial El Carmen", city: "Valencia", time: "Hace 24 minutos" },
-        { store: "Inversiones Los Chaguaramos", city: "Caracas", time: "Hace 38 minutos" },
-        { store: "Mini Súper San Miguel", city: "Maracaibo", time: "Hace 52 minutos" },
-        { store: "Frutería y Víveres La Fe", city: "San Cristóbal", time: "Hace 1 hora" },
-        { store: "Bodega El Portal", city: "Puerto La Cruz", time: "Hace 1 hora" },
-        { store: "Super Bodega La Económica", city: "Mérida", time: "Hace 1 hora" },
-        { store: "Víveres Santa Rosa", city: "Barquisimeto", time: "Hace 2 horas" },
-        { store: "Abasto El Tunal", city: "Acarigua", time: "Hace 2 horas" },
-        { store: "Comercial El Roble", city: "Puerto Ordaz", time: "Hace 3 horas" },
-        { store: "Mini Abasto La Paragua", city: "Ciudad Bolívar", time: "Hace 3 horas" },
-        { store: "Bodega Las Palmeras", city: "Porlamar", time: "Hace 4 horas" },
-        { store: "Víveres Los Andes", city: "Valera", time: "Hace 4 horas" },
-        { store: "Supermercado Express", city: "La Victoria", time: "Hace 5 horas" },
-        { store: "Abasto y Carnicería Don Pancho", city: "Los Teques", time: "Hace 5 horas" },
-        { store: "Bodega La Gran Esquina", city: "San Felipe", time: "Hace 6 horas" },
-        { store: "Comercial El Granero", city: "Maturín", time: "Hace 6 horas" },
-        { store: "Inversiones Santa Rita", city: "Maracaibo", time: "Hace 7 horas" },
-        { store: "Mini Súper El Samán", city: "Naguanagua", time: "Hace 8 horas" },
-        { store: "Bodega La Estrella", city: "Cumaná", time: "Hace 9 horas" },
-        { store: "Víveres Don Miguel", city: "Coro", time: "Hace 9 horas" },
-        { store: "Abasto El Milagro", city: "Punto Fijo", time: "Hace 10 horas" },
-        { store: "Comercial Los Jabillos", city: "San Juan de los Morros", time: "Hace 11 horas" },
-        { store: "Charcutería Central", city: "Barinas", time: "Hace 12 horas" },
-        { store: "Mini Abasto Bella Vista", city: "Caracas", time: "Hace 13 horas" },
-        { store: "Inversiones Los Pinos", city: "Cabudare", time: "Hace 14 horas" },
-        { store: "Abasto La Esperanza", city: "Guatire", time: "Hace 15 horas" },
-        { store: "Bodega Don Teo", city: "Barcelona", time: "Hace 16 horas" },
-        { store: "Comercial El Trébol", city: "San Fernando de Apure", time: "Hace 18 horas" }
+        { store: "Abasto La Flor", city: "Maracay", baseMin: 4 },
+        { store: "Bodega Don José", city: "Barquisimeto", baseMin: 14 },
+        { store: "Comercial El Carmen", city: "Valencia", baseMin: 29 },
+        { store: "Inversiones Los Chaguaramos", city: "Caracas", baseMin: 41 },
+        { store: "Mini Súper San Miguel", city: "Maracaibo", baseMin: 57 },
+        { store: "Frutería y Víveres La Fe", city: "San Cristóbal", baseMin: 72 },
+        { store: "Bodega El Portal", city: "Puerto La Cruz", baseMin: 95 },
+        { store: "Super Bodega La Económica", city: "Mérida", baseMin: 120 },
+        { store: "Víveres Santa Rosa", city: "Barquisimeto", baseMin: 155 },
+        { store: "Abasto El Tunal", city: "Acarigua", baseMin: 190 },
+        { store: "Comercial El Roble", city: "Puerto Ordaz", baseMin: 230 },
+        { store: "Mini Abasto La Paragua", city: "Ciudad Bolívar", baseMin: 280 },
+        { store: "Bodega Las Palmeras", city: "Porlamar", baseMin: 340 },
+        { store: "Víveres Los Andes", city: "Valera", baseMin: 410 },
+        { store: "Supermercado Express", city: "La Victoria", baseMin: 490 },
+        { store: "Abasto y Carnicería Don Pancho", city: "Los Teques", baseMin: 580 },
+        { store: "Bodega La Gran Esquina", city: "San Felipe", baseMin: 670 },
+        { store: "Comercial El Granero", city: "Maturín", baseMin: 760 },
+        { store: "Inversiones Santa Rita", city: "Maracaibo", baseMin: 850 },
+        { store: "Mini Súper El Samán", city: "Naguanagua", baseMin: 940 },
+        { store: "Bodega La Estrella", city: "Cumaná", baseMin: 1050 },
+        { store: "Víveres Don Miguel", city: "Coro", baseMin: 1160 },
+        { store: "Abasto El Milagro", city: "Punto Fijo", baseMin: 1270 },
+        { store: "Comercial Los Jabillos", city: "San Juan de los Morros", baseMin: 1380 },
+        { store: "Charcutería Central", city: "Barinas", baseMin: 1500 }
       ];
+
+      function formatRelativeTime(baseMin) {
+        var jitter = Math.floor(Math.random() * 4);
+        var totalMin = baseMin + jitter;
+        if (totalMin < 60) {
+          return "Hace " + totalMin + " minutos";
+        } else if (totalMin < 120) {
+          return "Hace 1 hora";
+        } else if (totalMin < 1440) {
+          var hrs = Math.floor(totalMin / 60);
+          return "Hace " + hrs + " horas";
+        } else {
+          return "Ayer";
+        }
+      }
 
       /* ---------- Live Activation Ticker ---------- */
       (function () {
@@ -3780,14 +3790,20 @@
           tickerEl.style.transform = "translateY(-4px)";
           setTimeout(function () {
             var item = getRandomItem();
+            var timeStr = formatRelativeTime(item.baseMin);
             textEl.innerHTML = "<strong>" + item.store + "</strong> (" + item.city + ") acaba de activar su Licencia Vitalicia";
-            timeEl.innerHTML = "<span style='display:inline-flex; align-items:center; gap:4px; font-weight:700; color:var(--success);'><span style='width:6px;height:6px;border-radius:50%;background:var(--success);display:inline-block;'></span> En vivo</span> · " + item.time + " · <span style='color:var(--success); font-weight:600;'>✓ Verificado</span>";
+            timeEl.innerHTML = "<span style='display:inline-flex; align-items:center; gap:4px; font-weight:700; color:var(--success);'><span style='width:6px;height:6px;border-radius:50%;background:var(--success);display:inline-block;'></span> En vivo</span> · " + timeStr + " · <span style='color:var(--success); font-weight:600;'>✓ Verificado</span>";
             tickerEl.style.opacity = "1";
             tickerEl.style.transform = "translateY(0)";
           }, 320);
+
+          // Intervalo orgánico entre 20 y 35 segundos
+          var nextDelay = 20000 + Math.floor(Math.random() * 15000);
+          setTimeout(updateTicker, nextDelay);
         }
 
-        setInterval(updateTicker, 8000);
+        var initialTickerDelay = 6000 + Math.floor(Math.random() * 6000);
+        setTimeout(updateTicker, initialTickerDelay);
       })();
 
       /* ---------- Social Proof Floating Toast Controller ---------- */
@@ -3818,25 +3834,30 @@
           return STORE_ACTIVATIONS_LIST[nextIndex];
         }
 
-        function showNextToast() {
+        function triggerToastCycle() {
           if (isDismissed) return;
           var item = getNextToastItem();
+          var timeStr = formatRelativeTime(item.baseMin).toLowerCase();
+
           storeTextEl.innerHTML = "<strong>" + item.store + "</strong> (" + item.city + ")";
-          subTextEl.innerHTML = "Activó su Licencia Vitalicia " + item.time.toLowerCase();
+          subTextEl.innerHTML = "Activó su Licencia Vitalicia " + timeStr;
           toastEl.classList.add("visible");
 
+          // Mantener visible durante 5.5 segundos
           setTimeout(function () {
             if (!isDismissed) {
               toastEl.classList.remove("visible");
-              idx = (idx + 1) % items.length;
+
+              // Pausa orgánica entre 28 y 50 segundos antes de la siguiente notificación
+              var randomPause = 28000 + Math.floor(Math.random() * 22000);
+              setTimeout(triggerToastCycle, randomPause);
             }
-          }, 4500);
+          }, 5500);
         }
 
-        setTimeout(function () {
-          showNextToast();
-          setInterval(showNextToast, 14000);
-        }, 4000);
+        // Retardo inicial entre 10 y 16 segundos tras entrar a la página
+        var initialToastDelay = 10000 + Math.floor(Math.random() * 6000);
+        setTimeout(triggerToastCycle, initialToastDelay);
       })();
 
       function chatNextKey() {

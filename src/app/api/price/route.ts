@@ -4,6 +4,7 @@ import fs from "fs";
 import path from "path";
 
 const DB_FILE_PATH = path.join(process.cwd(), "db", "price_config.json");
+const CONFIG_KEY = "GLOBAL_LICENSE_PRICE";
 
 function getStoredPriceFromFile(): number {
   try {
@@ -48,7 +49,7 @@ export async function GET() {
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
     "Access-Control-Allow-Headers": "Content-Type",
-    "Cache-Control": "no-store, max-age=0",
+    "Cache-Control": "no-store, max-age=0, s-maxage=0",
   };
 
   let currentPrice = getStoredPriceFromFile();
@@ -56,14 +57,15 @@ export async function GET() {
   try {
     const supabase = getSupabase();
     if (supabase) {
+      // 1. Try querying device_pairings table in Supabase
       const { data, error } = await supabase
-        .from("site_settings")
-        .select("value")
-        .eq("key", "license_price")
+        .from("device_pairings")
+        .select("monitor_device_id")
+        .eq("primary_device_id", CONFIG_KEY)
         .maybeSingle();
 
-      if (!error && data && data.value) {
-        const parsed = parseInt(data.value, 10);
+      if (!error && data && data.monitor_device_id) {
+        const parsed = parseInt(data.monitor_device_id, 10);
         if (!isNaN(parsed) && parsed > 0) {
           currentPrice = parsed;
           savePriceToFile(parsed);
@@ -93,19 +95,23 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Invalid price" }, { status: 400, headers });
     }
 
-    // 1. Permanently save to server disk file
+    // 1. Save to local file
     savePriceToFile(newPrice);
 
-    // 2. Try saving to Supabase
+    // 2. Save to Supabase (device_pairings)
     let savedInSupabase = false;
     try {
       const supabase = getSupabase();
       if (supabase) {
         const { error } = await supabase
-          .from("site_settings")
+          .from("device_pairings")
           .upsert(
-            { key: "license_price", value: newPrice.toString(), updated_at: new Date().toISOString() },
-            { onConflict: "key" }
+            {
+              primary_device_id: CONFIG_KEY,
+              monitor_device_id: newPrice.toString(),
+              pairing_token: "PRICE_" + newPrice,
+            },
+            { onConflict: "primary_device_id" }
           );
 
         if (!error) {

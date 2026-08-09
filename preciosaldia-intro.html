@@ -78,9 +78,10 @@
             "name": "¿Cómo instalo la app en Android?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "La app es una PWA instalable. Abre preciosaldia.vercel.app en Chrome de Android, toca el menú (⋮) y selecciona «Instalar app» o «Añadir a pantalla de inicio». También está disponible como APK nativo vía Capacitor."
+              "text": "La app es una PWA instalable. Abre preciosaldiaoficial.vercel.app en Chrome de Android, toca el menú (⋮) y selecciona «Instalar app» o «Añadir a pantalla de inicio». También está disponible como APK nativo vía Capacitor."
             }
           },
+          {
             "@type": "Question",
             "name": "¿Cómo recupero mis datos si cambio de equipo?",
             "acceptedAnswer": {
@@ -133,7 +134,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
   <!-- Lucide icons -->
-  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://unpkg.com/lucide@0.525.0"></script>
 
   <style>
     /* ============================================================
@@ -174,6 +175,9 @@
       /* Tipografía */
       --font-display: "Instrument Serif", Georgia, "Times New Roman", serif;
       --font-body: "Work Sans", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+      --text-heading: var(--text);
+      --radius-md: 1.05rem;
 
       /* ====== Modo claro (OKLCH) ====== */
       --primary: oklch(0.50 0.085 192);
@@ -2315,6 +2319,13 @@
 <body>
   <a href="#contenido" class="skip-link">Saltar al contenido</a>
 
+  <!-- Icono WhatsApp compartido (T-14) -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+    <symbol id="icon-wa" viewBox="0 0 24 24">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+    </symbol>
+  </svg>
+
   <!-- ============ HEADER ============ -->
   <header class="site-header">
     <div class="container nav">
@@ -2323,7 +2334,7 @@
         <img class="brand-logo logo-dark" src="logodark.webp" alt="Precios al Día" width="267" height="58" />
       </a>
       <div class="nav-actions">
-        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Cambiar tema de color">
+        <button class="theme-toggle" id="themeToggle" type="button" aria-pressed="false" aria-label="Cambiar tema de color">
           <i class="icon-sun" data-lucide="sun" aria-hidden="true"></i>
           <i class="icon-moon" data-lucide="moon" aria-hidden="true"></i>
         </button>
@@ -2332,7 +2343,7 @@
            target="_blank" rel="noopener noreferrer"
            style="background: linear-gradient(135deg,#25D366 0%,#128C7E 100%); border: none;"
            aria-label="Contactar asesor por WhatsApp">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px" aria-hidden="true"><use href="#icon-wa"></use></svg>
           <span class="nav-cta-label">Asesor</span>
         </a>
         <a class="nav-cta" href="#precios">
@@ -2361,7 +2372,7 @@
             El único sistema que no te falla cuando se va la luz ni cuando cae el internet. Vende, calcula vueltos en divisas y bolívares al instante, integra Cashea y cierra caja como un profesional — desde cualquier celular o PC.
           </p>
           <div class="hero-cta">
-            <a class="btn btn-primary" href="#precios" onclick="if(typeof gtag==='function'){gtag('event','click_hero_asegurar_licencia',{'event_category':'engagement'});}">
+            <a class="btn btn-primary" href="#precios" onclick="if(typeof gtag==='function'){gtag('event','click_hero_asegurar_licencia',{'event_category':'engagement','value':window.CURRENT_PRICE||50});}">
               <i data-lucide="arrow-down" aria-hidden="true"></i>
               Asegurar Mi Licencia por <span data-price-dollar>$50</span>
             </a>
@@ -2369,7 +2380,7 @@
                href="https://wa.me/584124051793?text=Hola%2C%20me%20interesa%20Precios%20al%20D%C3%ADa%20para%20mi%20bodega"
                target="_blank" rel="noopener noreferrer"
                onclick="if(typeof gtag==='function'){gtag('event','click_whatsapp_asesor',{'event_category':'lead','event_label':'Hero WhatsApp'});}">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px" aria-hidden="true"><use href="#icon-wa"></use></svg>
               Hablar con un Asesor
             </a>
           </div>
@@ -2399,7 +2410,7 @@
             <span class="sync-pill"><span class="dot"></span> Sistema en vivo</span>
           </div>
           <div style="position: relative; background: var(--surface); overflow: hidden;">
-            <img src="screenshots/login.png" alt="Pantalla de inicio de sesión de Precios al Día" style="width: 100%; height: auto; display: block;" />
+            <img src="screenshots/login.png" alt="Pantalla de inicio de sesión de Precios al Día" width="1024" height="1023" style="width: 100%; height: auto; display: block;" />
           </div>
         </aside>
       </div>
@@ -2490,7 +2501,7 @@
           </button>
         </div>
 
-        <div class="showcase-frame reveal">
+        <div class="showcase-frame reveal" id="showcaseFrame">
           <div class="showcase-frame-bar">
             <div class="showcase-dots">
               <span class="showcase-dot red"></span>
@@ -2504,7 +2515,7 @@
             <span style="font-size:11px; color:var(--text-muted); font-weight:600;">100% Offline-First</span>
           </div>
           <div class="showcase-media">
-            <img id="showcaseImg" src="screenshots/pos.png" alt="Captura real del sistema Precios al Día" loading="lazy" />
+            <img id="showcaseImg" src="screenshots/pos.png" alt="Captura real del sistema Precios al Día" width="1900" height="906" loading="lazy" />
           </div>
           <div class="showcase-caption">
             <span id="showcaseDesc">Venta rápida con catálogo visual de productos, cálculo de totales en dólares y bolívares en tiempo real.</span>
@@ -2647,7 +2658,7 @@
                       <span class="mock-dot green"></span>
                     </div>
                     <div class="mock-browser-content">
-                      <img src="screenshots/login.png" alt="Pantalla de inicio de sesión de Precios al Día" loading="lazy" />
+                      <img src="screenshots/login.png" alt="Pantalla de inicio de sesión de Precios al Día" width="1024" height="1023" loading="lazy" />
                     </div>
                   </div>
                 </div>
@@ -2691,7 +2702,7 @@
                       <span class="mock-dot green"></span>
                     </div>
                     <div class="mock-browser-content">
-                      <img src="screenshots/dashboard.png" alt="Dashboard principal de Precios al Día" loading="lazy" />
+                      <img src="screenshots/dashboard.png" alt="Dashboard principal de Precios al Día" width="1897" height="946" loading="lazy" />
                     </div>
                   </div>
                 </div>
@@ -2735,7 +2746,7 @@
                       <span class="mock-dot green"></span>
                     </div>
                     <div class="mock-browser-content">
-                      <img src="screenshots/pos.png" alt="Punto de venta de Precios al Día" loading="lazy" />
+                      <img src="screenshots/pos.png" alt="Punto de venta de Precios al Día" width="1900" height="906" loading="lazy" />
                     </div>
                   </div>
                 </div>
@@ -2779,7 +2790,7 @@
                       <span class="mock-dot green"></span>
                     </div>
                     <div class="mock-browser-content">
-                      <img src="screenshots/inventory.png" alt="Gestión de Inventario de Precios al Día" loading="lazy" />
+                      <img src="screenshots/inventory.png" alt="Gestión de Inventario de Precios al Día" width="1900" height="909" loading="lazy" />
                     </div>
                   </div>
                 </div>
@@ -2823,7 +2834,7 @@
                       <span class="mock-dot green"></span>
                     </div>
                     <div class="mock-browser-content">
-                      <img src="screenshots/checkout.png" alt="Cobro en divisas y vuelto mixto en Precios al Día" loading="lazy" />
+                      <img src="screenshots/checkout.png" alt="Cobro en divisas y vuelto mixto en Precios al Día" width="1203" height="734" loading="lazy" />
                     </div>
                   </div>
                 </div>
@@ -2867,7 +2878,7 @@
                       <span class="mock-dot green"></span>
                     </div>
                     <div class="mock-browser-content">
-                      <img src="screenshots/dashboard.png" alt="Sincronización y estado de conexión en Precios al Día" loading="lazy" />
+                      <img src="screenshots/dashboard.png" alt="Sincronización y estado de conexión en Precios al Día" width="1897" height="946" loading="lazy" />
                     </div>
                   </div>
                 </div>
@@ -2987,7 +2998,7 @@
             <div class="faq-a" id="faq-a-7" role="region">
               <div class="faq-a-inner">
                 Precios al Día cuenta con un <strong>Módulo de Financiamiento Cashea</strong> integrado que funciona así:
-                <ul style="margin-top: var(--space-2); margin-left: var(--space-4); list-style-type: disc; display: flex; flex-direction: column; gap: var(--space-1.5);">
+                <ul style="margin-top: var(--space-2); margin-left: var(--space-4); list-style-type: disc; display: flex; flex-direction: column; gap: var(--space-2);">
                   <li><strong>Configuración:</strong> Habilita Cashea desde <code>Configuración → Ventas</code> y establece opcionalmente un monto mínimo en dólares para la compra.</li>
                   <li><strong>Selección de Cliente (Requisito):</strong> Para que la opción de cobro con Cashea se active e ilustre en la pantalla de cobro (checkout), se debe seleccionar un cliente primero en la zona de cobro. El sistema activará el financiamiento si el cliente seleccionado tiene un Nivel de Cashea (del 1 al 6) y la venta cumple con el monto mínimo establecido.</li>
                   <li><strong>Cobro en Caja:</strong> Al seleccionar Cashea en el checkout, el sistema te permite elegir el porcentaje de la cuota inicial (ej. 60% o 40%). El sistema calcula automáticamente la porción financiada que cubre Cashea.</li>
@@ -3104,7 +3115,7 @@
               </div>
             </div>
 
-            <span class="price-anchor">$99.00 USD</span>
+            <span class="price-anchor" data-price-compare>$99.00 USD</span>
             <div class="price-main">
               <span class="price-currency">$</span>
               <span class="price-amount" data-price-amount>50</span>
@@ -3123,7 +3134,7 @@
             </div>
 
             <!-- 2 Botones Claros y Directos con Tracking GA4 -->
-            <a class="btn btn-primary" href="https://preciosaldiaoficial.vercel.app/" target="_blank" rel="noopener noreferrer" onclick="if(typeof gtag==='function'){gtag('event','click_asegurar_licencia_50',{'event_category':'conversion','event_label':'Asegurar Licencia $50','value':window.CURRENT_PRICE||50});}">
+            <a class="btn btn-primary" href="https://preciosaldiaoficial.vercel.app/" target="_blank" rel="noopener noreferrer" onclick="if(typeof gtag==='function'){gtag('event','click_asegurar_licencia',{'event_category':'conversion','event_label':'Asegurar Licencia $'+(window.CURRENT_PRICE||50),'value':window.CURRENT_PRICE||50});}">
               <i data-lucide="rocket" aria-hidden="true"></i>
               Asegurar Mi Licencia por <span data-price-dollar>$50</span>
             </a>
@@ -3132,7 +3143,7 @@
                target="_blank" rel="noopener noreferrer"
                onclick="if(typeof gtag==='function'){gtag('event','click_whatsapp_asesor',{'event_category':'lead','event_label':'Tarjeta Precios WhatsApp'});}"
                style="margin-top: var(--space-2); width: 100%;">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px" aria-hidden="true"><use href="#icon-wa"></use></svg>
               Hablar con un Asesor
             </a>
 
@@ -3181,7 +3192,7 @@
                       color: white; text-decoration: none; transition: background var(--transition);"
                onmouseover="this.style.background='rgba(255,255,255,0.26)'"
                onmouseout="this.style.background='rgba(255,255,255,0.18)'">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px" aria-hidden="true"><use href="#icon-wa"></use></svg>
               Contactar un Asesor
             </a>
             <span style="font-size: var(--text-xs); color: rgba(255, 255, 255, 0.85); font-weight: 500;">Prueba gratis por 3 días sin compromisos</span>
@@ -3232,7 +3243,7 @@
          href="https://wa.me/584124051793?text=Hola%2C%20me%20interesa%20Precios%20al%20D%C3%ADa%20para%20mi%20bodega"
          target="_blank" rel="noopener noreferrer">
         <div class="dock-option-icon wa">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><use href="#icon-wa"></use></svg>
         </div>
         <div class="dock-option-content">
           <span class="dock-option-title">Hablar con un Asesor <span class="dock-tag">Ventas</span></span>
@@ -3357,6 +3368,10 @@
         root.setAttribute("data-theme", theme);
         var meta = document.querySelector('meta[name="theme-color"]');
         if (meta) meta.setAttribute("content", theme === "dark" ? "#0a0f0f" : "#01696f");
+        if (themeToggle) {
+          themeToggle.setAttribute("aria-pressed", theme === "dark" ? "true" : "false");
+          themeToggle.setAttribute("aria-label", theme === "dark" ? "Cambiar a modo claro" : "Cambiar a modo oscuro");
+        }
       }
 
       // Inicializar según el tema ya aplicado en el head para evitar parpadeos
@@ -3510,13 +3525,20 @@
       }
 
       // Re-render de iconos por si algunos llegaron tarde
-      window.addEventListener("load", renderIcons);
+      window.addEventListener("load", function () {
+        if (!(window.lucide && typeof window.lucide.createIcons === "function")) {
+          document.querySelectorAll("[data-lucide]").forEach(function (el) {
+            el.style.display = "none";
+          });
+        }
+        renderIcons();
+      });
 
       /* ================================================================
          CHATBOT — PROXY SEGURO
          ================================================================ */
       var CHAT_API_URL = (window.location.protocol === "file:" || window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1")
-        ? "http://localhost:3000/api/chat"
+        ? "http://localhost:3001/api/chat"
         : "/api/chat";
       var MAX_HIST = 20;
       var chatHistory = [];
@@ -3590,7 +3612,7 @@
         "- Nota: Al activar la licencia vitalicia después de los 3 días de demo, no perderás ningún dato que hayas registrado en la prueba.",
         "",
         "### Instalación",
-        "- En Android: abrir preciosaldia.vercel.app en Chrome → menú ⋮ → \"Instalar aplicación\".",
+        "- En Android: abrir preciosaldiaoficial.vercel.app en Chrome → menú ⋮ → \"Instalar aplicación\".",
         "- Aplicación instalable para Android disponible.",
         "- También funciona en navegador de escritorio de cualquier computadora (Chrome, Edge, Firefox).",
         "",
@@ -3608,7 +3630,6 @@
       ].join("\n");
 
       // DOM
-      var fab = document.getElementById("chatFab");
       var overlay = document.getElementById("chatOverlay");
       var panel = document.getElementById("chatPanel");
       var closeBtn = document.getElementById("chatCloseBtn");
@@ -3621,7 +3642,6 @@
       var suggestions = document.getElementById("chatSuggestions");
 
       function chatOpen() {
-        if (fab) fab.classList.add("is-open");
         overlay.classList.add("is-visible");
         panel.classList.add("is-visible");
         panel.setAttribute("aria-hidden", "false");
@@ -3629,18 +3649,11 @@
       }
 
       function chatClose() {
-        if (fab) fab.classList.remove("is-open");
         overlay.classList.remove("is-visible");
         panel.classList.remove("is-visible");
         panel.setAttribute("aria-hidden", "true");
       }
 
-      if (fab) {
-        fab.addEventListener("click", function () {
-          if (panel.classList.contains("is-visible")) chatClose();
-          else chatOpen();
-        });
-      }
       overlay.addEventListener("click", chatClose);
       closeBtn.addEventListener("click", chatClose);
 
@@ -3721,6 +3734,27 @@
             if (descText) descText.textContent = desc;
           });
         });
+
+        // ARIA: asociar cada tab con el panel del frame
+        tabs.forEach(function (t) { t.setAttribute("aria-controls", "showcaseFrame"); });
+
+        // Navegación por teclado (patrón ARIA tabs)
+        var tablist = document.querySelector(".showcase-tabs");
+        if (tablist) {
+          tablist.addEventListener("keydown", function (e) {
+            var current = Array.prototype.indexOf.call(tabs, document.activeElement);
+            if (current < 0) return;
+            var next = current;
+            if (e.key === "ArrowRight") next = (current + 1) % tabs.length;
+            else if (e.key === "ArrowLeft") next = (current - 1 + tabs.length) % tabs.length;
+            else if (e.key === "Home") next = 0;
+            else if (e.key === "End") next = tabs.length - 1;
+            else return;
+            e.preventDefault();
+            tabs[next].focus();
+            tabs[next].click();
+          });
+        }
       })();
 
       /* ---------- Shared Venezuelan Store Activations Data ---------- */
@@ -4059,35 +4093,6 @@
           else chatOpen();
         }
       });
-
-      /* ---------- BCV Rate Fetch & Price calculation ---------- */
-      var cachedBcvRate = 0;
-      async function fetchBcvRate() {
-        var container = document.getElementById("priceBsContainer");
-        var amountSpan = document.getElementById("priceBsAmount");
-        var rateSpan = document.getElementById("bcvRateValue");
-        if (!container || !amountSpan || !rateSpan) return;
-
-        try {
-          if (cachedBcvRate <= 0) {
-            var res = await fetch("https://ve.dolarapi.com/v1/dolares/oficial");
-            if (!res.ok) throw new Error("API response error");
-            var data = await res.json();
-            cachedBcvRate = parseFloat(data.promedio);
-          }
-          if (cachedBcvRate > 0) {
-            var currentPrice = window.CURRENT_PRICE || 50;
-            var totalBs = (currentPrice * cachedBcvRate).toLocaleString("es-VE", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-            var rateFormatted = cachedBcvRate.toLocaleString("es-VE", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-            amountSpan.textContent = totalBs;
-            rateSpan.textContent = rateFormatted;
-            container.style.display = "block";
-          }
-        } catch (err) {
-          console.warn("Error fetching BCV rate:", err);
-        }
-      }
-      fetchBcvRate();
     })();
   </script>
 
@@ -4103,7 +4108,7 @@
       </div>
       <div class="secret-modal-body">
         <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">
-          Este menú secreto permite cambiar el precio de la licencia en tiempo real en toda la página (Hero, Tarjeta, FAQ y cálculo Tasa BCV).
+          Este menú secreto permite cambiar el precio de la licencia y su precio de comparación (tachado) en tiempo real en toda la página (Hero, Tarjeta, FAQ y cálculo Tasa BCV).
         </p>
         <div style="display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px;">
           <label for="secretPriceInput" style="font-size: 12px; font-weight: 600; color: var(--text-heading);">Nuevo Precio en USD ($):</label>
@@ -4113,12 +4118,20 @@
                    style="width: 100%; padding: 10px 12px 10px 28px; border-radius: var(--radius-sm); border: 1px solid rgba(255,255,255,0.15); background: var(--surface); color: var(--text-heading); font-size: 1.1rem; font-weight: 700; outline: none;" />
           </div>
         </div>
+        <div style="display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px;">
+          <label for="secretComparePriceInput" style="font-size: 12px; font-weight: 600; color: var(--text-heading);">Precio de Comparación (tachado) en USD ($):</label>
+          <div style="position: relative; display: flex; align-items: center;">
+            <span style="position: absolute; left: 12px; font-weight: 700; color: var(--text-muted);">$</span>
+            <input type="number" id="secretComparePriceInput" min="1" max="99999" step="1" placeholder="Ej. 99"
+                   style="width: 100%; padding: 10px 12px 10px 28px; border-radius: var(--radius-sm); border: 1px solid rgba(255,255,255,0.15); background: var(--surface); color: var(--text-heading); font-size: 1.1rem; font-weight: 700; outline: none;" />
+          </div>
+        </div>
         <div style="display: flex; gap: 8px; flex-wrap: wrap;">
           <button type="button" id="secretPriceSaveBtn" class="btn btn-primary" style="flex: 1; padding: 10px 16px; font-size: 13px; font-weight: 600; cursor: pointer;">
             Guardar y Aplicar
           </button>
           <button type="button" id="secretPriceResetBtn" style="padding: 10px 14px; font-size: 12px; font-weight: 600; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: var(--text-muted); border-radius: var(--radius-sm); cursor: pointer; transition: background 0.2s;">
-            Restablecer ($50)
+            Restablecer ($50 / $99)
           </button>
         </div>
         <div id="secretPriceToast" style="display: none; margin-top: 12px; padding: 8px 12px; border-radius: var(--radius-sm); background: color-mix(in oklch, var(--success) 15%, transparent); border: 1px solid var(--success); color: var(--success); font-size: 12px; font-weight: 600; text-align: center;">
@@ -4159,25 +4172,45 @@
       }
 
       window.CURRENT_PRICE = 50;
+      window.CURRENT_COMPARE_PRICE = 99;
 
-      async function savePriceToApi(price) {
+      // Acceso seguro a localStorage (evita SecurityError en entornos sandboxed)
+      function safeLocalGet(key) {
+        try { return window.localStorage.getItem(key); } catch (err) { return null; }
+      }
+
+      function safeLocalSet(key, value) {
+        try { window.localStorage.setItem(key, value); } catch (err) {}
+      }
+
+      async function savePriceToApi(price, comparePrice) {
         try {
           await fetch("/api/price", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ price: price })
+            body: JSON.stringify({ price: price, comparePrice: comparePrice })
           });
         } catch (err) {
           console.warn("Error syncing price with API:", err);
         }
       }
 
-      function updateGlobalPrice(newPrice, showToast, skipApiSync) {
+      function updateGlobalPrice(newPrice, showToast, skipApiSync, newComparePrice) {
         newPrice = parseInt(newPrice, 10);
         if (isNaN(newPrice) || newPrice <= 0) return;
 
+        var comparePrice;
+        if (newComparePrice !== undefined && newComparePrice !== null && newComparePrice !== "") {
+          comparePrice = parseInt(newComparePrice, 10);
+          if (isNaN(comparePrice) || comparePrice <= 0) comparePrice = window.CURRENT_COMPARE_PRICE || 99;
+        } else {
+          comparePrice = window.CURRENT_COMPARE_PRICE || 99;
+        }
+
         window.CURRENT_PRICE = newPrice;
-        localStorage.setItem("psd_custom_price", newPrice);
+        window.CURRENT_COMPARE_PRICE = comparePrice;
+        safeLocalSet("psd_custom_price", newPrice);
+        safeLocalSet("psd_custom_compare_price", comparePrice);
 
         // Update all price tags across the page
         document.querySelectorAll("[data-price-dollar]").forEach(function (el) {
@@ -4189,32 +4222,42 @@
         document.querySelectorAll("[data-price-amount]").forEach(function (el) {
           el.textContent = newPrice;
         });
+        document.querySelectorAll("[data-price-compare]").forEach(function (el) {
+          el.textContent = "$" + comparePrice + ".00 USD";
+        });
 
         // Recalculate BCV Bolivares amount
         fetchBcvRate();
 
         var secretInput = document.getElementById("secretPriceInput");
+        var secretCompareInput = document.getElementById("secretComparePriceInput");
         var secretToast = document.getElementById("secretPriceToast");
         if (secretInput) secretInput.value = newPrice;
+        if (secretCompareInput) secretCompareInput.value = comparePrice;
 
         if (showToast && secretToast) {
           secretToast.style.display = "block";
-          secretToast.textContent = "✓ ¡Precio actualizado a $" + newPrice + " USD (guardado en Supabase)!";
+          secretToast.textContent = "✓ ¡Precios actualizados a $" + newPrice + " USD (comparación $" + comparePrice + ") · guardados en Supabase!";
           setTimeout(function () {
             secretToast.style.display = "none";
           }, 3000);
         }
 
         if (!skipApiSync) {
-          savePriceToApi(newPrice);
+          savePriceToApi(newPrice, comparePrice);
         }
       }
+
+      var lastFocusedBeforeModal = null;
 
       function openSecretModal() {
         var secretModal = document.getElementById("secretPriceModal");
         var secretInput = document.getElementById("secretPriceInput");
         if (!secretModal) return;
+        lastFocusedBeforeModal = document.activeElement;
         if (secretInput) secretInput.value = window.CURRENT_PRICE || 50;
+        var secretCompareInput = document.getElementById("secretComparePriceInput");
+        if (secretCompareInput) secretCompareInput.value = window.CURRENT_COMPARE_PRICE || 99;
         secretModal.classList.add("is-open");
         secretModal.setAttribute("aria-hidden", "false");
         setTimeout(function() { if (secretInput) secretInput.focus(); }, 100);
@@ -4225,6 +4268,9 @@
         if (!secretModal) return;
         secretModal.classList.remove("is-open");
         secretModal.setAttribute("aria-hidden", "true");
+        if (lastFocusedBeforeModal && typeof lastFocusedBeforeModal.focus === "function") {
+          lastFocusedBeforeModal.focus();
+        }
       }
 
       // Event Listeners setup
@@ -4240,15 +4286,27 @@
           secretModal.addEventListener("click", function (e) {
             if (e.target === secretModal) closeSecretModal();
           });
+          // Focus trap: Tab no debe salir del modal abierto
+          secretModal.addEventListener("keydown", function (e) {
+            if (e.key !== "Tab") return;
+            var focusables = secretModal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+            if (!focusables.length) return;
+            var first = focusables[0];
+            var last = focusables[focusables.length - 1];
+            if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+            else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+          });
         }
         if (secretSaveBtn) {
           secretSaveBtn.addEventListener("click", function () {
-            if (secretInput) updateGlobalPrice(secretInput.value, true);
+            var secretCompareInput = document.getElementById("secretComparePriceInput");
+            var compareVal = secretCompareInput ? secretCompareInput.value : undefined;
+            if (secretInput) updateGlobalPrice(secretInput.value, true, false, compareVal);
           });
         }
         if (secretResetBtn) {
           secretResetBtn.addEventListener("click", function () {
-            updateGlobalPrice(50, true);
+            updateGlobalPrice(50, true, false, 99);
           });
         }
 
@@ -4290,23 +4348,35 @@
         }
       });
 
-      // Initialize BCV rate and restore saved price from localStorage / Supabase
+      // Cerrar el modal con la tecla Escape
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+          var secretModal = document.getElementById("secretPriceModal");
+          if (secretModal && secretModal.classList.contains("is-open")) closeSecretModal();
+        }
+      });
+
+      // Initialize BCV rate and restore saved prices from localStorage / Supabase
       fetchBcvRate();
-      var localSavedPrice = localStorage.getItem("psd_custom_price");
-      if (localSavedPrice) {
-        updateGlobalPrice(localSavedPrice, false, true);
+      var localSavedPrice = safeLocalGet("psd_custom_price");
+      var localSavedComparePrice = safeLocalGet("psd_custom_compare_price");
+      var startPrice = localSavedPrice ? parseInt(localSavedPrice, 10) : (window.CURRENT_PRICE || 50);
+      var startComparePrice = localSavedComparePrice ? parseInt(localSavedComparePrice, 10) : (window.CURRENT_COMPARE_PRICE || 99);
+      if (localSavedPrice || localSavedComparePrice) {
+        updateGlobalPrice(startPrice, false, true, startComparePrice);
       }
 
-      // Fetch live price from Server / Supabase API
+      // Fetch live prices from Server / Supabase API
       fetch("/api/price")
         .then(function (res) { return res.json(); })
         .then(function (data) {
           if (data && data.price) {
+            var serverComparePrice = data.comparePrice ? parseInt(data.comparePrice, 10) : null;
             if (data.price !== 50 || !localSavedPrice) {
-              updateGlobalPrice(data.price, false, true);
+              updateGlobalPrice(data.price, false, true, serverComparePrice || startComparePrice);
             } else if (localSavedPrice && parseInt(localSavedPrice, 10) !== 50) {
               // Sync local custom price to server if server returned default 50
-              savePriceToApi(localSavedPrice);
+              savePriceToApi(startPrice, startComparePrice);
             }
           }
         })

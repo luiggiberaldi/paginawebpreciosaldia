@@ -26,6 +26,14 @@ const nextConfig: NextConfig = {
         ]
       }
     ];
+  },
+  async rewrites() {
+    return [
+      {
+        source: "/",
+        destination: "/preciosaldia-intro.html",
+      },
+    ];
   }
 };
 

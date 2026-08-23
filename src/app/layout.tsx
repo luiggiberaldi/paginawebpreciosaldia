@@ -17,25 +17,34 @@ const instrumentSerif = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
-  title: "Z.ai Code Scaffold - AI-Powered Development",
-  description: "Modern Next.js scaffold optimized for AI-powered development with Z.ai. Built with TypeScript, Tailwind CSS, and shadcn/ui.",
-  keywords: ["Z.ai", "Next.js", "TypeScript", "Tailwind CSS", "shadcn/ui", "AI development", "React"],
-  authors: [{ name: "Z.ai Team" }],
+  title: "Precios al Día · Sistema POS, Gestión y Nube — Punto de Venta para Bodegas",
+  description: "Precios al Día: Sistema POS y gestión de inventario offline-first para bodegas en Venezuela. Vende sin internet, tasa BCV automática y cobros Cashea.",
+  keywords: ["Precios al Día", "POS Venezuela", "Punto de Venta", "Sistema para Bodegas", "Tasa BCV", "Cashea POS", "Inventario Offline", "Next.js"],
+  authors: [{ name: "Synaptica" }],
   icons: {
-    icon: "https://z-cdn.chatglm.cn/z-ai/static/logo.svg",
+    icon: "/favicon.ico",
   },
   openGraph: {
-    title: "Z.ai Code Scaffold",
-    description: "AI-powered development with modern React stack",
-    url: "https://chat.z.ai",
-    siteName: "Z.ai",
+    title: "Precios al Día · Sistema POS y Gestión para Bodegas en Venezuela",
+    description: "Punto de venta bimoneda y control de inventario 100% offline para bodegas en Venezuela. Tasa BCV automática, cobro con Cashea, fiados y monedero.",
+    url: "https://preciosaldia.vercel.app/",
+    siteName: "Precios al Día",
+    images: [
+      {
+        url: "https://preciosaldia.vercel.app/logo-pagina.png",
+        width: 1200,
+        height: 630,
+        alt: "Precios al Día POS",
+      },
+    ],
+    locale: "es_VE",
     type: "website",
-    openGraph: true,
-  } as any, // Temporary bypass if type definitions mismatch
+  },
   twitter: {
     card: "summary_large_image",
-    title: "Z.ai Code Scaffold",
-    description: "AI-powered development with modern React stack",
+    title: "Precios al Día · Sistema POS y Gestión para Bodegas",
+    description: "Punto de venta y control de inventario offline-first para bodegas en Venezuela. Tasa BCV, Cashea y fiados.",
+    images: ["https://preciosaldia.vercel.app/logo-pagina.png"],
   },
 };
 
@@ -45,7 +54,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="es" suppressHydrationWarning>
       <body
         className={`${workSans.variable} ${instrumentSerif.variable} antialiased bg-background text-foreground`}
       >

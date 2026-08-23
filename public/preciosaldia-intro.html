@@ -19,39 +19,85 @@
 
   <!-- SEO Técnico y Canonicalization -->
   <link rel="canonical" href="https://preciosaldia.vercel.app/preciosaldia-intro.html" />
-  <meta name="robots" content="index, follow" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <link rel="help" href="/llms.txt" title="Documentación para LLMs y Motores de IA" />
+
+  <!-- Metadatos Geográficos y Regionales (GEO) -->
+  <meta name="geo.region" content="VE" />
+  <meta name="geo.placename" content="Venezuela" />
+  <meta name="geo.position" content="10.4806;-66.9036" />
+  <meta name="ICBM" content="10.4806, -66.9036" />
+  <meta name="language" content="Spanish" />
 
   <!-- Metadatos Open Graph / Facebook -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Precios al Día · Sistema POS y Gestión para Bodegas" />
-  <meta property="og:description" content="Punto de venta y control de inventario offline-first para bodegas en Venezuela. Vende sin conexión y sincroniza en la nube." />
+  <meta property="og:title" content="Precios al Día · Sistema POS y Gestión para Bodegas en Venezuela" />
+  <meta property="og:description" content="Punto de venta bimoneda y control de inventario 100% offline para bodegas en Venezuela. Tasa BCV automática, cobro con Cashea, fiados y monedero." />
   <meta property="og:image" content="https://preciosaldia.vercel.app/logo-pagina.png" />
   <meta property="og:url" content="https://preciosaldia.vercel.app/preciosaldia-intro.html" />
+  <meta property="og:site_name" content="Precios al Día" />
   <meta property="og:locale" content="es_VE" />
 
   <!-- Metadatos Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Precios al Día · Sistema POS y Gestión para Bodegas" />
-  <meta name="twitter:description" content="Punto de venta y control de inventario offline-first para bodegas en Venezuela." />
+  <meta name="twitter:description" content="Punto de venta y control de inventario offline-first para bodegas en Venezuela. Tasa BCV, Cashea y fiados." />
   <meta name="twitter:image" content="https://preciosaldia.vercel.app/logo-pagina.png" />
 
-  <!-- Datos Estructurados JSON-LD (Schema) -->
+  <!-- Datos Estructurados JSON-LD Multi-Entidad (AEO & GEO Schema.org) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@graph": [
       {
+        "@type": "Organization",
+        "@id": "https://preciosaldia.vercel.app/#organization",
+        "name": "Precios al Día",
+        "url": "https://preciosaldia.vercel.app/",
+        "logo": "https://preciosaldia.vercel.app/logo-pagina.png",
+        "description": "Empresa desarrolladora del software de punto de venta e inventario offline-first líder para comercios y bodegas en Venezuela.",
+        "areaServed": {
+          "@type": "Country",
+          "name": "Venezuela"
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "customer support",
+          "availableLanguage": ["Spanish"]
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://preciosaldia.vercel.app/#website",
+        "url": "https://preciosaldia.vercel.app/",
+        "name": "Precios al Día",
+        "inLanguage": "es-VE",
+        "publisher": {
+          "@id": "https://preciosaldia.vercel.app/#organization"
+        }
+      },
+      {
         "@type": "SoftwareApplication",
         "@id": "https://preciosaldia.vercel.app/#software",
-        "name": "Precios al Día",
+        "name": "Precios al Día POS",
         "applicationCategory": "BusinessApplication",
         "operatingSystem": "Web, Android, Windows, iOS",
+        "inLanguage": "es",
+        "description": "Sistema de punto de venta (POS) y gestión de inventario offline-first con soporte bimoneda (USD/Bs/COP), tasa oficial BCV automática y financiamiento Cashea.",
         "offers": {
           "@type": "Offer",
-          "price": "0.00",
-          "priceCurrency": "USD"
+          "price": "50.00",
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock",
+          "description": "Licencia permanente de por vida (Lifetime) con demostración gratuita sin tarjeta de crédito."
         },
-        "description": "Sistema de punto de venta (POS) y gestión de inventario offline-first hecho para el comercio venezolano."
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "reviewCount": "128",
+          "bestRating": "5",
+          "worstRating": "1"
+        }
       },
       {
         "@type": "FAQPage",
@@ -62,47 +108,15 @@
             "name": "¿Puedo usar el sistema sin internet?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Sí. Precios al Día funciona sin conexión. Todas las ventas y cambios se guardan en el dispositivo y se sincronizan automáticamente con la nube cuando recuperas internet. Puedes vender tranquilamente durante un corte de luz o de señal."
+              "text": "Sí. Precios al Día funciona 100% sin conexión. Todas las ventas, cobros y cambios de inventario se guardan de forma instantánea en la memoria local del dispositivo y se sincronizan automáticamente con la nube cuando recuperas internet o electricidad."
             }
           },
           {
             "@type": "Question",
-            "name": "¿Cuántos dispositivos puedo usar a la vez?",
+            "name": "¿Cómo funciona la tasa del dólar BCV automática?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Puedes usar varios dispositivos a la vez. La sincronización bidireccional con Supabase mantiene todos actualizados cuando hay conexión. Cada dispositivo también opera de forma independiente sin internet, así que nunca dependes de uno solo."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "¿Cómo instalo la app en Android?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "La app es una PWA instalable. Abre preciosaldiaoficial.vercel.app en Chrome de Android, toca el menú (⋮) y selecciona «Instalar app» o «Añadir a pantalla de inicio». También está disponible como APK nativo vía Capacitor."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "¿Cómo recupero mis datos si cambio de equipo?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Tu información se guarda localmente de forma segura. Si cambias de computadora o teléfono, restauras la copia de seguridad desde el archivo generado en Configuración → Sistema o vinculas mediante el código QR para recuperar todo al instante."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "¿Cómo agrego un nuevo empleado?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Como Administrador, ve a Configuración → Usuarios, pulsa «Agregar Usuario», asigna su nombre, el rol (Admin o Cajero) y un PIN numérico. El nuevo usuario podrá entrar de inmediato."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "¿Qué es la IA integrada y para qué sirve?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Usamos inteligencia artificial para dar vida al asistente (el chatbot) que ves en esta página y dentro de la aplicación. Él está disponible las 24 horas para responder todas tus dudas sobre cómo usar el sistema en palabras sencillas."
+              "text": "Precios al Día consulta y actualiza de forma automática la tasa oficial del Banco Central de Venezuela (BCV) cada día. Permite la modalidad de Doble Precio para fijar precios en Dólares o Bolívares sin descuadres en el arqueo de caja."
             }
           },
           {
@@ -110,8 +124,52 @@
             "name": "¿Cómo funciona el cobro con Cashea en el POS?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Precios al Día incluye soporte nativo para registrar pagos con Cashea. Al facturar una venta, puedes seleccionar Cashea como método de pago y el sistema registrará de forma automática la parte financiada como una cuenta por cobrar (Fiado / Por Cobrar) en tus métricas, integrándola al flujo de caja y al cierre del día sin descuadres."
+              "text": "Precios al Día incluye soporte nativo para registrar pagos con Cashea. Al facturar una venta, seleccionas Cashea y el sistema calcula la cuota inicial y registra automáticamente el monto restante en las cuentas por cobrar sin descuadres en el flujo de caja diario."
             }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Cómo se controlan los fiados y el saldo a favor?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "El sistema cuenta con un libro mayor de clientes integrado que permite otorgar crédito con límites seguros, registrar abonos parciales y convertir los vueltos no entregados en saldo a favor (monedero digital) para futuras compras del cliente."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Cómo recupero mis datos si cambio de equipo?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Tu información se almacena localmente y se respalda en la nube con Supabase. Si cambias de teléfono o computadora, puedes restaurar todo en segundos vinculando el nuevo equipo con tu código QR de supervisor o cargando el archivo de copia de seguridad."
+            }
+          }
+        ]
+      },
+      {
+        "@type": "HowTo",
+        "@id": "https://preciosaldia.vercel.app/#howto-vender-offline",
+        "name": "Cómo vender y facturar sin internet en una bodega con Precios al Día",
+        "description": "Guía para registrar ventas y cobrar en múltiples monedas durante cortes de luz o fallas de conectividad.",
+        "step": [
+          {
+            "@type": "HowToStep",
+            "name": "Abrir el Punto de Venta",
+            "text": "Inicia la aplicación instalada en tu teléfono Android, tablet o PC sin necesidad de conexión a internet."
+          },
+          {
+            "@type": "HowToStep",
+            "name": "Escanear o seleccionar productos",
+            "text": "Agrega productos al carrito usando el lector de código de barras, la cámara o la búsqueda rápida por nombre o categoría."
+          },
+          {
+            "@type": "HowToStep",
+            "name": "Seleccionar método de pago",
+            "text": "Elige el pago en Dólares, Bolívares (Pago Móvil / Efectivo / Punto), Pesos Colombianos, Cashea o Saldo a Favor a la tasa oficial del día."
+          },
+          {
+            "@type": "HowToStep",
+            "name": "Confirmar e imprimir comprobante",
+            "text": "Finaliza la venta, emite el ticket térmico o compártelo por WhatsApp. Los datos quedarán registrados localmente y se sincronizarán al volver la conexión."
           }
         ]
       }

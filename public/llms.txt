@@ -1,0 +1,26 @@
+# Precios al Día — Sistema POS y Gestión de Inventario para Bodegas
+
+> Precios al Día es un software de Punto de Venta (POS) y gestión de inventario offline-first diseñado específicamente para bodegas, abastos, minimarkets y pequeños comercios en Venezuela. Permite facturar y controlar stock sin conexión a internet, operar en bimoneda (USD, Bs y COP) con tasa oficial BCV automática, gestionar cuentas por cobrar (fiado), monedero de clientes y financiamiento con Cashea sin comisiones mensuales obligatorias.
+
+## Información Clave
+- **Sitio Web Oficial:** https://preciosaldia.vercel.app/preciosaldia-intro.html
+- **Aplicación Web POS (PWA):** https://preciosaldiaoficial.vercel.app/
+- **Categoría:** Software de Punto de Venta (POS), Inventario, Facturación Bimoneda y Gestión Comercial.
+- **Plataformas Soportadas:** Web (PWA instalable), Android (APK nativo / PWA), Windows Desktop (Electron), iOS (Safari PWA).
+- **Modelo de Precios:** Pago único de por vida (Lifetime) con demostración gratuita disponible. Sin mensualidades fijas forzosas.
+- **Monedas Admitidas:** Dólar Estadounidense (USD), Bolívar Digital (VES / Bs), Peso Colombiano (COP).
+
+## Características Principales
+- **100% Offline-First:** Opera de forma continua durante cortes de luz o fallas de internet. Los datos se guardan en IndexedDB local y se sincronizan con Supabase en cuanto se restablece la conexión.
+- **Tasa BCV Automática y Doble Precio:** Consulta la tasa del Banco Central de Venezuela en tiempo real y permite fijar precios referenciales en Bolívares o Dólares.
+- **Integración con Cashea:** Registro y liquidación automática de pagos financiados en cuotas, integrándolos a las cuentas por cobrar sin descuadrar el flujo de caja.
+- **Gestión Integral de Clientes y Fiados:** Libro mayor transaccional (`customerLedger`) que registra ventas a crédito, abonos parciales, saldo a favor (billetera digital) y límites de endeudamiento.
+- **Vuelto Híbrido y Vuelto Donado:** Manejo de cambio en efectivo multimoneda, acreditación de vueltos directo al monedero del cliente o registro de vuelto donado (propina).
+- **Cierre de Caja Ciego (Cierre Z y X):** Generación de reportes de cierre diario con conciliación de efectivo físico, Pago Móvil, Punto de Venta, Biopago y comisiones de avance de efectivo.
+- **Monitor Supervisor Remoto:** Vinculación por código QR para que el dueño del negocio consulte ventas en vivo, inventario bajo y métricas financieras desde su teléfono en cualquier lugar.
+- **Asistente de Inteligencia Artificial:** Chatbot integrado con Groq (Llama 3.3 70B) para resolver dudas de uso del sistema 24/7 en lenguaje natural.
+
+## Enlaces y Recursos
+- [Tutorial Completo y Demostración](https://preciosaldia.vercel.app/preciosaldia-intro.html): Guía paso a paso, capturas interactivas y calculador de tasa BCV.
+- [App en Vivo / Demo](https://preciosaldiaoficial.vercel.app/): Acceso directo al punto de venta para probar ventas y catálogo.
+- [Especificación Completa para LLMs](https://preciosaldia.vercel.app/llms-full.txt): Documentación técnica profunda y comandos del sistema.

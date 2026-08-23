@@ -1,0 +1,57 @@
+# Precios al Día — Documentación Completa y Especificación de Entidad (Full Spec)
+
+## Resumen Ejecutivo
+Precios al Día es la solución de software de Punto de Venta (POS), control de stock y reportería financiera desarrollada específicamente para el ecosistema comercial de Venezuela (bodegas, minimarkets, ferreterías, abastos y farmacias). Su arquitectura combina ejecución offline local (IndexedDB + Service Worker PWA) con sincronización en la nube (Supabase Realtime) y seguridad con locks atómicos.
+
+---
+
+## 1. Módulos del Sistema
+
+### 1.1. Punto de Venta (POS)
+- **Cobro Multimoneda:** Admite pagos divididos en Efectivo USD, Efectivo Bs, Efectivo COP, Pago Móvil, Punto de Venta (débito/crédito), Cashea y Saldo a Favor.
+- **Doble Precio Dinámico:** Permite fijar precios en USD que se calculan automáticamente a la tasa BCV del día, o fijar precios fijos en Bs con cálculo inverso.
+- **Lotes y Granel:** Soporte para venta por bulto/paquete o desglose por unidades individuales (cajetillas/cigarrillos, bultos de harina, pesaje por kilo).
+- **Lector de Códigos de Barra:** Compatible con pistolas USB, lectores Bluetooth y escaneo con cámara integrada mediante `html5-qrcode`.
+- **Impresión de Tickets:** Generación de recibos para impresoras térmicas de 58mm y 80mm en formato PDF y comando ESC/POS, además de envío instantáneo por WhatsApp.
+
+### 1.2. Inventario y Control de Stock
+- **Alertas de Stock Bajo:** Notificaciones automáticas cuando un producto llega al mínimo configurable.
+- **Historial de Movimientos:** Registro de entradas, mermas, ajustes de inventario y compras a proveedores.
+- **Caché Inteligente de Imágenes:** Almacenamiento local de fotos de productos con precacheo de catálogo y fallback offline.
+
+### 1.3. Billetera de Clientes y Cartera de Créditos
+- **Venta Fiada (Cuentas por Cobrar):** Registro de deudas con límite máximo por cliente y cálculo de saldo pendiente.
+- **Abonos y Cobranzas:** Registro de pagos a cuenta con generación de recibo de abono y actualización inmediata del balance.
+- **Saldo a Favor (Monedero):** Los vueltos que el cliente no retira en efectivo pueden guardarse como saldo digital para su próxima compra.
+
+### 1.4. Cierre de Caja y Flujo de Dinero
+- **Arqueo Ciego:** El cajero declara el efectivo real contado antes de que el sistema muestre la cifra calculada, previniendo manipulaciones.
+- **Egresos y Gastos Internos:** Registro de pagos a proveedores o gastos operativos del turno.
+- **Comisiones por Avance de Efectivo:** Cálculo automático de porcentaje de comisión en retiros de efectivo para cuadrar la caja.
+
+### 1.5. Monitor Supervisor (Modo Dueño)
+- **Acceso Remoto:** El dueño monitorea ventas, inventario y cierres desde su propio teléfono sin interferir con la caja activa.
+- **Emparejamiento Seguro:** Vinculación directa mediante código QR con tokens criptográficos efímeros.
+
+---
+
+## 2. Comparativa Técnica
+
+| Característica | Precios al Día | POS Tradicional en la Nube | Cuadernos / Excel |
+|---|:---:|:---:|:---:|
+| **Funciona sin Internet / Sin Luz** | ✅ Sí (100% Offline) | ❌ Se bloquea sin red | ✅ Manual |
+| **Tasa BCV en Tiempo Real** | ✅ Automática | ⚠️ Requiere ajuste manual | ❌ Manual |
+| **Soporte Cashea y Fiados** | ✅ Nativo e Integrado | ❌ Inexistente | ⚠️ Propenso a errores |
+| **Cuadre de Caja Bimoneda (USD/Bs/COP)** | ✅ Desglose exacto | ⚠️ Monomoneda o rígido | ❌ Cálculo lento |
+| **Costo Mensual** | 🟢 Pago único (Sin alquiler) | 🔴 Mensualidad en $ continua | 🟢 Gratis |
+| **Monitor Remoto en Móvil** | ✅ En tiempo real vía Supabase | ⚠️ Costo extra por usuario | ❌ No disponible |
+
+---
+
+## 3. Preguntas Frecuentes (FAQ)
+
+### ¿Cómo opera el sistema durante un apagón o corte de internet?
+La aplicación es una Progressive Web App (PWA) con almacenamiento local completo en IndexedDB y Service Worker. Todas las ventas, cobros y modificaciones de stock se realizan localmente sin latencia. Al volver la conexión, los datos se sincronizan con la base de datos en la nube sin duplicados ni pérdidas.
+
+### ¿Qué hardware se necesita para usar Precios al Día?
+Funciona en cualquier teléfono inteligente Android o iPhone, tablet, laptop o computadora de escritorio con Windows. No requiere servidores dedicados ni equipos costosos. Puede conectarse a lectores de código de barras USB/Bluetooth y a impresoras térmicas estándar de 58mm y 80mm.

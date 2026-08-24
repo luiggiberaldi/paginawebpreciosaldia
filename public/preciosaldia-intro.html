@@ -516,19 +516,22 @@
     }
 
     /* ============================================================
-       HERO
+       HERO (IMPACTANTE & ALTA VISIBILIDAD)
        ============================================================ */
     .hero {
       position: relative;
-      padding-block: clamp(var(--space-12), 8vw, var(--space-24));
-      overflow: hidden;
+      padding-block: clamp(var(--space-8), 5vw, var(--space-20));
+      overflow: visible;
+    }
+    .hero .container {
+      max-width: 1260px;
     }
     .hero::before {
       content: "";
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(60% 50% at 85% 0%, var(--primary-soft) 0%, transparent 60%);
+        radial-gradient(70% 60% at 85% 20%, color-mix(in oklch, var(--primary-soft) 80%, transparent) 0%, transparent 70%);
       pointer-events: none;
       z-index: 0;
     }
@@ -537,11 +540,20 @@
       z-index: 1;
       display: grid;
       grid-template-columns: 1fr;
-      gap: var(--space-10);
+      gap: var(--space-8);
       align-items: center;
     }
-    @media (min-width: 940px) {
-      .hero-grid { grid-template-columns: 1.15fr 0.85fr; gap: var(--space-12); }
+    @media (min-width: 960px) {
+      .hero-grid {
+        grid-template-columns: 0.92fr 1.28fr;
+        gap: clamp(28px, 4vw, 52px);
+      }
+    }
+    @media (min-width: 1200px) {
+      .hero-grid {
+        grid-template-columns: 0.88fr 1.35fr;
+        gap: 56px;
+      }
     }
     .hero-eyebrow {
       display: inline-flex;
@@ -861,13 +873,105 @@
     }
 
     /* Hero card mockup */
+    .hero-mockup-wrapper {
+      position: relative;
+      width: 100%;
+    }
+    .hero-glow-bg {
+      position: absolute;
+      inset: -15px -10px -25px -10px;
+      background: radial-gradient(circle at 60% 45%, color-mix(in oklch, var(--primary) 28%, transparent) 0%, transparent 68%);
+      filter: blur(40px);
+      opacity: 0.85;
+      pointer-events: none;
+      z-index: 0;
+    }
     .hero-card {
+      position: relative;
+      z-index: 1;
       background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius-lg, 16px);
+      box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.12);
       overflow: hidden;
       transform: rotate(-0.5deg);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
+      cursor: zoom-in;
+    }
+    .hero-card:hover {
+      transform: rotate(0deg) scale(1.018);
+      box-shadow: 0 32px 75px -15px rgba(0, 0, 0, 0.32), 0 0 0 1px var(--primary);
+    }
+    .hero-mockup-header {
+      background: var(--surface-2);
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-card-content {
+      position: relative;
+      background: #0f172a;
+      overflow: hidden;
+      width: 100%;
+    }
+    .hero-card-content img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.35s ease;
+    }
+    .hero-card:hover .hero-card-content img {
+      transform: scale(1.01);
+    }
+    .hero-floating-chip {
+      position: absolute;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      color: #ffffff;
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+      z-index: 2;
+      pointer-events: none;
+    }
+    .hero-floating-chip.top-chip {
+      top: 12px;
+      right: 12px;
+    }
+    .hero-floating-chip.bottom-chip {
+      bottom: 12px;
+      left: 12px;
+    }
+    .hero-floating-chip .live-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #22c55e;
+      box-shadow: 0 0 8px #22c55e;
+      animation: pulse 2s infinite;
+    }
+    @media (max-width: 640px) {
+      .hero-floating-chip {
+        font-size: 10px;
+        padding: 4px 10px;
+      }
+      .hero-floating-chip.top-chip {
+        top: 8px;
+        right: 8px;
+      }
+      .hero-floating-chip.bottom-chip {
+        bottom: 8px;
+        left: 8px;
+      }
     }
 
     /* ============================================================
@@ -2614,19 +2718,31 @@
         </div>
 
         <!-- Hero mockup browser window with real POS screenshot -->
-        <aside class="hero-card reveal" aria-hidden="true" style="padding:0; overflow:hidden;">
-          <div class="mock-browser-header" style="background: var(--surface-2); padding: 10px 14px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border);">
-            <div style="display: flex; gap: 6px;">
-              <span class="mock-dot red"></span>
-              <span class="mock-dot yellow"></span>
-              <span class="mock-dot green"></span>
+        <div class="hero-mockup-wrapper reveal">
+          <div class="hero-glow-bg" aria-hidden="true"></div>
+          <aside class="hero-card" aria-label="Demostración visual del Punto de Venta Precios al Día" style="padding:0; overflow:hidden;">
+            <div class="hero-mockup-header">
+              <div style="display: flex; gap: 6px; align-items: center;">
+                <span class="mock-dot red"></span>
+                <span class="mock-dot yellow"></span>
+                <span class="mock-dot green"></span>
+                <span style="font-size: 11px; font-weight: 700; color: var(--text-muted); margin-left: 8px;">Punto de Venta POS · Sistema en Vivo</span>
+              </div>
+              <span class="sync-pill"><span class="dot"></span> Online / Offline</span>
             </div>
-            <span class="sync-pill"><span class="dot"></span> Sistema en vivo</span>
-          </div>
-          <div style="position: relative; background: var(--surface); overflow: hidden;">
-            <img src="screenshots/login.png" alt="Pantalla de inicio de sesión de Precios al Día" width="1024" height="1023" style="width: 100%; height: auto; display: block;" />
-          </div>
-        </aside>
+            <div class="hero-card-content">
+              <img src="screenshots/pos.png" alt="Punto de Venta POS de Precios al Día con productos reales y cálculo multimoneda" width="1900" height="906" fetchpriority="high" />
+              <div class="hero-floating-chip top-chip">
+                <span class="live-dot"></span>
+                <span>100% Sin Internet</span>
+              </div>
+              <div class="hero-floating-chip bottom-chip">
+                <i data-lucide="trending-up" style="width:14px;height:14px;color:#38bdf8;"></i>
+                <span>Tasa BCV Automatizada</span>
+              </div>
+            </div>
+          </aside>
+        </div>
       </div>
     </section>
 

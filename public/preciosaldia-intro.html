@@ -2372,6 +2372,118 @@
     .secret-modal-body {
       padding: 20px;
     }
+
+    /* ========================================================
+       LIGHTBOX / VISUALIZADOR DE IMAGEN AMPLIADA
+       ======================================================== */
+    .zoomable-image,
+    .mock-browser-content img,
+    .hero-card img,
+    #showcaseImg,
+    .step-media img {
+      cursor: zoom-in !important;
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), filter 0.2s ease;
+    }
+    .mock-browser-content:hover img,
+    .hero-card:hover img,
+    .showcase-media:hover img {
+      filter: brightness(1.02);
+    }
+    .lightbox-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 100000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: rgba(5, 10, 18, 0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.25s ease;
+      padding: 20px;
+    }
+    .lightbox-backdrop.is-open {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+    .lightbox-container {
+      position: relative;
+      max-width: 95vw;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transform: scale(0.92);
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .lightbox-backdrop.is-open .lightbox-container {
+      transform: scale(1);
+    }
+    .lightbox-img-wrapper {
+      position: relative;
+      max-width: 94vw;
+      max-height: 82vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--radius-lg, 16px);
+      overflow: hidden;
+      box-shadow: 0 25px 60px -10px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(255, 255, 255, 0.15);
+      background: var(--surface, #1e293b);
+    }
+    .lightbox-img {
+      max-width: 100%;
+      max-height: 82vh;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      display: block;
+      user-select: none;
+    }
+    .lightbox-caption {
+      margin-top: 14px;
+      padding: 8px 22px;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 9999px;
+      color: #f8fafc;
+      font-size: 13.5px;
+      font-weight: 600;
+      letter-spacing: 0.2px;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+      text-align: center;
+      max-width: 90vw;
+    }
+    .lightbox-close-btn {
+      position: fixed;
+      top: 20px;
+      right: 24px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #ffffff;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 100002;
+    }
+    .lightbox-close-btn:hover {
+      background: rgba(239, 68, 68, 0.9);
+      border-color: rgba(239, 68, 68, 1);
+      transform: scale(1.08) rotate(90deg);
+      box-shadow: 0 0 16px rgba(239, 68, 68, 0.5);
+    }
   </style>
 </head>
 <body>
@@ -4251,6 +4363,19 @@
     })();
   </script>
 
+  <!-- ============ MODAL EXPANDIR IMAGEN (LIGHTBOX) ============ -->
+  <div id="imageLightboxModal" class="lightbox-backdrop" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Visualizador de imagen ampliada">
+    <button class="lightbox-close-btn" id="lightboxCloseBtn" type="button" aria-label="Cerrar vista ampliada">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </button>
+    <div class="lightbox-container" id="lightboxContainer">
+      <div class="lightbox-img-wrapper">
+        <img id="lightboxImg" class="lightbox-img" src="" alt="Captura ampliada" />
+      </div>
+      <div id="lightboxCaption" class="lightbox-caption">Precios al Día POS</div>
+    </div>
+  </div>
+
   <!-- ============ MODAL ZONA OCULTA (ADMIN PRECIO) ============ -->
   <div id="secretPriceModal" class="secret-modal-backdrop" aria-hidden="true" role="dialog" aria-labelledby="secretModalTitle">
     <div class="secret-modal-card">
@@ -4538,6 +4663,76 @@
         .catch(function (err) {
           console.warn("Error fetching price from API:", err);
         });
+
+      /* ---------- Lightbox / Zoom de Imágenes Interactivo ---------- */
+      var lightboxModal = document.getElementById("imageLightboxModal");
+      var lightboxImg = document.getElementById("lightboxImg");
+      var lightboxCaption = document.getElementById("lightboxCaption");
+      var lightboxCloseBtn = document.getElementById("lightboxCloseBtn");
+      var lastFocusedBeforeLightbox = null;
+
+      function openLightbox(src, alt) {
+        if (!lightboxModal || !lightboxImg) return;
+        lastFocusedBeforeLightbox = document.activeElement;
+        lightboxImg.src = src;
+        lightboxImg.alt = alt || "Captura ampliada de Precios al Día";
+        if (lightboxCaption) {
+          lightboxCaption.textContent = alt || "Precios al Día POS · Sistema en Vivo";
+        }
+        lightboxModal.classList.add("is-open");
+        lightboxModal.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+        if (lightboxCloseBtn) lightboxCloseBtn.focus();
+      }
+
+      function closeLightbox() {
+        if (!lightboxModal) return;
+        lightboxModal.classList.remove("is-open");
+        lightboxModal.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+        if (lastFocusedBeforeLightbox && typeof lastFocusedBeforeLightbox.focus === "function") {
+          lastFocusedBeforeLightbox.focus();
+        }
+      }
+
+      if (lightboxCloseBtn) {
+        lightboxCloseBtn.addEventListener("click", closeLightbox);
+      }
+
+      if (lightboxModal) {
+        lightboxModal.addEventListener("click", function (e) {
+          if (e.target === lightboxModal || e.target.id === "lightboxContainer") {
+            closeLightbox();
+          }
+        });
+      }
+
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && lightboxModal && lightboxModal.classList.contains("is-open")) {
+          closeLightbox();
+        }
+      });
+
+      function initZoomableImages() {
+        var images = document.querySelectorAll(
+          ".mock-browser-content img, .hero-card img, #showcaseImg, .step-media img, img[src*='screenshots/']"
+        );
+        images.forEach(function (img) {
+          img.classList.add("zoomable-image");
+          img.setAttribute("title", "Haz clic para ampliar");
+          img.style.cursor = "zoom-in";
+          img.addEventListener("click", function (e) {
+            e.stopPropagation();
+            openLightbox(img.currentSrc || img.src, img.alt);
+          });
+        });
+      }
+
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initZoomableImages);
+      } else {
+        initZoomableImages();
+      }
     })();
   </script>
 </body>

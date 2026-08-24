@@ -543,18 +543,20 @@
       display: grid;
       grid-template-columns: 1fr;
       gap: var(--space-6);
-      align-items: center;
+      align-items: flex-start;
     }
     @media (min-width: 960px) {
       .hero-grid {
         grid-template-columns: 0.88fr 1.45fr;
         gap: clamp(20px, 2.5vw, 36px);
+        align-items: flex-start;
       }
     }
     @media (min-width: 1200px) {
       .hero-grid {
         grid-template-columns: 0.82fr 1.58fr;
         gap: 40px;
+        align-items: flex-start;
       }
     }
     .hero-eyebrow {

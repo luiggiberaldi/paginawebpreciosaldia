@@ -520,18 +520,20 @@
        ============================================================ */
     .hero {
       position: relative;
-      padding-block: clamp(var(--space-8), 5vw, var(--space-20));
+      padding-top: clamp(6px, 1.5vw, 18px);
+      padding-bottom: clamp(20px, 3vw, 40px);
       overflow: visible;
     }
     .hero .container {
-      max-width: 1260px;
+      max-width: 1360px;
     }
     .hero::before {
       content: "";
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(70% 60% at 85% 20%, color-mix(in oklch, var(--primary-soft) 80%, transparent) 0%, transparent 70%);
+        radial-gradient(85% 75% at 75% 40%, color-mix(in oklch, var(--primary) 14%, transparent) 0%, transparent 75%),
+        radial-gradient(60% 60% at 15% 20%, color-mix(in oklch, var(--primary) 8%, transparent) 0%, transparent 70%);
       pointer-events: none;
       z-index: 0;
     }
@@ -540,26 +542,26 @@
       z-index: 1;
       display: grid;
       grid-template-columns: 1fr;
-      gap: var(--space-8);
+      gap: var(--space-6);
       align-items: center;
     }
     @media (min-width: 960px) {
       .hero-grid {
-        grid-template-columns: 0.92fr 1.28fr;
-        gap: clamp(28px, 4vw, 52px);
+        grid-template-columns: 0.88fr 1.45fr;
+        gap: clamp(20px, 2.5vw, 36px);
       }
     }
     @media (min-width: 1200px) {
       .hero-grid {
-        grid-template-columns: 0.88fr 1.35fr;
-        gap: 56px;
+        grid-template-columns: 0.82fr 1.58fr;
+        gap: 40px;
       }
     }
     .hero-eyebrow {
       display: inline-flex;
       align-items: center;
       gap: var(--space-2);
-      padding: var(--space-2) var(--space-4);
+      padding: 5px 12px;
       border-radius: var(--radius-full);
       background: var(--surface);
       border: 1px solid var(--border);
@@ -567,7 +569,7 @@
       font-weight: 600;
       letter-spacing: 0.02em;
       color: var(--text-muted);
-      margin-bottom: var(--space-6);
+      margin-bottom: var(--space-2);
     }
     .hero-eyebrow .dot {
       width: 8px; height: 8px; border-radius: 50%;
@@ -581,39 +583,41 @@
     }
     .hero-title {
       font-size: var(--text-display);
-      line-height: 0.98;
-      margin-bottom: var(--space-5);
+      line-height: 0.95;
+      margin-bottom: var(--space-3);
     }
     .hero-title em {
       font-style: italic;
       color: var(--primary);
     }
     .hero-sub {
-      font-size: var(--text-lg);
+      font-size: var(--text-base);
       color: var(--text-muted);
-      max-width: 34ch;
-      margin-bottom: var(--space-8);
+      max-width: 52ch;
+      margin-bottom: var(--space-5);
+      line-height: 1.45;
     }
     .hero-cta {
       display: flex;
       flex-wrap: wrap;
       gap: var(--space-3);
       align-items: center;
-      margin-bottom: var(--space-5);
+      margin-bottom: var(--space-4);
     }
     .hero-features {
       display: flex;
       flex-wrap: wrap;
-      gap: var(--space-2) var(--space-5);
-      font-size: var(--text-sm);
+      gap: var(--space-2) var(--space-4);
+      font-size: var(--text-xs);
       color: var(--text-muted);
+      max-width: 58ch;
     }
     .hero-features li {
       display: inline-flex;
       align-items: center;
       gap: var(--space-2);
     }
-    .hero-features svg { width: 16px; height: 16px; color: var(--primary); }
+    .hero-features svg { width: 15px; height: 15px; color: var(--primary); }
 
     /* ============================================================
        GALERÍA INTERACTIVA DE DEMOSTRACIÓN (SHOWCASE)
@@ -2813,9 +2817,9 @@
             <i data-lucide="shopping-cart" aria-hidden="true"></i>
             Punto de Venta
           </button>
-          <button class="showcase-tab" data-img="screenshots/checkout.png" data-title="Vuelto Mixto y Pagos" data-desc="Cobro en divisas con cálculo automático de vuelto combinado en USD y bolívares al cambio oficial del día." type="button" role="tab" aria-selected="false">
+          <button class="showcase-tab" data-img="screenshots/checkout.png" data-title="Vuelto Mixto y Billetera Digital" data-desc="Cobro en divisas con cálculo automático de vuelto en USD, bolívares y acreditación directa a la Billetera del cliente." type="button" role="tab" aria-selected="false">
             <i data-lucide="calculator" aria-hidden="true"></i>
-            Vueltos y Cobro
+            Vueltos y Billetera
           </button>
           <button class="showcase-tab" data-img="screenshots/inventory.png" data-title="Gestión de Inventario" data-desc="Control de stock por producto, cálculo automático de días de inventario restante y actualización rápida de precios." type="button" role="tab" aria-selected="false">
             <i data-lucide="package" aria-hidden="true"></i>
@@ -3204,7 +3208,7 @@
                     <span class="mock-dot green"></span>
                   </div>
                   <div class="mock-browser-content">
-                    <img src="screenshots/checkout.png" alt="Cobro en divisas y vuelto mixto en Precios al Día" width="1203" height="734" loading="lazy" />
+                    <img src="screenshots/checkout.png" alt="Cobro en divisas, vuelto mixto y asignación a billetera en Precios al Día" width="1024" height="695" loading="lazy" />
                   </div>
                 </div>
               </div>

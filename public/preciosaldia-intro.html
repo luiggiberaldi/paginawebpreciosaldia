@@ -604,20 +604,86 @@
       align-items: center;
       margin-bottom: var(--space-4);
     }
-    .hero-features {
-      display: flex;
+    /* Hero Trust Badge */
+    .hero-trust-badge {
+      display: inline-flex;
       flex-wrap: wrap;
-      gap: var(--space-2) var(--space-4);
+      align-items: center;
+      gap: 8px 12px;
+      padding: 7px 16px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-full);
       font-size: var(--text-xs);
-      color: var(--text-muted);
-      max-width: 58ch;
+      color: var(--text);
+      font-weight: 500;
+      margin-bottom: var(--space-4);
+      box-shadow: var(--shadow-sm);
     }
-    .hero-features li {
+    .hero-trust-badge .trust-item {
       display: inline-flex;
       align-items: center;
-      gap: var(--space-2);
+      gap: 6px;
+      white-space: nowrap;
     }
-    .hero-features svg { width: 15px; height: 15px; color: var(--primary); }
+    .hero-trust-badge .trust-item svg {
+      width: 14px;
+      height: 14px;
+      color: var(--success);
+      flex-shrink: 0;
+    }
+    .hero-trust-badge .trust-dot {
+      color: var(--border-strong);
+      font-size: 11px;
+      opacity: 0.6;
+    }
+
+    /* Hero Benefits Grid - 2 Column Clean Cards */
+    .hero-benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px 14px;
+      max-width: 550px;
+      margin-top: 2px;
+    }
+    @media (max-width: 600px) {
+      .hero-benefits-grid {
+        grid-template-columns: 1fr;
+        gap: 7px;
+      }
+    }
+    .hero-benefit-item {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      padding: 6px 10px;
+      background: color-mix(in oklch, var(--surface) 80%, transparent);
+      border: 1px solid color-mix(in oklch, var(--border) 80%, transparent);
+      border-radius: var(--radius-sm, 8px);
+      font-size: 12.5px;
+      color: var(--text);
+      line-height: 1.25;
+      transition: background var(--transition), border-color var(--transition);
+    }
+    .hero-benefit-item:hover {
+      background: var(--surface);
+      border-color: var(--border-strong);
+    }
+    .hero-benefit-item .benefit-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 6px;
+      background: color-mix(in oklch, var(--primary) 14%, var(--surface));
+      color: var(--primary);
+      flex-shrink: 0;
+    }
+    .hero-benefit-item .benefit-icon svg {
+      width: 13px;
+      height: 13px;
+    }
 
     /* ============================================================
        GALERÍA INTERACTIVA DE DEMOSTRACIÓN (SHOWCASE)
@@ -2706,19 +2772,42 @@
               Hablar con un Asesor
             </a>
           </div>
-          <div class="urgency-pill">
-            <i data-lucide="check-circle-2" aria-hidden="true"></i>
-            Un solo pago de <span data-price-dollar>$50</span> · Cero mensualidades o rentas · Sin tarjetas
+          <!-- Barra de Confianza -->
+          <div class="hero-trust-badge">
+            <span class="trust-item"><i data-lucide="check-circle-2" aria-hidden="true"></i> Un solo pago de <strong data-price-dollar>$50</strong></span>
+            <span class="trust-dot">•</span>
+            <span class="trust-item"><i data-lucide="shield-check" aria-hidden="true"></i> Cero mensualidades</span>
+            <span class="trust-dot">•</span>
+            <span class="trust-item"><i data-lucide="credit-card" aria-hidden="true"></i> Sin tarjetas ni rentas</span>
           </div>
-          <ul class="hero-features">
-            <li><i data-lucide="shield-check" aria-hidden="true"></i> <strong>Cero mensualidades ni rentas fijas</strong></li>
-            <li><i data-lucide="wifi-off" aria-hidden="true"></i> Con o sin internet</li>
-            <li><i data-lucide="refresh-cw" aria-hidden="true"></i> Sincronización opcional</li>
-            <li><i data-lucide="package" aria-hidden="true"></i> Inventario inteligente</li>
-            <li><i data-lucide="trending-up" aria-hidden="true"></i> Tasa BCV (dólar/euro) y USDT automática</li>
-            <li><i data-lucide="credit-card" aria-hidden="true"></i> Cobros Cashea Integrados</li>
-            <li><i data-lucide="eye" aria-hidden="true"></i> Modo Supervisor con PIN</li>
-          </ul>
+
+          <!-- Cuadrícula de Beneficios Clave (Estructurada y Alineada) -->
+          <div class="hero-benefits-grid">
+            <div class="hero-benefit-item">
+              <span class="benefit-icon"><i data-lucide="shield-check" aria-hidden="true"></i></span>
+              <span><strong>Cero mensualidades</strong> ni rentas fijas</span>
+            </div>
+            <div class="hero-benefit-item">
+              <span class="benefit-icon"><i data-lucide="wifi-off" aria-hidden="true"></i></span>
+              <span><strong>100% Funcional</strong> con o sin internet</span>
+            </div>
+            <div class="hero-benefit-item">
+              <span class="benefit-icon"><i data-lucide="trending-up" aria-hidden="true"></i></span>
+              <span><strong>Tasa BCV oficial</strong> (USD/EUR) automática</span>
+            </div>
+            <div class="hero-benefit-item">
+              <span class="benefit-icon"><i data-lucide="credit-card" aria-hidden="true"></i></span>
+              <span><strong>Cobros Cashea</strong> y Fiados integrados</span>
+            </div>
+            <div class="hero-benefit-item">
+              <span class="benefit-icon"><i data-lucide="printer" aria-hidden="true"></i></span>
+              <span><strong>Tickets térmicos</strong> 58/80mm y WhatsApp</span>
+            </div>
+            <div class="hero-benefit-item">
+              <span class="benefit-icon"><i data-lucide="eye" aria-hidden="true"></i></span>
+              <span><strong>Modo Supervisor</strong> remoto con PIN</span>
+            </div>
+          </div>
         </div>
 
         <!-- Hero mockup browser window with real POS screenshot -->

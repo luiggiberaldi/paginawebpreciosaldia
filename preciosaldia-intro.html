@@ -18,7 +18,7 @@
   <meta name="theme-color" content="#01696f" />
 
   <!-- SEO Técnico y Canonicalization -->
-  <link rel="canonical" href="https://preciosaldia.vercel.app/preciosaldia-intro.html" />
+  <link rel="canonical" href="https://preciosaldiaweb.vercel.app/" />
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
   <link rel="help" href="/llms.txt" title="Documentación para LLMs y Motores de IA" />
 
@@ -33,8 +33,8 @@
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Precios al Día · Sistema POS y Gestión para Bodegas en Venezuela" />
   <meta property="og:description" content="Punto de venta bimoneda y control de inventario 100% offline para bodegas en Venezuela. Tasa BCV automática, cobro con Cashea, fiados y monedero." />
-  <meta property="og:image" content="https://preciosaldia.vercel.app/logo-pagina.png" />
-  <meta property="og:url" content="https://preciosaldia.vercel.app/preciosaldia-intro.html" />
+  <meta property="og:image" content="https://preciosaldiaweb.vercel.app/logo-pagina.webp" />
+  <meta property="og:url" content="https://preciosaldiaweb.vercel.app/" />
   <meta property="og:site_name" content="Precios al Día" />
   <meta property="og:locale" content="es_VE" />
 
@@ -42,7 +42,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Precios al Día · Sistema POS y Gestión para Bodegas" />
   <meta name="twitter:description" content="Punto de venta y control de inventario offline-first para bodegas en Venezuela. Tasa BCV, Cashea y fiados." />
-  <meta name="twitter:image" content="https://preciosaldia.vercel.app/logo-pagina.png" />
+  <meta name="twitter:image" content="https://preciosaldiaweb.vercel.app/logo-pagina.webp" />
 
   <!-- Datos Estructurados JSON-LD Multi-Entidad (AEO & GEO Schema.org) -->
   <script type="application/ld+json">
@@ -51,10 +51,10 @@
     "@graph": [
       {
         "@type": "Organization",
-        "@id": "https://preciosaldia.vercel.app/#organization",
+        "@id": "https://preciosaldiaweb.vercel.app/#organization",
         "name": "Precios al Día",
-        "url": "https://preciosaldia.vercel.app/",
-        "logo": "https://preciosaldia.vercel.app/logo-pagina.png",
+        "url": "https://preciosaldiaweb.vercel.app/",
+        "logo": "https://preciosaldiaweb.vercel.app/logo-pagina.webp",
         "description": "Empresa desarrolladora del software de punto de venta e inventario offline-first líder para comercios y bodegas en Venezuela.",
         "areaServed": {
           "@type": "Country",
@@ -68,17 +68,17 @@
       },
       {
         "@type": "WebSite",
-        "@id": "https://preciosaldia.vercel.app/#website",
-        "url": "https://preciosaldia.vercel.app/",
+        "@id": "https://preciosaldiaweb.vercel.app/#website",
+        "url": "https://preciosaldiaweb.vercel.app/",
         "name": "Precios al Día",
         "inLanguage": "es-VE",
         "publisher": {
-          "@id": "https://preciosaldia.vercel.app/#organization"
+          "@id": "https://preciosaldiaweb.vercel.app/#organization"
         }
       },
       {
         "@type": "SoftwareApplication",
-        "@id": "https://preciosaldia.vercel.app/#software",
+        "@id": "https://preciosaldiaweb.vercel.app/#software",
         "name": "Precios al Día POS",
         "applicationCategory": "BusinessApplication",
         "operatingSystem": "Web, Android, Windows, iOS",
@@ -101,7 +101,7 @@
       },
       {
         "@type": "FAQPage",
-        "@id": "https://preciosaldia.vercel.app/#faq",
+        "@id": "https://preciosaldiaweb.vercel.app/#faq",
         "mainEntity": [
           {
             "@type": "Question",
@@ -147,7 +147,7 @@
       },
       {
         "@type": "HowTo",
-        "@id": "https://preciosaldia.vercel.app/#howto-vender-offline",
+        "@id": "https://preciosaldiaweb.vercel.app/#howto-vender-offline",
         "name": "Cómo vender y facturar sin internet en una bodega con Precios al Día",
         "description": "Guía para registrar ventas y cobrar en múltiples monedas durante cortes de luz o fallas de conectividad.",
         "step": [
@@ -516,19 +516,24 @@
     }
 
     /* ============================================================
-       HERO
+       HERO (IMPACTANTE & ALTA VISIBILIDAD)
        ============================================================ */
     .hero {
       position: relative;
-      padding-block: clamp(var(--space-12), 8vw, var(--space-24));
-      overflow: hidden;
+      padding-top: clamp(22px, 3vw, 38px);
+      padding-bottom: clamp(28px, 4vw, 48px);
+      overflow: visible;
+    }
+    .hero .container {
+      max-width: 1360px;
     }
     .hero::before {
       content: "";
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(60% 50% at 85% 0%, var(--primary-soft) 0%, transparent 60%);
+        radial-gradient(85% 75% at 75% 40%, color-mix(in oklch, var(--primary) 14%, transparent) 0%, transparent 75%),
+        radial-gradient(60% 60% at 15% 20%, color-mix(in oklch, var(--primary) 8%, transparent) 0%, transparent 70%);
       pointer-events: none;
       z-index: 0;
     }
@@ -537,31 +542,59 @@
       z-index: 1;
       display: grid;
       grid-template-columns: 1fr;
-      gap: var(--space-10);
-      align-items: center;
+      gap: var(--space-6);
+      align-items: flex-start;
     }
-    @media (min-width: 940px) {
-      .hero-grid { grid-template-columns: 1.15fr 0.85fr; gap: var(--space-12); }
+    @media (min-width: 960px) {
+      .hero-grid {
+        grid-template-columns: 0.88fr 1.45fr;
+        gap: clamp(20px, 2.5vw, 36px);
+        align-items: flex-start;
+      }
+    }
+    @media (min-width: 1200px) {
+      .hero-grid {
+        grid-template-columns: 0.82fr 1.58fr;
+        gap: 40px;
+        align-items: flex-start;
+      }
     }
     .hero-eyebrow {
       display: inline-flex;
       align-items: center;
-      gap: var(--space-2);
-      padding: var(--space-2) var(--space-4);
+      gap: 8px;
+      padding: 5px 14px;
       border-radius: var(--radius-full);
       background: var(--surface);
       border: 1px solid var(--border);
       font-size: var(--text-xs);
       font-weight: 600;
-      letter-spacing: 0.02em;
-      color: var(--text-muted);
-      margin-bottom: var(--space-6);
+      letter-spacing: 0.01em;
+      color: var(--text);
+      margin-bottom: var(--space-3);
+      white-space: nowrap;
+      box-shadow: var(--shadow-sm);
     }
     .hero-eyebrow .dot {
-      width: 8px; height: 8px; border-radius: 50%;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
       background: var(--success);
       box-shadow: 0 0 0 3px color-mix(in oklch, var(--success) 25%, transparent);
       animation: pulse 2.4s ease-in-out infinite;
+      flex-shrink: 0;
+    }
+    .hero-eyebrow .eyebrow-sep {
+      color: var(--border-strong);
+      opacity: 0.7;
+    }
+    .hero-eyebrow .eyebrow-tag {
+      background: color-mix(in oklch, var(--primary) 12%, transparent);
+      color: var(--primary);
+      padding: 2px 8px;
+      border-radius: 9999px;
+      font-size: 11px;
+      font-weight: 700;
     }
     @keyframes pulse {
       0%, 100% { opacity: 1; }
@@ -569,39 +602,107 @@
     }
     .hero-title {
       font-size: var(--text-display);
-      line-height: 0.98;
-      margin-bottom: var(--space-5);
+      line-height: 0.95;
+      margin-bottom: var(--space-3);
     }
     .hero-title em {
       font-style: italic;
       color: var(--primary);
     }
     .hero-sub {
-      font-size: var(--text-lg);
+      font-size: var(--text-base);
       color: var(--text-muted);
-      max-width: 34ch;
-      margin-bottom: var(--space-8);
+      max-width: 52ch;
+      margin-bottom: var(--space-5);
+      line-height: 1.45;
     }
     .hero-cta {
       display: flex;
       flex-wrap: wrap;
       gap: var(--space-3);
       align-items: center;
-      margin-bottom: var(--space-5);
+      margin-bottom: var(--space-4);
     }
-    .hero-features {
-      display: flex;
+    /* Hero Trust Badge */
+    .hero-trust-badge {
+      display: inline-flex;
       flex-wrap: wrap;
-      gap: var(--space-2) var(--space-5);
-      font-size: var(--text-sm);
-      color: var(--text-muted);
+      align-items: center;
+      gap: 8px 12px;
+      padding: 7px 16px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-full);
+      font-size: var(--text-xs);
+      color: var(--text);
+      font-weight: 500;
+      margin-bottom: var(--space-4);
+      box-shadow: var(--shadow-sm);
     }
-    .hero-features li {
+    .hero-trust-badge .trust-item {
       display: inline-flex;
       align-items: center;
-      gap: var(--space-2);
+      gap: 6px;
+      white-space: nowrap;
     }
-    .hero-features svg { width: 16px; height: 16px; color: var(--primary); }
+    .hero-trust-badge .trust-item svg {
+      width: 14px;
+      height: 14px;
+      color: var(--success);
+      flex-shrink: 0;
+    }
+    .hero-trust-badge .trust-dot {
+      color: var(--border-strong);
+      font-size: 11px;
+      opacity: 0.6;
+    }
+
+    /* Hero Benefits Grid - 2 Column Clean Cards */
+    .hero-benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px 14px;
+      max-width: 550px;
+      margin-top: 2px;
+    }
+    @media (max-width: 600px) {
+      .hero-benefits-grid {
+        grid-template-columns: 1fr;
+        gap: 7px;
+      }
+    }
+    .hero-benefit-item {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      padding: 6px 10px;
+      background: color-mix(in oklch, var(--surface) 80%, transparent);
+      border: 1px solid color-mix(in oklch, var(--border) 80%, transparent);
+      border-radius: var(--radius-sm, 8px);
+      font-size: 12.5px;
+      color: var(--text);
+      line-height: 1.25;
+      transition: background var(--transition), border-color var(--transition);
+    }
+    .hero-benefit-item:hover {
+      background: var(--surface);
+      border-color: var(--border-strong);
+    }
+    .hero-benefit-item .benefit-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 6px;
+      background: color-mix(in oklch, var(--primary) 14%, var(--surface));
+      color: var(--primary);
+      flex-shrink: 0;
+    }
+    .hero-benefit-item .benefit-icon svg {
+      width: 13px;
+      height: 13px;
+    }
 
     /* ============================================================
        GALERÍA INTERACTIVA DE DEMOSTRACIÓN (SHOWCASE)
@@ -861,13 +962,105 @@
     }
 
     /* Hero card mockup */
+    .hero-mockup-wrapper {
+      position: relative;
+      width: 100%;
+    }
+    .hero-glow-bg {
+      position: absolute;
+      inset: -15px -10px -25px -10px;
+      background: radial-gradient(circle at 60% 45%, color-mix(in oklch, var(--primary) 28%, transparent) 0%, transparent 68%);
+      filter: blur(40px);
+      opacity: 0.85;
+      pointer-events: none;
+      z-index: 0;
+    }
     .hero-card {
+      position: relative;
+      z-index: 1;
       background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius-lg, 16px);
+      box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.12);
       overflow: hidden;
       transform: rotate(-0.5deg);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
+      cursor: zoom-in;
+    }
+    .hero-card:hover {
+      transform: rotate(0deg) scale(1.018);
+      box-shadow: 0 32px 75px -15px rgba(0, 0, 0, 0.32), 0 0 0 1px var(--primary);
+    }
+    .hero-mockup-header {
+      background: var(--surface-2);
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-card-content {
+      position: relative;
+      background: #0f172a;
+      overflow: hidden;
+      width: 100%;
+    }
+    .hero-card-content img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.35s ease;
+    }
+    .hero-card:hover .hero-card-content img {
+      transform: scale(1.01);
+    }
+    .hero-floating-chip {
+      position: absolute;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      color: #ffffff;
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+      z-index: 2;
+      pointer-events: none;
+    }
+    .hero-floating-chip.top-chip {
+      top: 12px;
+      right: 12px;
+    }
+    .hero-floating-chip.bottom-chip {
+      bottom: 12px;
+      left: 12px;
+    }
+    .hero-floating-chip .live-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #22c55e;
+      box-shadow: 0 0 8px #22c55e;
+      animation: pulse 2s infinite;
+    }
+    @media (max-width: 640px) {
+      .hero-floating-chip {
+        font-size: 10px;
+        padding: 4px 10px;
+      }
+      .hero-floating-chip.top-chip {
+        top: 8px;
+        right: 8px;
+      }
+      .hero-floating-chip.bottom-chip {
+        bottom: 8px;
+        left: 8px;
+      }
     }
 
     /* ============================================================
@@ -983,20 +1176,21 @@
     }
 
     /* ============================================================
-       TUTORIAL / STEPPER
+       TUTORIAL / STEPPER (OPTIMIZADO UI/UX)
        ============================================================ */
     .tutorial {
       background: var(--surface-2);
       border-block: 1px solid var(--border);
+      scroll-margin-top: 80px;
     }
     .stepper-wrap {
       position: relative;
-      margin-bottom: var(--space-10);
+      margin-bottom: var(--space-6);
       padding-block: var(--space-2);
     }
     .stepper-track {
       position: absolute;
-      top: 30px;
+      top: 24px;
       left: 22px;
       right: 22px;
       height: 3px;
@@ -1006,7 +1200,7 @@
     }
     .stepper-progress {
       position: absolute;
-      top: 30px;
+      top: 24px;
       left: 22px;
       height: 3px;
       background: var(--primary);
@@ -1026,17 +1220,21 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: var(--space-2);
+      gap: 6px;
       background: none;
       border: none;
       cursor: pointer;
       padding: 2px;
       flex: 1;
       min-width: 0;
+      transition: transform 0.2s ease;
+    }
+    .step-btn:hover {
+      transform: translateY(-2px);
     }
     .step-circle {
-      width: 44px;
-      height: 44px;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
       display: grid;
       place-items: center;
@@ -1045,7 +1243,7 @@
       font-weight: 700;
       font-size: var(--text-sm);
       color: var(--text-muted);
-      transition: background var(--transition), border-color var(--transition), color var(--transition), transform var(--transition);
+      transition: background var(--transition), border-color var(--transition), color var(--transition), transform var(--transition), box-shadow var(--transition);
       font-variant-numeric: tabular-nums;
     }
     .step-btn:hover .step-circle { border-color: var(--primary); color: var(--primary); }
@@ -1053,7 +1251,7 @@
       background: var(--primary);
       border-color: var(--primary);
       color: var(--primary-contrast);
-      transform: scale(1.06);
+      transform: scale(1.08);
       box-shadow: var(--shadow-primary);
     }
     .step-btn.done .step-circle {
@@ -1064,16 +1262,16 @@
     .step-btn.done .step-circle .num { display: none; }
     .step-btn.done .step-circle .check { display: block; }
     .step-circle .check { display: none; }
-    .step-circle svg { width: 18px; height: 18px; }
+    .step-circle svg { width: 16px; height: 16px; }
     .step-label {
-      font-size: var(--text-xs);
+      font-size: 11.5px;
       font-weight: 600;
       color: var(--text-muted);
       text-align: center;
       line-height: 1.2;
       transition: color var(--transition);
     }
-    .step-btn.active .step-label { color: var(--text); }
+    .step-btn.active .step-label { color: var(--text); font-weight: 700; }
     @media (max-width: 520px) {
       .step-label { display: none; }
     }
@@ -1086,73 +1284,184 @@
       border-radius: var(--radius-lg);
       box-shadow: var(--shadow-md);
       overflow: hidden;
+      scroll-margin-top: 90px;
     }
     .step-panel.active {
       display: block;
-      animation: stepIn 420ms cubic-bezier(0.4, 0, 0.2, 1) both;
+      animation: stepIn 350ms cubic-bezier(0.16, 1, 0.3, 1) both;
     }
     @keyframes stepIn {
-      from { opacity: 0; transform: translateY(14px); }
+      from { opacity: 0; transform: translateY(8px); }
       to { opacity: 1; transform: translateY(0); }
     }
     .step-panel-head {
-      padding: var(--space-8) var(--space-8) var(--space-6);
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 18px 24px;
       border-bottom: 1px solid var(--border);
       background: linear-gradient(180deg, var(--surface) 0%, transparent 100%);
+    }
+    .step-head-content {
+      flex: 1;
+      min-width: 0;
+    }
+    .step-head-nav {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+    .step-counter-badge {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-muted);
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      padding: 5px 12px;
+      border-radius: 9999px;
+      white-space: nowrap;
+      font-variant-numeric: tabular-nums;
+    }
+    .step-mini-btns {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn-mini-step {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1px solid var(--border-strong);
+      background: var(--surface);
+      color: var(--text);
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .btn-mini-step:hover:not(:disabled) {
+      background: var(--primary);
+      color: var(--primary-contrast);
+      border-color: var(--primary);
+      transform: scale(1.08);
+      box-shadow: 0 4px 12px rgba(1, 105, 111, 0.25);
+    }
+    .btn-mini-step:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+    }
+    .btn-mini-step svg {
+      width: 16px;
+      height: 16px;
     }
     .step-tag {
       display: inline-flex;
       align-items: center;
-      gap: var(--space-2);
-      font-size: var(--text-xs);
+      gap: 6px;
+      font-size: 11px;
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--primary);
-      padding: var(--space-5) var(--space-5) var(--space-4);
-      border-bottom: 1px solid var(--border);
-    }
-    @media (min-width: 640px) {
-      .step-panel-head {
-        padding: var(--space-8) var(--space-8) var(--space-6);
-      }
+      margin-bottom: 6px;
     }
     .step-panel-head h3 {
       font-family: var(--font-display);
-      font-size: var(--text-2xl);
-      font-weight: 400;
-      margin-bottom: var(--space-3);
+      font-size: 1.35rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+      line-height: 1.25;
     }
     .step-panel-head p {
       color: var(--text-muted);
-      font-size: var(--text-lg);
-      max-width: 60ch;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      max-width: 65ch;
+      margin: 0;
     }
-    /* ── Step Panel Body: Mobile-first ── */
+    /* ── Step Panel Body ── */
     .step-panel-body {
-      padding: var(--space-5) var(--space-5) var(--space-6);
+      padding: 18px 24px 22px;
       display: grid;
       grid-template-columns: 1fr;
-      gap: var(--space-6);
-    }
-    @media (min-width: 640px) {
-      .step-panel-body {
-        padding: var(--space-6) var(--space-8) var(--space-8);
-      }
+      gap: 20px;
     }
     @media (min-width: 992px) {
       .step-panel-body {
-        grid-template-columns: 1fr 1.3fr;
-        align-items: start;
-        gap: var(--space-8);
+        grid-template-columns: 1fr 1.2fr;
+        align-items: center;
+        gap: 24px;
       }
     }
     .step-details {
       display: flex;
       flex-direction: column;
-      gap: var(--space-6);
+      gap: 16px;
     }
-    /* ── Image zone: always fluid, no horizontal overflow ── */
+    .step-actions h4,
+    .step-tip h4 {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+    .step-actions ol {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      counter-reset: act;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+    .step-actions li {
+      position: relative;
+      padding-left: 32px;
+      counter-increment: act;
+      font-size: 0.92rem;
+      line-height: 1.45;
+      color: var(--text);
+    }
+    .step-actions li::before {
+      content: counter(act);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--primary-soft);
+      color: var(--primary);
+      display: grid;
+      place-items: center;
+      font-size: 11px;
+      font-weight: 800;
+      font-variant-numeric: tabular-nums;
+    }
+    .step-tip {
+      background: var(--primary-soft);
+      border-left: 3.5px solid var(--primary);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 12px 16px;
+    }
+    .step-tip p {
+      font-size: 0.88rem;
+      line-height: 1.5;
+      color: var(--text);
+      margin: 0;
+    }
+    .step-tip .tip-icon {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 4px;
+    }
+    .step-tip .tip-icon svg { width: 15px; height: 15px; color: var(--primary); }
+
     .step-media {
       display: flex;
       flex-direction: column;
@@ -1160,30 +1469,22 @@
       width: 100%;
       min-width: 0;
     }
-    .mock-browser-container {
-      width: 100%;
-      min-width: 0;
-      /* No horizontal scroll – the image scales to fit */
-    }
     .mock-browser {
       background: var(--border);
       border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
+      border-radius: var(--radius);
       overflow: hidden;
-      box-shadow: var(--shadow-lg);
+      box-shadow: var(--shadow-md);
       width: 100%;
       transition: box-shadow 0.3s ease;
     }
     .mock-browser-header {
       background: var(--surface-muted, #f1f5f9);
-      padding: 8px 12px;
+      padding: 7px 12px;
       display: flex;
       align-items: center;
       gap: 6px;
       border-bottom: 1px solid var(--border);
-    }
-    @media (min-width: 640px) {
-      .mock-browser-header { padding: 10px 14px; }
     }
     [data-theme="dark"] .mock-browser-header {
       background: #252422;
@@ -1201,89 +1502,25 @@
       position: relative;
       background: var(--surface);
       overflow: hidden;
+      max-height: 380px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     .mock-browser-content img {
       width: 100%;
-      height: auto;
+      max-height: 380px;
+      object-fit: contain;
       display: block;
-      transition: transform 0.3s ease;
     }
-    @media (min-width: 992px) {
-      .mock-browser:hover .mock-browser-content img { transform: scale(1.02); }
-    }
-    /* Swipe indicator hidden by default; shown only on very narrow screens
-       as a courtesy hint — the image is already fluid so no actual scroll needed */
     .swipe-indicator { display: none; }
-    @media (min-width: 992px) {
-      .step-panel-body { grid-template-columns: 1fr 1.3fr; align-items: start; }
-    }
-    .step-actions h4,
-    .step-tip h4 {
-      font-size: var(--text-xs);
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: var(--space-4);
-    }
-    .step-actions ol {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-4);
-      counter-reset: act;
-    }
-    .step-actions li {
-      position: relative;
-      padding-left: var(--space-8);
-      counter-increment: act;
-      font-size: var(--text-base);
-      line-height: 1.55;
-    }
-    .step-actions li::before {
-      content: counter(act);
-      position: absolute;
-      left: 0;
-      top: -1px;
-      width: 26px;
-      height: 26px;
-      border-radius: 50%;
-      background: var(--primary-soft);
-      color: var(--primary);
-      display: grid;
-      place-items: center;
-      font-size: var(--text-xs);
-      font-weight: 700;
-      font-variant-numeric: tabular-nums;
-    }
-    .step-tip {
-      background: var(--primary-soft);
-      border-left: 4px solid var(--primary);
-      border-radius: 0 var(--radius) var(--radius) 0;
-      padding: var(--space-6);
-    }
-    [data-theme="dark"] .step-tip {
-      background: color-mix(in oklch, var(--primary-soft) 70%, var(--surface));
-    }
-    .step-tip h4 { color: var(--primary); }
-    .step-tip p {
-      font-size: var(--text-base);
-      line-height: 1.6;
-      color: var(--text);
-    }
-    .step-tip .tip-icon {
-      display: inline-flex;
-      align-items: center;
-      gap: var(--space-2);
-      margin-bottom: var(--space-3);
-    }
-    .step-tip .tip-icon svg { width: 18px; height: 18px; color: var(--primary); }
 
     .stepper-controls {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: var(--space-4);
-      margin-top: var(--space-8);
+      margin-top: var(--space-6);
       flex-wrap: wrap;
     }
     .stepper-progress-text {
@@ -1294,7 +1531,7 @@
     }
     .stepper-buttons { display: flex; gap: var(--space-3); }
     .btn-step {
-      min-height: 48px;
+      min-height: 44px;
       padding-inline: var(--space-5);
       border-radius: var(--radius-full);
       font-weight: 600;
@@ -1314,6 +1551,133 @@
     .btn-step:disabled { opacity: 0.4; cursor: not-allowed; }
     .btn-step--next { background: var(--primary); color: var(--primary-contrast); border-color: var(--primary); }
     .btn-step--next:hover:not(:disabled) { background: var(--primary-hover); color: var(--primary-contrast); border-color: var(--primary-hover); box-shadow: var(--shadow-primary); }
+
+    /* ── Responsive Mobile Optimizations for Tutorial / Stepper ── */
+    @media (max-width: 768px) {
+      .step-panel-head {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+        padding: 14px 16px;
+      }
+      .step-head-nav {
+        order: -1;
+        justify-content: space-between;
+        width: 100%;
+        padding-bottom: 10px;
+        border-bottom: 1px dashed var(--border);
+      }
+      .step-head-content {
+        width: 100%;
+      }
+      .step-panel-head h3 {
+        font-size: 1.18rem;
+        line-height: 1.3;
+        margin-bottom: 6px;
+        word-break: break-word;
+      }
+      .step-panel-head p {
+        font-size: 0.88rem;
+        line-height: 1.45;
+        max-width: 100%;
+      }
+      .step-panel-body {
+        padding: 14px 16px 18px;
+        gap: 16px;
+      }
+      .step-actions li {
+        font-size: 0.88rem;
+        padding-left: 28px;
+      }
+      .step-actions li::before {
+        width: 20px;
+        height: 20px;
+        font-size: 10px;
+      }
+      .step-tip {
+        padding: 10px 12px;
+        border-left-width: 3px;
+      }
+      .step-tip p {
+        font-size: 0.84rem;
+      }
+      .mock-browser-content,
+      .mock-browser-content img {
+        max-height: 280px;
+      }
+    }
+
+    @media (max-width: 540px) {
+      .stepper-wrap {
+        margin-bottom: var(--space-4);
+        padding-block: var(--space-1);
+      }
+      .step-circle {
+        width: 34px;
+        height: 34px;
+        font-size: 12px;
+      }
+      .stepper-track,
+      .stepper-progress {
+        top: 17px;
+        left: 14px;
+        right: 14px;
+      }
+      .stepper-controls {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+        margin-top: 16px;
+      }
+      .stepper-progress-text {
+        text-align: center;
+        font-size: 13px;
+      }
+      .stepper-buttons {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        width: 100%;
+      }
+      .btn-step {
+        justify-content: center;
+        width: 100%;
+        padding-inline: 12px;
+        min-height: 44px;
+      }
+      .btn-mini-step {
+        width: 32px;
+        height: 32px;
+      }
+      .btn-mini-step svg {
+        width: 14px;
+        height: 14px;
+      }
+      .step-counter-badge {
+        font-size: 11px;
+        padding: 3px 10px;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .step-circle {
+        width: 30px;
+        height: 30px;
+        font-size: 11px;
+      }
+      .stepper-track,
+      .stepper-progress {
+        top: 15px;
+        left: 10px;
+        right: 10px;
+      }
+      .step-panel-head {
+        padding: 12px 12px;
+      }
+      .step-panel-body {
+        padding: 12px 12px 16px;
+      }
+    }
 
     /* ============================================================
        FAQ
@@ -2372,6 +2736,118 @@
     .secret-modal-body {
       padding: 20px;
     }
+
+    /* ========================================================
+       LIGHTBOX / VISUALIZADOR DE IMAGEN AMPLIADA
+       ======================================================== */
+    .zoomable-image,
+    .mock-browser-content img,
+    .hero-card img,
+    #showcaseImg,
+    .step-media img {
+      cursor: zoom-in !important;
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), filter 0.2s ease;
+    }
+    .mock-browser-content:hover img,
+    .hero-card:hover img,
+    .showcase-media:hover img {
+      filter: brightness(1.02);
+    }
+    .lightbox-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 100000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: rgba(5, 10, 18, 0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.25s ease;
+      padding: 20px;
+    }
+    .lightbox-backdrop.is-open {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+    .lightbox-container {
+      position: relative;
+      max-width: 95vw;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transform: scale(0.92);
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .lightbox-backdrop.is-open .lightbox-container {
+      transform: scale(1);
+    }
+    .lightbox-img-wrapper {
+      position: relative;
+      max-width: 94vw;
+      max-height: 82vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--radius-lg, 16px);
+      overflow: hidden;
+      box-shadow: 0 25px 60px -10px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(255, 255, 255, 0.15);
+      background: var(--surface, #1e293b);
+    }
+    .lightbox-img {
+      max-width: 100%;
+      max-height: 82vh;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      display: block;
+      user-select: none;
+    }
+    .lightbox-caption {
+      margin-top: 14px;
+      padding: 8px 22px;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 9999px;
+      color: #f8fafc;
+      font-size: 13.5px;
+      font-weight: 600;
+      letter-spacing: 0.2px;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+      text-align: center;
+      max-width: 90vw;
+    }
+    .lightbox-close-btn {
+      position: fixed;
+      top: 20px;
+      right: 24px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #ffffff;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 100002;
+    }
+    .lightbox-close-btn:hover {
+      background: rgba(239, 68, 68, 0.9);
+      border-color: rgba(239, 68, 68, 1);
+      transform: scale(1.08) rotate(90deg);
+      box-shadow: 0 0 16px rgba(239, 68, 68, 0.5);
+    }
   </style>
 </head>
 <body>
@@ -2417,10 +2893,13 @@
     <section class="hero" aria-labelledby="hero-title">
       <div class="container hero-grid">
         <div class="hero-content reveal">
-          <span class="hero-eyebrow">
+          <div class="hero-eyebrow">
             <span class="dot" aria-hidden="true"></span>
-            100% Pago Único · Cero mensualidades · Licencia Vitalicia <span data-price-dollar>$50</span>
-          </span>
+            <span>Licencia Vitalicia</span>
+            <span class="eyebrow-sep">•</span>
+            <span>Pago Único <strong data-price-dollar>$50</strong></span>
+            <span class="eyebrow-tag">Sin Rentas</span>
+          </div>
           <h1 class="hero-title" id="hero-title">
             Vende más rápido.<br />
             Con o sin internet.<br />
@@ -2442,35 +2921,70 @@
               Hablar con un Asesor
             </a>
           </div>
-          <div class="urgency-pill">
-            <i data-lucide="check-circle-2" aria-hidden="true"></i>
-            Un solo pago de <span data-price-dollar>$50</span> · Cero mensualidades o rentas · Sin tarjetas
+          <!-- Barra de Confianza -->
+          <div class="hero-trust-badge">
+            <span class="trust-item"><i data-lucide="check-circle-2" aria-hidden="true"></i> Un solo pago de <strong data-price-dollar>$50</strong></span>
+            <span class="trust-dot">•</span>
+            <span class="trust-item"><i data-lucide="shield-check" aria-hidden="true"></i> Cero mensualidades</span>
+            <span class="trust-dot">•</span>
+            <span class="trust-item"><i data-lucide="credit-card" aria-hidden="true"></i> Sin tarjetas ni rentas</span>
           </div>
-          <ul class="hero-features">
-            <li><i data-lucide="shield-check" aria-hidden="true"></i> <strong>Cero mensualidades ni rentas fijas</strong></li>
-            <li><i data-lucide="wifi-off" aria-hidden="true"></i> Con o sin internet</li>
-            <li><i data-lucide="refresh-cw" aria-hidden="true"></i> Sincronización opcional</li>
-            <li><i data-lucide="package" aria-hidden="true"></i> Inventario inteligente</li>
-            <li><i data-lucide="trending-up" aria-hidden="true"></i> Tasa BCV (dólar/euro) y USDT automática</li>
-            <li><i data-lucide="credit-card" aria-hidden="true"></i> Cobros Cashea Integrados</li>
-            <li><i data-lucide="eye" aria-hidden="true"></i> Modo Supervisor con PIN</li>
-          </ul>
+
+          <!-- Cuadrícula de Beneficios Clave (Estructurada y Alineada) -->
+          <div class="hero-benefits-grid">
+            <div class="hero-benefit-item">
+              <span class="benefit-icon"><i data-lucide="shield-check" aria-hidden="true"></i></span>
+              <span><strong>Cero mensualidades</strong> ni rentas fijas</span>
+            </div>
+            <div class="hero-benefit-item">
+              <span class="benefit-icon"><i data-lucide="wifi-off" aria-hidden="true"></i></span>
+              <span><strong>100% Funcional</strong> con o sin internet</span>
+            </div>
+            <div class="hero-benefit-item">
+              <span class="benefit-icon"><i data-lucide="trending-up" aria-hidden="true"></i></span>
+              <span><strong>Tasa BCV oficial</strong> (USD/EUR) automática</span>
+            </div>
+            <div class="hero-benefit-item">
+              <span class="benefit-icon"><i data-lucide="credit-card" aria-hidden="true"></i></span>
+              <span><strong>Cobros Cashea</strong> y Fiados integrados</span>
+            </div>
+            <div class="hero-benefit-item">
+              <span class="benefit-icon"><i data-lucide="printer" aria-hidden="true"></i></span>
+              <span><strong>Tickets térmicos</strong> 58/80mm y WhatsApp</span>
+            </div>
+            <div class="hero-benefit-item">
+              <span class="benefit-icon"><i data-lucide="eye" aria-hidden="true"></i></span>
+              <span><strong>Modo Supervisor</strong> remoto con PIN</span>
+            </div>
+          </div>
         </div>
 
         <!-- Hero mockup browser window with real POS screenshot -->
-        <aside class="hero-card reveal" aria-hidden="true" style="padding:0; overflow:hidden;">
-          <div class="mock-browser-header" style="background: var(--surface-2); padding: 10px 14px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border);">
-            <div style="display: flex; gap: 6px;">
-              <span class="mock-dot red"></span>
-              <span class="mock-dot yellow"></span>
-              <span class="mock-dot green"></span>
+        <div class="hero-mockup-wrapper reveal">
+          <div class="hero-glow-bg" aria-hidden="true"></div>
+          <aside class="hero-card" aria-label="Demostración visual del Punto de Venta Precios al Día" style="padding:0; overflow:hidden;">
+            <div class="hero-mockup-header">
+              <div style="display: flex; gap: 6px; align-items: center;">
+                <span class="mock-dot red"></span>
+                <span class="mock-dot yellow"></span>
+                <span class="mock-dot green"></span>
+                <span style="font-size: 11px; font-weight: 700; color: var(--text-muted); margin-left: 8px;">Punto de Venta POS · Sistema en Vivo</span>
+              </div>
+              <span class="sync-pill"><span class="dot"></span> Online / Offline</span>
             </div>
-            <span class="sync-pill"><span class="dot"></span> Sistema en vivo</span>
-          </div>
-          <div style="position: relative; background: var(--surface); overflow: hidden;">
-            <img src="screenshots/login.png" alt="Pantalla de inicio de sesión de Precios al Día" width="1024" height="1023" style="width: 100%; height: auto; display: block;" />
-          </div>
-        </aside>
+            <div class="hero-card-content">
+              <img src="screenshots/pos.png" alt="Punto de Venta POS de Precios al Día con productos reales y cálculo multimoneda" width="1900" height="906" fetchpriority="high" />
+              <div class="hero-floating-chip top-chip">
+                <span class="live-dot"></span>
+                <span>100% Sin Internet</span>
+              </div>
+              <div class="hero-floating-chip bottom-chip">
+                <i data-lucide="trending-up" style="width:14px;height:14px;color:#38bdf8;"></i>
+                <span>Tasa BCV Automatizada</span>
+              </div>
+            </div>
+          </aside>
+        </div>
       </div>
     </section>
 
@@ -2478,50 +2992,50 @@
     <section class="section-pad" aria-labelledby="what-title">
       <div class="container">
         <div class="section-head reveal">
-          <span class="section-eyebrow">¿Qué es?</span>
+          <span class="section-eyebrow">Simplicidad y Control</span>
           <h2 class="section-title" id="what-title">Precios al Día Bodega, en palabras simples</h2>
         </div>
         <p class="what-intro reveal">
-          Es el único sistema POS y administrativo diseñado específicamente para las bodegas, abastos y pequeños comercios venezolanos. Combina un punto de venta ultra-rápido, gestión de inventario y cierres de caja en una aplicación responsiva y autónoma que funciona al 100% con o sin conexión a internet.
+          A diferencia de los sistemas tradicionales en Venezuela que son complicados, lentos y requieren semanas de capacitación, Precios al Día fue diseñado para que cualquier persona en tu negocio empiece a cobrar en menos de 2 minutos. Todo es visual, rápido y funciona sin interrupciones, haya o no conexión a internet.
         </p>
         <div class="what-grid">
           <article class="what-card what-card--big reveal">
-            <div class="what-icon"><i data-lucide="wifi-off" aria-hidden="true"></i></div>
-            <h3>Funciona con o sin internet. Sincroniza al volver.</h3>
+            <div class="what-icon"><i data-lucide="zap" aria-hidden="true"></i></div>
+            <h3>Tan fácil de usar como tu celular. Cero complicaciones.</h3>
             <p>
-              Tu negocio nunca se detiene. Vende sin conexión durante apagones o caídas de señal. Todas tus ventas y registros se guardan de forma local y se sincronizan de manera segura en la nube tan pronto detecta conexión, de forma totalmente invisible para ti.
+              Diseñado para el ritmo real del mostrador venezolano. Buscas el producto por su foto o nombre, tocas la pantalla y cobras. El sistema se encarga de calcular automáticamente las conversiones en divisas, los vueltos combinados y el inventario restante sin que tengas que usar calculadora.
             </p>
-            <ul class="what-benefits" aria-label="Características principales">
-              <li><i data-lucide="check-circle-2" aria-hidden="true"></i> Ventas locales ilimitadas y fluidas sin internet</li>
-              <li><i data-lucide="check-circle-2" aria-hidden="true"></i> Sincronización en la nube automática en segundo plano</li>
-              <li><i data-lucide="check-circle-2" aria-hidden="true"></i> Cero datos perdidos por cortes de energía imprevistos</li>
-              <li><i data-lucide="check-circle-2" aria-hidden="true"></i> Instalable en cualquier celular, tablet o PC en 1 clic</li>
+            <ul class="what-benefits" aria-label="Beneficios principales">
+              <li><i data-lucide="check-circle-2" aria-hidden="true"></i> Cobros rápidos en 3 toques de pantalla, sin menús confusos</li>
+              <li><i data-lucide="check-circle-2" aria-hidden="true"></i> Funciona al 100% sin internet durante cortes de luz o caídas de señal</li>
+              <li><i data-lucide="check-circle-2" aria-hidden="true"></i> Cálculo automático de vueltos mixtos en dólares y bolívares</li>
+              <li><i data-lucide="check-circle-2" aria-hidden="true"></i> Listo para usar en tu teléfono, tablet o computadora en 1 clic</li>
             </ul>
           </article>
           <article class="what-card reveal">
-            <div class="what-icon"><i data-lucide="settings" aria-hidden="true"></i></div>
-            <h3>Cero Configuraciones Tediosas</h3>
-            <p>Olvídate de pagar técnicos costosos, instalar bases de datos SQL pesadas o configurar redes locales complejas. Abre el sistema, ingresa tu cuenta y empieza a facturar de inmediato con todo listo de fábrica.</p>
+            <div class="what-icon"><i data-lucide="smartphone" aria-hidden="true"></i></div>
+            <h3>Úsalo en tus Equipos Actuales</h3>
+            <p>Olvídate de comprar computadoras costosas o pagar técnicos para instalaciones pesadas. Abre el sistema en cualquier celular, tablet o PC que ya tengas y empieza a cobrar al instante.</p>
           </article>
           <article class="what-card reveal">
-            <div class="what-icon"><i data-lucide="calculator" aria-hidden="true"></i></div>
-            <h3>Vuelto Mixto y Multi-Tasa</h3>
-            <p>Calcula vueltos combinados en Bs/USD/COP al instante según la tasa oficial del día (BCV, paralelo, euro) previniendo descuadres tipográficos y de caja.</p>
+            <div class="what-icon"><i data-lucide="trending-up" aria-hidden="true"></i></div>
+            <h3>Tasa Oficial BCV Siempre al Día</h3>
+            <p>Sincronización diaria con la tasa oficial. Cobra en divisas, bolívares o pagos combinados con la total tranquilidad de que los montos son exactos y transparentes para tu cliente.</p>
           </article>
           <article class="what-card reveal">
             <div class="what-icon"><i data-lucide="credit-card" aria-hidden="true"></i></div>
-            <h3>Módulo Cashea Integrado</h3>
-            <p>Registra cobros financiados. Calcula la inicial (40% o 60%) en caja y asigna automáticamente la porción financiada como saldo pendiente del cliente en su perfil.</p>
+            <h3>Cashea y Todos los Medios de Pago</h3>
+            <p>Registra pagos con Cashea calculando la inicial en segundos. Acepta Pago Móvil, Punto de Venta, Biopago y Efectivo sin enredos ni descuadres de caja.</p>
           </article>
           <article class="what-card reveal">
-            <div class="what-icon"><i data-lucide="notebook" aria-hidden="true"></i></div>
-            <h3>Gestión de Deudas y Fiados</h3>
-            <p>Olvídate del cuaderno de fiados de papel que se pierde o se rompe. Registra el saldo pendiente de tus clientes al instante, abona pagos parciales y lleva el control exacto de quién te debe y cuánto.</p>
+            <div class="what-icon"><i data-lucide="users" aria-hidden="true"></i></div>
+            <h3>Control de Fiados y Clientes</h3>
+            <p>Dile adiós al cuaderno de papel que se rompe o se extravía. Lleva el saldo deudor de tus clientes, registra abonos parciales y consulta quién te debe con un solo toque.</p>
           </article>
           <article class="what-card reveal">
-            <div class="what-icon"><i data-lucide="eye" aria-hidden="true"></i></div>
-            <h3>Modo Supervisor Remoto</h3>
-            <p>Accede a reportes de ganancias y ventas, audita cierres de caja y gestiona el inventario de forma remota usando tu PIN exclusivo de dueño, sin exponer datos sensibles.</p>
+            <div class="what-icon"><i data-lucide="shield-check" aria-hidden="true"></i></div>
+            <h3>Monitoreo para el Dueño en su Celular</h3>
+            <p>Supervisa las ventas del día, las ganancias reales y los cierres de turno directamente desde tu teléfono personal, con total privacidad y sin interrumpir a tus cajeros.</p>
           </article>
         </div>
       </div>
@@ -2541,9 +3055,9 @@
             <i data-lucide="shopping-cart" aria-hidden="true"></i>
             Punto de Venta
           </button>
-          <button class="showcase-tab" data-img="screenshots/checkout.png" data-title="Vuelto Mixto y Pagos" data-desc="Cobro en divisas con cálculo automático de vuelto combinado en USD y bolívares al cambio oficial del día." type="button" role="tab" aria-selected="false">
+          <button class="showcase-tab" data-img="screenshots/checkout.png" data-title="Vuelto Mixto y Billetera Digital" data-desc="Cobro en divisas con cálculo automático de vuelto en USD, bolívares y acreditación directa a la Billetera del cliente." type="button" role="tab" aria-selected="false">
             <i data-lucide="calculator" aria-hidden="true"></i>
-            Vueltos y Cobro
+            Vueltos y Billetera
           </button>
           <button class="showcase-tab" data-img="screenshots/inventory.png" data-title="Gestión de Inventario" data-desc="Control de stock por producto, cálculo automático de días de inventario restante y actualización rápida de precios." type="button" role="tab" aria-selected="false">
             <i data-lucide="package" aria-hidden="true"></i>
@@ -2585,25 +3099,25 @@
       </div>
     </section>
 
-    <!-- ============ CO-CREACIÓN Y FEEDBACK ============ -->
+    <!-- ============ CO-CREACIÓN Y FILOSOFÍA ============ -->
     <section class="section-pad" style="background: linear-gradient(180deg, var(--bg) 0%, var(--surface) 100%); border-top: 1px solid var(--border);" aria-labelledby="co-creation-title">
-      <div class="container" style="max-width: 900px; text-align: center;">
+      <div class="container" style="max-width: 920px; text-align: center;">
         <div class="reveal" style="display: flex; flex-direction: column; align-items: center; gap: var(--space-4);">
           <div style="width: 56px; height: 56px; display: grid; place-items: center; border-radius: var(--radius-full); background: var(--primary-soft); color: var(--primary); margin-bottom: var(--space-2);">
             <i data-lucide="heart-handshake" style="width: 28px; height: 28px;"></i>
           </div>
-          <span class="section-eyebrow" style="margin-bottom: 0;">Unidos por tu Crecimiento</span>
-          <h2 class="section-title" id="co-creation-title" style="font-size: var(--text-2xl); font-family: var(--font-display);">Diseñado para las Bodegas que Otros Olvidaron</h2>
+          <span class="section-eyebrow" style="margin-bottom: 0;">Hecho a la Medida de Venezuela</span>
+          <h2 class="section-title" id="co-creation-title" style="font-size: var(--text-2xl); font-family: var(--font-display);">La Solución que el Comercio Tradicional Estaba Esperando</h2>
           <p style="font-size: var(--text-lg); color: var(--text-muted); line-height: 1.7; max-width: 72ch; margin-bottom: var(--space-4);">
-            La gran industria del software diseña sistemas para supermercados gigantes, cobrando miles de dólares y exigiendo configuraciones imposibles. <strong>Nosotros diseñamos para ti</strong>: la bodega, el abasto de la esquina, el pequeño comerciante venezolano.
+            La mayoría de sistemas en Venezuela se quedaron atrapados en el pasado: pantallas complejas, botones confusos y requerimientos de instalación imposibles. <strong>Precios al Día nació para cambiar las reglas</strong>: un sistema visual, limpio y creado específicamente para hacer que tu atención en caja sea rápida y placentera.
           </p>
           <div style="background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--radius-lg); padding: var(--space-6); text-align: left; box-shadow: var(--shadow-sm); width: 100%;">
             <h4 style="font-size: var(--text-base); font-weight: 600; color: var(--primary); margin-bottom: var(--space-2); display: flex; align-items: center; gap: var(--space-2);">
-              <i data-lucide="message-square-plus" style="width: 20px; height: 20px;"></i>
-              Trabajarás de la mano con los desarrolladores
+              <i data-lucide="sparkles" style="width: 20px; height: 20px;"></i>
+              Soporte directo y evolución continua
             </h4>
             <p style="font-size: var(--text-sm); color: var(--text); line-height: 1.6;">
-              No somos una corporación lejana ni usamos contestadores automáticos. Tu feedback es nuestra prioridad número uno para seguir perfeccionando el sistema. Cada sugerencia, reporte de uso o idea de mejora va directa al equipo que escribe el código, adaptando Precios al Día a las necesidades reales del día a día en Venezuela.
+              No tratas con contestadores automáticos ni empresas impersonales. Detrás de Precios al Día hay un equipo comprometido en escuchar tus necesidades para que tu negocio crezca con mayor rapidez, orden y rentabilidad cada día.
             </p>
           </div>
         </div>
@@ -2670,12 +3184,12 @@
               </button>
             </li>
             <li>
-              <button class="step-btn" data-step="5" type="button" role="tab" aria-selected="false" aria-controls="step-panel-5" aria-label="Paso 6: Sincronización">
+              <button class="step-btn" data-step="5" type="button" role="tab" aria-selected="false" aria-controls="step-panel-5" aria-label="Paso 6: Vueltos y Billetera">
                 <span class="step-circle">
                   <span class="num">6</span>
                   <i class="check" data-lucide="check" aria-hidden="true"></i>
                 </span>
-                <span class="step-label">Sincronización</span>
+                <span class="step-label">Vueltos y Billetera</span>
               </button>
             </li>
           </ol>
@@ -2687,9 +3201,22 @@
           <!-- Paso 1 -->
           <article class="step-panel active" id="step-panel-0" data-panel="0" role="tabpanel" aria-labelledby="step1-title">
             <header class="step-panel-head">
-              <span class="step-tag"><span class="step-tag-num">1</span> Primer acceso</span>
-              <h3 id="step1-title">Entra al sistema y configura tu cuenta</h3>
-              <p>Cuando entras por primera vez, usas las credenciales que te dio el administrador. El sistema distingue dos roles con permisos diferentes.</p>
+              <div class="step-head-content">
+                <span class="step-tag"><span class="step-tag-num">1</span> Primer acceso</span>
+                <h3 id="step1-title">Entra al sistema y configura tu cuenta</h3>
+                <p>Acceso inmediato con PIN numérico de seguridad y perfiles separados para Administrador y Cajero.</p>
+              </div>
+              <div class="step-head-nav">
+                <span class="step-counter-badge">Paso 1 de 6</span>
+                <div class="step-mini-btns">
+                  <button class="btn-mini-step prev-mini" type="button" aria-label="Paso anterior">
+                    <i data-lucide="arrow-left" aria-hidden="true"></i>
+                  </button>
+                  <button class="btn-mini-step next-mini" type="button" aria-label="Paso siguiente">
+                    <i data-lucide="arrow-right" aria-hidden="true"></i>
+                  </button>
+                </div>
+              </div>
             </header>
             <div class="step-panel-body">
               <div class="step-details">
@@ -2697,32 +3224,26 @@
                   <h4>Acciones</h4>
                   <ol>
                     <li>Abre la app, selecciona tu usuario en la pantalla de perfiles e ingresa tu PIN numérico.</li>
-                    <li>Si eres <strong>Administrador</strong>, verás todos los módulos; si eres <strong>Cajero</strong>, verás el POS, Inicio y Clientes de forma simplificada, y el Inventario como solo lectura.</li>
-                    <li>Cambia tu PIN desde <em>Configuración → Usuarios</em> pulsando el botón de llave al lado de tu perfil.</li>
+                    <li>Si eres <strong>Administrador</strong>, verás todos los módulos; si eres <strong>Cajero</strong>, verás el POS y Clientes simplificado.</li>
+                    <li>Cambia tu PIN desde <em>Configuración → Usuarios</em> pulsando el icono de llave.</li>
                     <li>Cierra sesión siempre al terminar tu turno.</li>
                   </ol>
                 </div>
                 <div class="step-tip">
                   <div class="tip-icon"><i data-lucide="lightbulb" aria-hidden="true"></i><h4>Tip clave</h4></div>
-                  <p>El rol Empleado no puede ver reportes de ventas ni modificar el inventario. Así proteges tu negocio y evitas errores.</p>
+                  <p>El rol Cajero no puede ver reportes de ventas ni modificar el inventario. Así proteges tu negocio de errores.</p>
                 </div>
               </div>
               <div class="step-media">
-                <div class="mock-browser-container">
-                  <div class="mock-browser">
-                    <div class="mock-browser-header">
-                      <span class="mock-dot red"></span>
-                      <span class="mock-dot yellow"></span>
-                      <span class="mock-dot green"></span>
-                    </div>
-                    <div class="mock-browser-content">
-                      <img src="screenshots/login.png" alt="Pantalla de inicio de sesión de Precios al Día" width="1024" height="1023" loading="lazy" />
-                    </div>
+                <div class="mock-browser">
+                  <div class="mock-browser-header">
+                    <span class="mock-dot red"></span>
+                    <span class="mock-dot yellow"></span>
+                    <span class="mock-dot green"></span>
                   </div>
-                </div>
-                <div class="swipe-indicator" aria-hidden="true">
-                  <i data-lucide="move-horizontal"></i>
-                  <span>Desliza para ver la captura completa</span>
+                  <div class="mock-browser-content">
+                    <img src="screenshots/login.png" alt="Pantalla de inicio de sesión de Precios al Día" width="1024" height="1023" loading="lazy" />
+                  </div>
                 </div>
               </div>
             </div>
@@ -2731,42 +3252,49 @@
           <!-- Paso 2 -->
           <article class="step-panel" id="step-panel-1" data-panel="1" role="tabpanel" aria-labelledby="step2-title" hidden>
             <header class="step-panel-head">
-              <span class="step-tag"><span class="step-tag-num">2</span> Dashboard</span>
-              <h3 id="step2-title">Conoce el panel principal</h3>
-              <p>El panel te muestra de un vistazo cómo va tu día: ventas, caja y estado de la sincronización.</p>
+              <div class="step-head-content">
+                <span class="step-tag"><span class="step-tag-num">2</span> Dashboard</span>
+                <h3 id="step2-title">Controla ventas, tasa BCV y stock en vivo</h3>
+                <p>El panel principal te muestra en tiempo real tus ingresos del día, ganancias estimadas y productos más vendidos.</p>
+              </div>
+              <div class="step-head-nav">
+                <span class="step-counter-badge">Paso 2 de 6</span>
+                <div class="step-mini-btns">
+                  <button class="btn-mini-step prev-mini" type="button" aria-label="Paso anterior">
+                    <i data-lucide="arrow-left" aria-hidden="true"></i>
+                  </button>
+                  <button class="btn-mini-step next-mini" type="button" aria-label="Paso siguiente">
+                    <i data-lucide="arrow-right" aria-hidden="true"></i>
+                  </button>
+                </div>
+              </div>
             </header>
             <div class="step-panel-body">
               <div class="step-details">
                 <div class="step-actions">
                   <h4>Acciones</h4>
                   <ol>
-                    <li>Revisa las ventas del día y el total en caja.</li>
-                    <li>Consulta el indicador de conexión en la esquina superior: <strong>verde (Online)</strong> = en línea, <strong>rojo (Offline)</strong> = sin conexión.</li>
-                    <li>Verifica los productos con bajo stock destacados.</li>
-                    <li>Accede rápido a cada módulo desde las tarjetas.</li>
+                    <li>Revisa las ventas acumuladas del día y el dinero total en caja.</li>
+                    <li>Consulta el indicador de estado: <strong>verde (Online)</strong> = en línea, <strong>rojo (Offline)</strong> = sin conexión.</li>
+                    <li>Verifica los productos con bajo stock destacados para reponer.</li>
+                    <li>Accede directo a cada sección con un solo toque.</li>
                   </ol>
                 </div>
                 <div class="step-tip">
                   <div class="tip-icon"><i data-lucide="lightbulb" aria-hidden="true"></i><h4>Tip clave</h4></div>
-                  <p>Si el indicador aparece en rojo (Offline), el sistema sigue funcionando con normalidad; todos los cambios se guardan localmente y se sincronizan al recuperar internet.</p>
+                  <p>Si se va el internet, el sistema sigue funcionando exactamente igual; todos los cobros se guardan y se sincronizan al volver la señal.</p>
                 </div>
               </div>
               <div class="step-media">
-                <div class="mock-browser-container">
-                  <div class="mock-browser">
-                    <div class="mock-browser-header">
-                      <span class="mock-dot red"></span>
-                      <span class="mock-dot yellow"></span>
-                      <span class="mock-dot green"></span>
-                    </div>
-                    <div class="mock-browser-content">
-                      <img src="screenshots/dashboard.png" alt="Dashboard principal de Precios al Día" width="1897" height="946" loading="lazy" />
-                    </div>
+                <div class="mock-browser">
+                  <div class="mock-browser-header">
+                    <span class="mock-dot red"></span>
+                    <span class="mock-dot yellow"></span>
+                    <span class="mock-dot green"></span>
                   </div>
-                </div>
-                <div class="swipe-indicator" aria-hidden="true">
-                  <i data-lucide="move-horizontal"></i>
-                  <span>Desliza para ver la captura completa</span>
+                  <div class="mock-browser-content">
+                    <img src="screenshots/dashboard.png" alt="Dashboard principal de Precios al Día" width="1897" height="946" loading="lazy" />
+                  </div>
                 </div>
               </div>
             </div>
@@ -2775,42 +3303,49 @@
           <!-- Paso 3 -->
           <article class="step-panel" id="step-panel-2" data-panel="2" role="tabpanel" aria-labelledby="step3-title" hidden>
             <header class="step-panel-head">
-              <span class="step-tag"><span class="step-tag-num">3</span> Punto de venta</span>
-              <h3 id="step3-title">Haz una venta rápida con cobro exacto y Cashea</h3>
-              <p>El POS está diseñado para vender en segundos con o sin internet. Ofrece vuelto mixto automático y cobros financiados de forma nativa.</p>
+              <div class="step-head-content">
+                <span class="step-tag"><span class="step-tag-num">3</span> Punto de venta</span>
+                <h3 id="step3-title">Cobra en 3 toques con catálogo visual</h3>
+                <p>El POS está diseñado para cobrar en segundos. Permite vuelto mixto automático en dólares y bolívares sin errores.</p>
+              </div>
+              <div class="step-head-nav">
+                <span class="step-counter-badge">Paso 3 de 6</span>
+                <div class="step-mini-btns">
+                  <button class="btn-mini-step prev-mini" type="button" aria-label="Paso anterior">
+                    <i data-lucide="arrow-left" aria-hidden="true"></i>
+                  </button>
+                  <button class="btn-mini-step next-mini" type="button" aria-label="Paso siguiente">
+                    <i data-lucide="arrow-right" aria-hidden="true"></i>
+                  </button>
+                </div>
+              </div>
             </header>
             <div class="step-panel-body">
               <div class="step-details">
                 <div class="step-actions">
                   <h4>Acciones</h4>
                   <ol>
-                    <li>Busca productos escribiendo o escaneando el código de barras (se agrega directo al carrito).</li>
-                    <li>Selecciona el cliente de la base de datos integrada para habilitar opciones de crédito/Cashea.</li>
-                    <li>Elige el método de pago: efectivo, pago móvil, saldo a favor o <strong>Cashea</strong> (calcula la inicial y el saldo financiado de inmediato).</li>
-                    <li>Confirma la transacción para registrar la venta y el saldo en caja.</li>
+                    <li>Toca la foto del producto o escanea el código de barras para agregarlo a la cesta.</li>
+                    <li>Selecciona el cliente para compras frecuentes o saldo a crédito.</li>
+                    <li>Elige el método de pago: Efectivo (Bs/$), Pago Móvil, Punto de Venta, Biopago o Cashea.</li>
+                    <li>Confirma el cobro para registrar la venta y descontar el inventario al instante.</li>
                   </ol>
                 </div>
                 <div class="step-tip">
                   <div class="tip-icon"><i data-lucide="lightbulb" aria-hidden="true"></i><h4>Tip clave</h4></div>
-                  <p>Si cobras con Cashea, la deuda restante se asocia automáticamente a la ficha del cliente en su base de datos. Así mantienes tus cobros bajo control absoluto.</p>
+                  <p>Si cobras con Cashea, el sistema calcula la inicial y anota automáticamente el saldo restante en la cuenta del cliente.</p>
                 </div>
               </div>
               <div class="step-media">
-                <div class="mock-browser-container">
-                  <div class="mock-browser">
-                    <div class="mock-browser-header">
-                      <span class="mock-dot red"></span>
-                      <span class="mock-dot yellow"></span>
-                      <span class="mock-dot green"></span>
-                    </div>
-                    <div class="mock-browser-content">
-                      <img src="screenshots/pos.png" alt="Punto de venta de Precios al Día" width="1900" height="906" loading="lazy" />
-                    </div>
+                <div class="mock-browser">
+                  <div class="mock-browser-header">
+                    <span class="mock-dot red"></span>
+                    <span class="mock-dot yellow"></span>
+                    <span class="mock-dot green"></span>
                   </div>
-                </div>
-                <div class="swipe-indicator" aria-hidden="true">
-                  <i data-lucide="move-horizontal"></i>
-                  <span>Desliza para ver la captura completa</span>
+                  <div class="mock-browser-content">
+                    <img src="screenshots/pos.png" alt="Punto de venta de Precios al Día" width="1900" height="906" loading="lazy" />
+                  </div>
                 </div>
               </div>
             </div>
@@ -2819,42 +3354,49 @@
           <!-- Paso 4 -->
           <article class="step-panel" id="step-panel-3" data-panel="3" role="tabpanel" aria-labelledby="step4-title" hidden>
             <header class="step-panel-head">
-              <span class="step-tag"><span class="step-tag-num">4</span> Inventario</span>
-              <h3 id="step4-title">Mantén tu inventario al día</h3>
-              <p>Para que las ventas sean exactas y nunca te quedes sin saber qué hay en la nevera.</p>
+              <div class="step-head-content">
+                <span class="step-tag"><span class="step-tag-num">4</span> Inventario</span>
+                <h3 id="step4-title">Mantén tu inventario y precios al día</h3>
+                <p>Control de existencias con fotos reales, cálculo de días restantes y actualización ágil de precios.</p>
+              </div>
+              <div class="step-head-nav">
+                <span class="step-counter-badge">Paso 4 de 6</span>
+                <div class="step-mini-btns">
+                  <button class="btn-mini-step prev-mini" type="button" aria-label="Paso anterior">
+                    <i data-lucide="arrow-left" aria-hidden="true"></i>
+                  </button>
+                  <button class="btn-mini-step next-mini" type="button" aria-label="Paso siguiente">
+                    <i data-lucide="arrow-right" aria-hidden="true"></i>
+                  </button>
+                </div>
+              </div>
             </header>
             <div class="step-panel-body">
               <div class="step-details">
                 <div class="step-actions">
                   <h4>Acciones</h4>
                   <ol>
-                    <li>Agrega nuevos productos con nombre, precio y stock inicial.</li>
-                    <li>Edita los precios cuando cambien las tasas del día.</li>
-                    <li>Revisa el stock disponible producto por producto.</li>
-                    <li>Marca productos como agotados para reponer a tiempo.</li>
+                    <li>Agrega nuevos productos con su foto, costo, precio de venta y stock.</li>
+                    <li>Edita precios rápidamente cuando cambie la cotización.</li>
+                    <li>Consulta el margen de ganancia calculado en porcentaje para cada artículo.</li>
+                    <li>Recibe alertas visuales cuando un producto esté por agotarse.</li>
                   </ol>
                 </div>
                 <div class="step-tip">
                   <div class="tip-icon"><i data-lucide="lightbulb" aria-hidden="true"></i><h4>Tip clave</h4></div>
-                  <p>Actualiza los precios en bloque al inicio del día según la tasa vigente. Así no pierdes tiempo cambiándolos en cada venta.</p>
+                  <p>Puedes fijar tus precios en dólares y el sistema los convierte automáticamente a bolívares según la tasa del día.</p>
                 </div>
               </div>
               <div class="step-media">
-                <div class="mock-browser-container">
-                  <div class="mock-browser">
-                    <div class="mock-browser-header">
-                      <span class="mock-dot red"></span>
-                      <span class="mock-dot yellow"></span>
-                      <span class="mock-dot green"></span>
-                    </div>
-                    <div class="mock-browser-content">
-                      <img src="screenshots/inventory.png" alt="Gestión de Inventario de Precios al Día" width="1900" height="909" loading="lazy" />
-                    </div>
+                <div class="mock-browser">
+                  <div class="mock-browser-header">
+                    <span class="mock-dot red"></span>
+                    <span class="mock-dot yellow"></span>
+                    <span class="mock-dot green"></span>
                   </div>
-                </div>
-                <div class="swipe-indicator" aria-hidden="true">
-                  <i data-lucide="move-horizontal"></i>
-                  <span>Desliza para ver la captura completa</span>
+                  <div class="mock-browser-content">
+                    <img src="screenshots/inventory.png" alt="Gestión de Inventario de Precios al Día" width="1900" height="909" loading="lazy" />
+                  </div>
                 </div>
               </div>
             </div>
@@ -2863,42 +3405,49 @@
           <!-- Paso 5 -->
           <article class="step-panel" id="step-panel-4" data-panel="4" role="tabpanel" aria-labelledby="step5-title" hidden>
             <header class="step-panel-head">
-              <span class="step-tag"><span class="step-tag-num">5</span> Cierre de caja</span>
-              <h3 id="step5-title">Cuadra tu turno e imprime comprobantes</h3>
-              <p>Al final de tu jornada, haz el cierre de caja para auditar los ingresos y emite recibos impresos o digitales de forma automática.</p>
+              <div class="step-head-content">
+                <span class="step-tag"><span class="step-tag-num">5</span> Cierre de caja</span>
+                <h3 id="step5-title">Cuadra tu turno e imprime comprobantes</h3>
+                <p>Audita los ingresos por método de pago, compara lo recaudado con el sistema y genera comprobantes.</p>
+              </div>
+              <div class="step-head-nav">
+                <span class="step-counter-badge">Paso 5 de 6</span>
+                <div class="step-mini-btns">
+                  <button class="btn-mini-step prev-mini" type="button" aria-label="Paso anterior">
+                    <i data-lucide="arrow-left" aria-hidden="true"></i>
+                  </button>
+                  <button class="btn-mini-step next-mini" type="button" aria-label="Paso siguiente">
+                    <i data-lucide="arrow-right" aria-hidden="true"></i>
+                  </button>
+                </div>
+              </div>
             </header>
             <div class="step-panel-body">
               <div class="step-details">
                 <div class="step-actions">
                   <h4>Acciones</h4>
                   <ol>
-                    <li>Ingresa a Cierres de caja y revisa el total de ventas acumuladas.</li>
-                    <li>Registra el dinero físico que tienes en caja en Bs, dólares y otras monedas.</li>
-                    <li>Imprime el ticket térmico de comprobante de venta o cierre para tus registros físicos.</li>
-                    <li>Visualiza y descarga reportes detallados en PDF si prefieres un control digital y ecológico.</li>
+                    <li>Ingresa a Cierre de caja y revisa el total de ventas acumuladas del turno.</li>
+                    <li>Registra el conteo de dinero físico en bolívares, dólares y transferencias.</li>
+                    <li>Imprime el ticket de cierre en tu impresora térmica o guárdalo en PDF.</li>
+                    <li>Compara el arqueo para garantizar cero descuadres.</li>
                   </ol>
                 </div>
                 <div class="step-tip">
                   <div class="tip-icon"><i data-lucide="lightbulb" aria-hidden="true"></i><h4>Tip clave</h4></div>
-                  <p>El sistema es compatible de fábrica con cualquier impresora térmica (58mm u 80mm) vía USB o red local. Conéctala y empieza a imprimir al instante sin instalar drivers complejos.</p>
+                  <p>Compatible de fábrica con cualquier impresora térmica (58mm u 80mm). Conéctala e imprime al instante sin configuraciones raras.</p>
                 </div>
               </div>
               <div class="step-media">
-                <div class="mock-browser-container">
-                  <div class="mock-browser">
-                    <div class="mock-browser-header">
-                      <span class="mock-dot red"></span>
-                      <span class="mock-dot yellow"></span>
-                      <span class="mock-dot green"></span>
-                    </div>
-                    <div class="mock-browser-content">
-                      <img src="screenshots/checkout.png" alt="Cobro en divisas y vuelto mixto en Precios al Día" width="1203" height="734" loading="lazy" />
-                    </div>
+                <div class="mock-browser">
+                  <div class="mock-browser-header">
+                    <span class="mock-dot red"></span>
+                    <span class="mock-dot yellow"></span>
+                    <span class="mock-dot green"></span>
                   </div>
-                </div>
-                <div class="swipe-indicator" aria-hidden="true">
-                  <i data-lucide="move-horizontal"></i>
-                  <span>Desliza para ver la captura completa</span>
+                  <div class="mock-browser-content">
+                    <img src="screenshots/reports.png" alt="Reporte de Cierre de Caja, auditoría de ingresos y métricas financieras en Precios al Día" width="1897" height="946" loading="lazy" />
+                  </div>
                 </div>
               </div>
             </div>
@@ -2907,42 +3456,49 @@
           <!-- Paso 6 -->
           <article class="step-panel" id="step-panel-5" data-panel="5" role="tabpanel" aria-labelledby="step6-title" hidden>
             <header class="step-panel-head">
-              <span class="step-tag"><span class="step-tag-num">6</span> Sincronización</span>
-              <h3 id="step6-title">Tu información segura en tu equipo y en la nube</h3>
-              <p>Tu licencia de 1 equipo guarda todo de forma offline local en IndexedDB y sube copias a la nube en segundo plano para monitorización del dueño y backups.</p>
+              <div class="step-head-content">
+                <span class="step-tag"><span class="step-tag-num">6</span> Vueltos &amp; Billetera</span>
+                <h3 id="step6-title">Vueltos exactos en divisas y monedero digital</h3>
+                <p>Calcula el vuelto al instante en dólares o bolívares, o abónalo como saldo a favor en la Billetera del cliente sin depender de internet.</p>
+              </div>
+              <div class="step-head-nav">
+                <span class="step-counter-badge">Paso 6 de 6</span>
+                <div class="step-mini-btns">
+                  <button class="btn-mini-step prev-mini" type="button" aria-label="Paso anterior">
+                    <i data-lucide="arrow-left" aria-hidden="true"></i>
+                  </button>
+                  <button class="btn-mini-step next-mini" type="button" aria-label="Paso siguiente">
+                    <i data-lucide="arrow-right" aria-hidden="true"></i>
+                  </button>
+                </div>
+              </div>
             </header>
             <div class="step-panel-body">
               <div class="step-details">
                 <div class="step-actions">
                   <h4>Acciones</h4>
                   <ol>
-                    <li>El sistema funciona 100% de manera autónoma con o sin internet. La nube es solo de resguardo.</li>
-                    <li>Escanea el código QR de instalación autogenerado con la Estación Maestra para una activación instantánea y permanente de tu caja.</li>
-                    <li>Genera backups manuales en archivo JSON cifrado local para guardarlo de manera independiente.</li>
-                    <li>Por seguridad, los hashes de tus PINs y contraseñas jamás se suben a internet; quedan resguardados localmente.</li>
+                    <li>Selecciona divisas o bolívares recibidos para calcular el cambio de forma automática.</li>
+                    <li>Asigna el vuelto en efectivo USD, bolívares por Pago Móvil o abónalo a la <strong>Billetera Digital</strong>.</li>
+                    <li>Evita discusiones de caja por falta de sencillo o billetes deteriorados.</li>
+                    <li>Todos los saldos y movimientos se guardan localmente y operan 100% sin internet.</li>
                   </ol>
                 </div>
                 <div class="step-tip">
                   <div class="tip-icon"><i data-lucide="lightbulb" aria-hidden="true"></i><h4>Tip clave</h4></div>
-                  <p>Al ser offline-first nativo, tu negocio es inmune a las caídas de internet o de luz. Vendes y registras todo localmente y te relajas.</p>
+                  <p>El monedero digital permite que el cliente use su vuelto acumulado en su próxima compra con un solo toque.</p>
                 </div>
               </div>
               <div class="step-media">
-                <div class="mock-browser-container">
-                  <div class="mock-browser">
-                    <div class="mock-browser-header">
-                      <span class="mock-dot red"></span>
-                      <span class="mock-dot yellow"></span>
-                      <span class="mock-dot green"></span>
-                    </div>
-                    <div class="mock-browser-content">
-                      <img src="screenshots/dashboard.png" alt="Sincronización y estado de conexión en Precios al Día" width="1897" height="946" loading="lazy" />
-                    </div>
+                <div class="mock-browser">
+                  <div class="mock-browser-header">
+                    <span class="mock-dot red"></span>
+                    <span class="mock-dot yellow"></span>
+                    <span class="mock-dot green"></span>
                   </div>
-                </div>
-                <div class="swipe-indicator" aria-hidden="true">
-                  <i data-lucide="move-horizontal"></i>
-                  <span>Desliza para ver la captura completa</span>
+                  <div class="mock-browser-content">
+                    <img src="screenshots/checkout.png" alt="Procesamiento de pagos, cálculo de vuelto mixto y asignación a Billetera en Precios al Día" width="1024" height="695" loading="lazy" />
+                  </div>
                 </div>
               </div>
             </div>
@@ -3002,12 +3558,12 @@
 
           <div class="faq-item reveal">
             <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a-3">
-              <span>¿Cómo instalo la app en Android?</span>
+              <span>¿Cómo instalo la app en mi teléfono, tablet o computadora?</span>
               <span class="faq-icon"><i data-lucide="plus" aria-hidden="true"></i></span>
             </button>
             <div class="faq-a" id="faq-a-3" role="region">
               <div class="faq-a-inner">
-                La aplicación se instala directamente desde el navegador de internet. Abre <a href="https://preciosaldiaoficial.vercel.app/" target="_blank" rel="noopener noreferrer">preciosaldiaoficial.vercel.app</a> en Google Chrome de Android, toca el menú de los tres puntos (⋮) y selecciona <em>«Instalar aplicación»</em> o <em>«Añadir a pantalla de inicio»</em>. También dispones de una aplicación instalable para Android.
+                Precios al Día es una aplicación web progresiva (PWA) de última generación que no requiere descargas pesadas de tiendas ni instaladores complicados. Abre <a href="https://preciosaldiaoficial.vercel.app/" target="_blank" rel="noopener noreferrer">preciosaldiaoficial.vercel.app</a> en Google Chrome (Android/Windows/Mac) o Safari (iPhone/iPad), toca el menú y selecciona <em>«Instalar aplicación»</em> o <em>«Añadir a pantalla de inicio»</em>. Se abrirá como una app nativa a pantalla completa y funcionará con o sin internet.
               </div>
             </div>
           </div>
@@ -3019,7 +3575,7 @@
             </button>
             <div class="faq-a" id="faq-a-4" role="region">
               <div class="faq-a-inner">
-                Tu información se guarda de forma segura localmente en tu equipo. Si cambias de computadora o teléfono, simplemente restaura la copia de seguridad descargada en <em>Configuración → Sistema</em> o vincula mediante el código QR. Recuperas todo tu catálogo, inventario y ventas al instante, sin depender de un inicio de sesión en la nube.
+                Tu información se guarda de forma segura localmente en tu equipo para garantizar ventas sin cortes. Si cambias de dispositivo, puedes restaurar tus datos en segundos cargando tu archivo de respaldo desde <em>Configuración → Sistema</em> o vinculando el nuevo equipo con tu Estación Maestra mediante el código QR de supervisor. Recuperas todo tu inventario, catálogo de fotos, clientes y ventas de forma inmediata.
               </div>
             </div>
           </div>
@@ -3031,7 +3587,7 @@
             </button>
             <div class="faq-a" id="faq-a-5" role="region">
               <div class="faq-a-inner">
-                Como Administrador, ve a <em>Configuración → Usuarios</em>, pulsa <em>«Agregar Usuario»</em>, asigna su nombre, el rol (<strong>Admin</strong> o <strong>Cajero</strong>) y un PIN numérico (de 6 dígitos para Admin o 4 para Cajero). El nuevo usuario podrá entrar de inmediato seleccionando su nombre en la pantalla de inicio.
+                Como Administrador, ve a <em>Configuración → Usuarios</em>, pulsa <em>«Agregar Usuario»</em>, asigna su nombre, el rol (<strong>Admin</strong> o <strong>Cajero</strong>) y un PIN numérico de seguridad. El nuevo cajero podrá entrar de inmediato seleccionando su perfil en la pantalla inicial para empezar a cobrar con acceso protegido.
               </div>
             </div>
           </div>
@@ -3074,10 +3630,10 @@
             </button>
             <div class="faq-a" id="faq-a-8" role="region">
               <div class="faq-a-inner">
-                Es muy simple. Al abrir el sistema por primera vez, verás la pantalla de activación con tu <strong>ID de Instalación</strong>. Debajo del botón principal de activación, verás la opción <strong>«Probar gratis 3 días»</strong>. Al hacer clic allí, el sistema se desbloqueará de inmediato para que comiences tu prueba con todas las funciones activadas (inventario, POS, tasas, etc.), sin necesidad de ingresar tarjetas de crédito ni datos de pago. Una vez que termine la prueba, puedes adquirir la licencia vitalicia ingresando tu código para continuar operando sin perder ningún dato registrado.
+                Es muy simple. Al abrir la aplicación por primera vez, verás la pantalla de activación con tu <strong>ID de Instalación</strong> y el botón directo <strong>«Probar gratis 3 días»</strong>. Al hacer clic allí, el sistema se desbloquea de inmediato por 72 horas con todas las funciones activadas (Punto de Venta, Inventario con fotos, Tasa BCV automática, Cashea, Cierre de caja y Reportes), sin necesidad de ingresar tarjetas de crédito ni datos de pago. Durante o al finalizar tu prueba, puedes adquirir tu licencia vitalicia pulsando <strong>«Solicitar Licencia»</strong> para enviarnos tu ID por WhatsApp: activamos tu equipo de forma remota al instante y continúas operando sin perder ningún producto ni venta registrada.
               </div>
             </div>
-           </div>
+          </div>
 
           <div class="faq-item reveal">
             <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a-9">
@@ -3093,12 +3649,12 @@
 
           <div class="faq-item reveal">
             <button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-a-10">
-              <span>¿En qué se diferencia de otros sistemas POS tradicionales?</span>
+              <span>¿En qué se diferencia de otros sistemas POS tradicionales en Venezuela?</span>
               <span class="faq-icon"><i data-lucide="plus" aria-hidden="true"></i></span>
             </button>
             <div class="faq-a" id="faq-a-10" role="region">
               <div class="faq-a-inner">
-                La mayoría de los sistemas POS te obligan a comprar servidores dedicados costosos, configurar IP fijas en tu red local, instalar motores de bases de datos pesados (como SQL Server) y contratar programadores solo para la instalación. <strong>Precios al Día elimina todo eso.</strong> Se instala directamente desde el navegador Chrome como una PWA liviana en cualquier dispositivo (Windows, Android, etc.) y funciona de inmediato con configuraciones automáticas pre-cargadas. Es tan intuitivo que tus empleados aprenderán a usarlo en 5 minutos.
+                La gran mayoría de los sistemas comerciales en Venezuela son lentos, anticuados y difíciles de entender, obligándote a pagar costosas visitas técnicas, comprar computadoras pesadas y pasar semanas capacitando a tu personal. <strong>Precios al Día fue creado para ser radicalmente diferente.</strong> Es tan visual e intuitivo como usar una app de mensajería: lo abres en cualquier teléfono, tablet o PC que ya tengas y en menos de 2 minutos cualquier persona de tu equipo ya sabe cómo cobrar, calcular vueltos en divisas y cerrar caja sin cometer errores.
               </div>
             </div>
           </div>
@@ -3112,15 +3668,15 @@
       <div class="container">
         <div class="section-head reveal" style="text-align: center; margin-inline: auto;">
           <span class="section-eyebrow">Comparativa Directa</span>
-          <h2 class="section-title" id="comparison-title">¿Por qué Precios al Día supera al resto?</h2>
-          <p class="section-lead" style="max-width: 58ch; margin-inline: auto;">Compara punto por punto cómo resolvemos los desafíos reales de una bodega venezolana frente a los métodos tradicionales.</p>
+          <h2 class="section-title" id="comparison-title">¿Por qué Precios al Día es la mejor opción en Venezuela?</h2>
+          <p class="section-lead" style="max-width: 64ch; margin-inline: auto;">Compara punto por punto cómo resolvemos los problemas reales del mostrador frente a los sistemas tradicionales pesados y el cuaderno de notas.</p>
         </div>
 
         <div class="reveal" style="overflow-x: auto; -webkit-overflow-scrolling: touch; margin-top: var(--space-6);">
           <table style="width: 100%; border-collapse: separate; border-spacing: 0; text-align: left; background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; font-size: var(--text-sm);">
             <thead>
               <tr style="background: var(--surface-3); border-bottom: 2px solid var(--border);">
-                <th style="padding: var(--space-4) var(--space-5); font-weight: 700; color: var(--text); font-size: var(--text-base);">Característica Clave</th>
+                <th style="padding: var(--space-4) var(--space-5); font-weight: 700; color: var(--text); font-size: var(--text-base);">Criterio</th>
                 <th style="padding: var(--space-4) var(--space-5); font-weight: 700; color: var(--primary); background: var(--primary-soft); font-size: var(--text-base); border-inline: 2px solid var(--primary);">Precios al Día POS</th>
                 <th style="padding: var(--space-4) var(--space-5); font-weight: 600; color: var(--text-muted);">Sistemas Tradicionales</th>
                 <th style="padding: var(--space-4) var(--space-5); font-weight: 600; color: var(--text-muted);">Cuaderno / Excel</th>
@@ -3128,57 +3684,75 @@
             </thead>
             <tbody>
               <tr style="border-bottom: 1px solid var(--border);">
-                <td style="padding: var(--space-4) var(--space-5); font-weight: 600; color: var(--text);">Operación 100% Sin Internet</td>
+                <td style="padding: var(--space-4) var(--space-5); font-weight: 600; color: var(--text);">Facilidad de Uso</td>
                 <td style="padding: var(--space-4) var(--space-5); font-weight: 700; color: var(--success); background: var(--primary-soft); border-inline: 2px solid var(--primary);">
                   <i data-lucide="check-circle-2" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px;"></i>
-                  100% Offline Nativo (IndexedDB)
+                  Se aprende en 2 minutos (Tan fácil como WhatsApp)
                 </td>
-                <td style="padding: var(--space-4) var(--space-5); color: var(--text-muted);">Requiere internet o servidor local</td>
-                <td style="padding: var(--space-4) var(--space-5); color: var(--text-muted);">Manual (Riesgo de pérdida)</td>
+                <td style="padding: var(--space-4) var(--space-5); color: var(--text-muted);">Complejo (Requiere cursos, manuales y semanas de prueba)</td>
+                <td style="padding: var(--space-4) var(--space-5); color: var(--text-muted);">Manual y propenso a errores matemáticos</td>
               </tr>
               <tr style="border-bottom: 1px solid var(--border); background: var(--surface);">
-                <td style="padding: var(--space-4) var(--space-5); font-weight: 600; color: var(--text);">Tasa BCV y Doble Precio (Bs/USD)</td>
+                <td style="padding: var(--space-4) var(--space-5); font-weight: 600; color: var(--text);">Operación Sin Internet ni Luz</td>
                 <td style="padding: var(--space-4) var(--space-5); font-weight: 700; color: var(--success); background: var(--primary-soft); border-inline: 2px solid var(--primary);">
                   <i data-lucide="check-circle-2" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px;"></i>
-                  Automática diaria + Vuelto Mixto
+                  100% Autónomo (Ventas sin interrupciones)
                 </td>
-                <td style="padding: var(--space-4) var(--space-5); color: var(--text-muted);">Configuración manual diaria</td>
-                <td style="padding: var(--space-4) var(--space-5); color: var(--text-muted);">Cálculo manual en calculadora</td>
+                <td style="padding: var(--space-4) var(--space-5); color: var(--text-muted);">Se bloquea o exige servidores locales que se dañan</td>
+                <td style="padding: var(--space-4) var(--space-5); color: var(--text-muted);">Manual (Sin control de inventario en tiempo real)</td>
               </tr>
               <tr style="border-bottom: 1px solid var(--border);">
-                <td style="padding: var(--space-4) var(--space-5); font-weight: 600; color: var(--text);">Módulo de Cobro con Cashea</td>
+                <td style="padding: var(--space-4) var(--space-5); font-weight: 600; color: var(--text);">Cálculo de Tasa BCV y Vueltos</td>
                 <td style="padding: var(--space-4) var(--space-5); font-weight: 700; color: var(--success); background: var(--primary-soft); border-inline: 2px solid var(--primary);">
                   <i data-lucide="check-circle-2" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px;"></i>
-                  Integrado en POS y saldo deudor
+                  Automático en Bs, USD y vuelto mixto exacto
                 </td>
-                <td style="padding: var(--space-4) var(--space-5); color: var(--text-muted);">No soportado nativamente</td>
-                <td style="padding: var(--space-4) var(--space-5); color: var(--text-muted);">Cuaderno de fiados</td>
+                <td style="padding: var(--space-4) var(--space-5); color: var(--text-muted);">Lento y manual en cada venta</td>
+                <td style="padding: var(--space-4) var(--space-5); color: var(--text-muted);">Calculadora a mano (Riesgo alto de pérdidas)</td>
               </tr>
               <tr style="border-bottom: 1px solid var(--border); background: var(--surface);">
-                <td style="padding: var(--space-4) var(--space-5); font-weight: 600; color: var(--text);">Instalación y Configuración</td>
+                <td style="padding: var(--space-4) var(--space-5); font-weight: 600; color: var(--text);">Equipos Necesarios</td>
                 <td style="padding: var(--space-4) var(--space-5); font-weight: 700; color: var(--success); background: var(--primary-soft); border-inline: 2px solid var(--primary);">
                   <i data-lucide="check-circle-2" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px;"></i>
-                  1 Clic (PWA), 0 Servidores, 0 Drivers
+                  Cualquier teléfono, tablet o PC que ya tengas
                 </td>
-                <td style="padding: var(--space-4) var(--space-5); color: var(--text-muted);">Servidores SQL y técnicos caros</td>
-                <td style="padding: var(--space-4) var(--space-5); color: var(--text-muted);">Ninguna</td>
+                <td style="padding: var(--space-4) var(--space-5); color: var(--text-muted);">Computadoras pesadas y licencias por equipo</td>
+                <td style="padding: var(--space-4) var(--space-5); color: var(--text-muted);">Papel y lápiz</td>
               </tr>
               <tr style="border-bottom: 1px solid var(--border);">
-                <td style="padding: var(--space-4) var(--space-5); font-weight: 600; color: var(--text);">Monitoreo de Dueño (Supervisor)</td>
+                <td style="padding: var(--space-4) var(--space-5); font-weight: 600; color: var(--text);">Puesta en Marcha</td>
                 <td style="padding: var(--space-4) var(--space-5); font-weight: 700; color: var(--success); background: var(--primary-soft); border-inline: 2px solid var(--primary);">
                   <i data-lucide="check-circle-2" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px;"></i>
-                  Enlace QR al celular en vivo gratis
+                  Listo en 1 clic (0 técnicos, 0 configuraciones)
                 </td>
-                <td style="padding: var(--space-4) var(--space-5); color: var(--text-muted);">Módulo adicional de pago</td>
-                <td style="padding: var(--space-4) var(--space-5); color: var(--text-muted);">No existe</td>
+                <td style="padding: var(--space-4) var(--space-5); color: var(--text-muted);">Días de instalación con técnicos costosos</td>
+                <td style="padding: var(--space-4) var(--space-5); color: var(--text-muted);">Inmediata (Sin orden ni respaldos)</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border); background: var(--surface);">
+                <td style="padding: var(--space-4) var(--space-5); font-weight: 600; color: var(--text);">Control de Fiados y Cashea</td>
+                <td style="padding: var(--space-4) var(--space-5); font-weight: 700; color: var(--success); background: var(--primary-soft); border-inline: 2px solid var(--primary);">
+                  <i data-lucide="check-circle-2" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px;"></i>
+                  Integrado con perfil de cliente y abonos rápidos
+                </td>
+                <td style="padding: var(--space-4) var(--space-5); color: var(--text-muted);">Rígido o requiere módulos adicionales de pago</td>
+                <td style="padding: var(--space-4) var(--space-5); color: var(--text-muted);">Hojas sueltas que se pierden o se rompen</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border);">
+                <td style="padding: var(--space-4) var(--space-5); font-weight: 600; color: var(--text);">Monitoreo para el Dueño</td>
+                <td style="padding: var(--space-4) var(--space-5); font-weight: 700; color: var(--success); background: var(--primary-soft); border-inline: 2px solid var(--primary);">
+                  <i data-lucide="check-circle-2" style="width:16px;height:16px;display:inline-block;vertical-align:middle;margin-right:4px;"></i>
+                  Ventas y ganancias en vivo desde tu propio celular
+                </td>
+                <td style="padding: var(--space-4) var(--space-5); color: var(--text-muted);">Solo visible en la computadora del negocio</td>
+                <td style="padding: var(--space-4) var(--space-5); color: var(--text-muted);">No existe (Esperar al cuadre nocturno)</td>
               </tr>
               <tr>
-                <td style="padding: var(--space-4) var(--space-5); font-weight: 600; color: var(--text);">Modelo de Precios</td>
+                <td style="padding: var(--space-4) var(--space-5); font-weight: 600; color: var(--text);">Inversión</td>
                 <td style="padding: var(--space-4) var(--space-5); font-weight: 700; color: var(--primary); background: var(--primary-soft); border-inline: 2px solid var(--primary); font-size: var(--text-base);">
-                  <strong>Pago Único Vitalicio (<span data-price-dollar>$50</span>)</strong>
+                  <strong>Pago Único Vitalicio (<span data-price-dollar>$50</span>) · Sin mensualidades</strong>
                 </td>
-                <td style="padding: var(--space-4) var(--space-5); color: #ef4444; font-weight: 600;">$20 a $50 USD mensuales</td>
-                <td style="padding: var(--space-4) var(--space-5); color: var(--text-muted);">Gratis (Descuadres de caja)</td>
+                <td style="padding: var(--space-4) var(--space-5); color: #ef4444; font-weight: 600;">$20 a $50 USD mensuales + cobros por visita técnica</td>
+                <td style="padding: var(--space-4) var(--space-5); color: var(--text-muted);">Pérdidas continuas por descuadres y fiados no cobrados</td>
               </tr>
             </tbody>
           </table>
@@ -3527,7 +4101,7 @@
         });
       }
 
-      /* ---------- Stepper ---------- */
+      /* ---------- Stepper Optimizado UI/UX ---------- */
       var TOTAL_STEPS = 6;
       var currentStep = 0;
       var stepBtns = document.querySelectorAll(".step-btn");
@@ -3536,9 +4110,12 @@
       var progressText = document.getElementById("stepperProgressText");
       var prevBtn = document.getElementById("prevBtn");
       var nextBtn = document.getElementById("nextBtn");
+      var prevMiniBtns = document.querySelectorAll(".prev-mini");
+      var nextMiniBtns = document.querySelectorAll(".next-mini");
+      var counterBadges = document.querySelectorAll(".step-counter-badge");
 
       function updateStepper() {
-        // Botones de círculo
+        // Botones de círculo en barra superior
         stepBtns.forEach(function (btn, i) {
           btn.classList.remove("active", "done");
           btn.setAttribute("aria-selected", "false");
@@ -3549,7 +4126,7 @@
           }
         });
 
-        // Paneles
+        // Paneles de contenido
         panels.forEach(function (panel, i) {
           if (i === currentStep) {
             panel.classList.add("active");
@@ -3560,47 +4137,121 @@
           }
         });
 
-        // Línea de progreso
+        // Línea de progreso superior
         var pct = TOTAL_STEPS > 1 ? (currentStep / (TOTAL_STEPS - 1)) * 100 : 0;
-        progressLine.style.width = pct + "%";
+        if (progressLine) progressLine.style.width = pct + "%";
 
-        // Texto y botones
-        progressText.textContent = "Paso " + (currentStep + 1) + " de " + TOTAL_STEPS;
-        prevBtn.disabled = currentStep === 0;
-        if (currentStep === TOTAL_STEPS - 1) {
-          nextBtn.innerHTML = '<i data-lucide="check" aria-hidden="true"></i> Completado';
-        } else {
-          nextBtn.innerHTML = 'Siguiente <i data-lucide="arrow-right" aria-hidden="true"></i>';
+        // Badges y textos de progreso
+        var stepText = "Paso " + (currentStep + 1) + " de " + TOTAL_STEPS;
+        if (progressText) progressText.textContent = stepText;
+        counterBadges.forEach(function (badge) {
+          badge.textContent = stepText;
+        });
+
+        // Estado de botones principales inferiores
+        if (prevBtn) prevBtn.disabled = currentStep === 0;
+        if (nextBtn) {
+          if (currentStep === TOTAL_STEPS - 1) {
+            nextBtn.innerHTML = '<i data-lucide="check" aria-hidden="true"></i> Ver Precios y Comprar';
+          } else {
+            nextBtn.innerHTML = 'Siguiente <i data-lucide="arrow-right" aria-hidden="true"></i>';
+          }
         }
+
+        // Estado de botones rápidos en encabezado de tarjeta
+        prevMiniBtns.forEach(function (btn) {
+          btn.disabled = currentStep === 0;
+        });
+        nextMiniBtns.forEach(function (btn) {
+          btn.disabled = currentStep === TOTAL_STEPS - 1;
+        });
+
         renderIcons();
       }
 
-      function goToStep(i, focusBtn) {
+      function goToStep(i, focusBtn, autoScroll) {
         currentStep = Math.max(0, Math.min(TOTAL_STEPS - 1, i));
         updateStepper();
         if (focusBtn && stepBtns[currentStep]) {
           stepBtns[currentStep].focus();
         }
+        if (autoScroll) {
+          var stepperWrap = document.querySelector(".stepper-wrap");
+          if (stepperWrap) {
+            var rect = stepperWrap.getBoundingClientRect();
+            if (rect.top < 60 || rect.top > 250) {
+              stepperWrap.scrollIntoView({ behavior: "smooth", block: "start" });
+            }
+          }
+        }
       }
 
+      // Eventos botones superiores
       stepBtns.forEach(function (btn) {
         btn.addEventListener("click", function () {
           var step = parseInt(btn.getAttribute("data-step"), 10);
-          goToStep(step);
+          goToStep(step, false, true);
         });
       });
 
-      prevBtn.addEventListener("click", function () { goToStep(currentStep - 1); });
-      nextBtn.addEventListener("click", function () {
-        if (currentStep < TOTAL_STEPS - 1) goToStep(currentStep + 1);
+      // Eventos botones rápidos en cabecera
+      prevMiniBtns.forEach(function (btn) {
+        btn.addEventListener("click", function (e) {
+          e.preventDefault();
+          goToStep(currentStep - 1, false, true);
+        });
+      });
+      nextMiniBtns.forEach(function (btn) {
+        btn.addEventListener("click", function (e) {
+          e.preventDefault();
+          goToStep(currentStep + 1, false, true);
+        });
       });
 
-      // Navegación con teclado entre pasos ( flechas izq/der cuando el foco está en el stepper )
-      var stepperWrap = document.querySelector(".stepper-wrap");
-      stepperWrap.addEventListener("keydown", function (e) {
-        if (e.key === "ArrowRight") { e.preventDefault(); goToStep(currentStep + 1, true); }
-        if (e.key === "ArrowLeft") { e.preventDefault(); goToStep(currentStep - 1, true); }
-      });
+      // Eventos botones inferiores
+      if (prevBtn) {
+        prevBtn.addEventListener("click", function () { goToStep(currentStep - 1, false, true); });
+      }
+      if (nextBtn) {
+        nextBtn.addEventListener("click", function () {
+          if (currentStep < TOTAL_STEPS - 1) {
+            goToStep(currentStep + 1, false, true);
+          } else {
+            var pricing = document.getElementById("precios");
+            if (pricing) pricing.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        });
+      }
+
+      // Navegación con teclado (Flechas Izq/Der dentro del tutorial)
+      var tutorialSection = document.querySelector(".tutorial");
+      if (tutorialSection) {
+        tutorialSection.addEventListener("keydown", function (e) {
+          if (e.key === "ArrowRight") { e.preventDefault(); goToStep(currentStep + 1, false, true); }
+          if (e.key === "ArrowLeft") { e.preventDefault(); goToStep(currentStep - 1, false, true); }
+        });
+      }
+
+      // Soporte táctil / Deslizar (Swipe) en móviles
+      var stepPanelsContainer = document.getElementById("stepPanels");
+      if (stepPanelsContainer) {
+        var touchStartX = 0;
+        var touchEndX = 0;
+        stepPanelsContainer.addEventListener("touchstart", function (e) {
+          touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+        stepPanelsContainer.addEventListener("touchend", function (e) {
+          touchEndX = e.changedTouches[0].screenX;
+          var diff = touchStartX - touchEndX;
+          if (Math.abs(diff) > 50) {
+            if (diff > 0 && currentStep < TOTAL_STEPS - 1) {
+              goToStep(currentStep + 1, false, true);
+            } else if (diff < 0 && currentStep > 0) {
+              goToStep(currentStep - 1, false, true);
+            }
+          }
+        }, { passive: true });
+      }
 
       updateStepper();
 
@@ -4233,6 +4884,19 @@
     })();
   </script>
 
+  <!-- ============ MODAL EXPANDIR IMAGEN (LIGHTBOX) ============ -->
+  <div id="imageLightboxModal" class="lightbox-backdrop" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Visualizador de imagen ampliada">
+    <button class="lightbox-close-btn" id="lightboxCloseBtn" type="button" aria-label="Cerrar vista ampliada">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </button>
+    <div class="lightbox-container" id="lightboxContainer">
+      <div class="lightbox-img-wrapper">
+        <img id="lightboxImg" class="lightbox-img" src="" alt="Captura ampliada" />
+      </div>
+      <div id="lightboxCaption" class="lightbox-caption">Precios al Día POS</div>
+    </div>
+  </div>
+
   <!-- ============ MODAL ZONA OCULTA (ADMIN PRECIO) ============ -->
   <div id="secretPriceModal" class="secret-modal-backdrop" aria-hidden="true" role="dialog" aria-labelledby="secretModalTitle">
     <div class="secret-modal-card">
@@ -4520,6 +5184,76 @@
         .catch(function (err) {
           console.warn("Error fetching price from API:", err);
         });
+
+      /* ---------- Lightbox / Zoom de Imágenes Interactivo ---------- */
+      var lightboxModal = document.getElementById("imageLightboxModal");
+      var lightboxImg = document.getElementById("lightboxImg");
+      var lightboxCaption = document.getElementById("lightboxCaption");
+      var lightboxCloseBtn = document.getElementById("lightboxCloseBtn");
+      var lastFocusedBeforeLightbox = null;
+
+      function openLightbox(src, alt) {
+        if (!lightboxModal || !lightboxImg) return;
+        lastFocusedBeforeLightbox = document.activeElement;
+        lightboxImg.src = src;
+        lightboxImg.alt = alt || "Captura ampliada de Precios al Día";
+        if (lightboxCaption) {
+          lightboxCaption.textContent = alt || "Precios al Día POS · Sistema en Vivo";
+        }
+        lightboxModal.classList.add("is-open");
+        lightboxModal.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+        if (lightboxCloseBtn) lightboxCloseBtn.focus();
+      }
+
+      function closeLightbox() {
+        if (!lightboxModal) return;
+        lightboxModal.classList.remove("is-open");
+        lightboxModal.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+        if (lastFocusedBeforeLightbox && typeof lastFocusedBeforeLightbox.focus === "function") {
+          lastFocusedBeforeLightbox.focus();
+        }
+      }
+
+      if (lightboxCloseBtn) {
+        lightboxCloseBtn.addEventListener("click", closeLightbox);
+      }
+
+      if (lightboxModal) {
+        lightboxModal.addEventListener("click", function (e) {
+          if (e.target === lightboxModal || e.target.id === "lightboxContainer") {
+            closeLightbox();
+          }
+        });
+      }
+
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && lightboxModal && lightboxModal.classList.contains("is-open")) {
+          closeLightbox();
+        }
+      });
+
+      function initZoomableImages() {
+        var images = document.querySelectorAll(
+          ".mock-browser-content img, .hero-card img, #showcaseImg, .step-media img, img[src*='screenshots/']"
+        );
+        images.forEach(function (img) {
+          img.classList.add("zoomable-image");
+          img.setAttribute("title", "Haz clic para ampliar");
+          img.style.cursor = "zoom-in";
+          img.addEventListener("click", function (e) {
+            e.stopPropagation();
+            openLightbox(img.currentSrc || img.src, img.alt);
+          });
+        });
+      }
+
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initZoomableImages);
+      } else {
+        initZoomableImages();
+      }
     })();
   </script>
 </body>
